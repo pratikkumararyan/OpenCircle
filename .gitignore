@@ -1,0 +1,12 @@
+# Django junk
+db.sqlite3
+__pycache__/
+*.pyc
+
+# Environment/Secrets
+.env
+venv/
+env/
+
+# VS Code junk
+.vscode/
