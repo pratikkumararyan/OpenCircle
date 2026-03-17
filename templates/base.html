@@ -3,6 +3,11 @@
   <head>
     <title>OpenCircle | Landing Page</title>
     <meta charset="UTF-8" />
+    <meta name="description"
+          content="OpenCircle | An open-source Django social media platform for the specially abled." />
+    <meta name="keywords"
+          content="Open-source, Django, social media, Specially abled" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5"
           rel="stylesheet"
           type="text/css" />
@@ -134,8 +139,8 @@
   <div class="w-full h-full glass" id="whyus">
     <p data-aos="zoom-in-up"
        class="text-7xl text-center py-12 px-6 tracking-widest italic font-serif text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-      <span class="text-neutral-content font-thin">WHY</span>
-      <span class="text-primary font-bold leading-loose">US?</span>
+      <span class="text-neutral-content font-extralight">WHY</span>
+      <span class="text-primary font-extrabold leading-loose">US?</span>
     </p>
     <div class="flex flex-col lg:flex-row w-full gap-4 p-4">
       <div class="grid flex-grow h-fit card bg-base-300 rounded-box place-items-center p-4">
@@ -311,7 +316,7 @@
         </p>
       </div>
       <div class="divider lg:divider-horizontal divider-accent-content"></div>
-      <div class="grid flex-grow h-125 card bg-base-100/30 backdrop-blur-md rounded-box place-items-center p-4 w-1/3 hover:translate-y-2 transition-all duration-300 mockup-phone min-w-[440] aspect-video border border-border-base-content/10 shadow-2xl shadow-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
+      <div class="grid flex-grow h-125 card bg-base-100/30 backdrop-blur-md rounded-box place-items-center p-4 hover:translate-y-2 transition-all duration-300 mockup-phone lg:w-1/3 md:w-full aspect-video border border-border-base-content/10 shadow-2xl shadow-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
            data-aos="flip-left"
            data-aos-delay="750">
         <div class="stats stats-vertical shadow">
@@ -363,79 +368,65 @@
       </div>
     </div>
   </div>
-</div>
-</div>
-<div class="w-full h-full bg-base-neutral-content" id="techstack">
-  <p class="text-7xl text-center py-20 px-6 tracking-widest italic font-serif text-transparent bg-clip-text text-white"
-     data-aos="slide-left">
-    TECH
-    <span class="text-primary font-bold">STACK</span>
-  </p>
-  <div class="flex w-full flex-col lg:flex-row h-1/2">
-    <div class="card bg-base-300 rounded-box grid h-32 grow place-items-center">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6">
-        <div class="group relative flex flex-col items-center justify-center p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300">
-          <img src="https://unpkg.com/simple-icons@v16/icons/python.svg"
-               class="w-10 h-10 mb-3 filter drop-shadow-[0_0_8px_rgba(55,118,171,0.5)] group-hover:scale-110 transition-transform"
-               alt="Python" />
-          <span class="text-xs font-bold tracking-widest uppercase opacity-70 group-hover:opacity-100">Python</span>
-        </div>
-        <!-- Hugging Face Tile -->
-        <div class="group relative flex flex-col items-center justify-center p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all">
-          <img src="https://unpkg.com/simple-icons@v16/icons/huggingface.svg"
-               class="w-10 h-10 mb-3 drop-shadow-[0_0_8px_rgba(255,210,30,0.5)] group-hover:scale-110 transition-transform"
-               alt="Hugging Face" />
-          <span class="text-xs font-bold tracking-widest uppercase opacity-70">Hugging Face</span>
-        </div>
-        <!-- PythonAnywhere Tile -->
-        <div class="group relative flex flex-col items-center justify-center p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all">
-          <img src="https://unpkg.com/simple-icons@v16/icons/pythonanywhere.svg"
-               class="w-10 h-10 mb-3 drop-shadow-[0_0_8px_rgba(31,144,255,0.5)] group-hover:scale-110 transition-transform"
-               alt="PythonAnywhere" />
-          <span class="text-xs font-bold tracking-widest uppercase opacity-70">PyAnywhere</span>
-        </div>
+  <div class="w-full h-full bg-base-neutral-content" id="techstack">
+    <p class="text-7xl text-center py-20 px-6 tracking-widest italic font-serif font-extralight text-transparent bg-clip-text text-white"
+       data-aos="slide-left">
+      TECH
+      <span class="text-primary font-extrabold">STACK</span>
+    </p>
+    <div class="flex w-full flex-col lg:flex-row">
+      <div class="grid grid-cols-3 grid-rows-3 gap-2 place-items-center h-full w-1/2 md:w-full">
+        <div class="card card-primary">Item 1</div>
+        <div class="card card-primary">Item 2</div>
+        <div class="card card-primary">Item 3</div>
+        <div class="card card-primary">Item 4</div>
+        <div class="card card-primary">Item 5</div>
+        <div class="card card-primary">Item 6</div>
+        <div class="card card-primary">Item 7</div>
+        <div class="card card-primary">Item 8</div>
+        <div class="card card-primary">Item 9</div>
       </div>
+      <div class="divider lg:divider-horizontal">OR</div>
+      <div>stuff</div>
     </div>
-    <div class="divider lg:divider-horizontal">OR</div>
-    <div class="card bg-base-300 rounded-box grid h-32 grow place-items-center">content</div>
   </div>
-</div>
-<script>
-    AOS.init({
-        duration: 1200,
-        once: false,
-    });
-    // Message from Developer -> These short code snippets have been AI-generated via Google AI
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
-                const countTo = parseInt(target.getAttribute('data-target'));
-                const duration = 5000; // Animation time in milliseconds
-                const stepTime = 20; // Update frequency
-                const increment = countTo / (duration / stepTime);
+  <script>
+      //Message from Developer : This code snippet has been copy-pasted from the AOS official documentation
+      AOS.init({
+          duration: 1200,
+          once: false,
+      });
+      // Message from Developer -> These short code snippets have been AI-generated via Google AI
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                  const target = entry.target;
+                  const countTo = parseInt(target.getAttribute('data-target'));
+                  const duration = 5000; // Animation time in milliseconds
+                  const stepTime = 20; // Update frequency
+                  const increment = countTo / (duration / stepTime);
 
-                let currentCount = 0;
+                  let currentCount = 0;
 
-                const timer = setInterval(() => {
-                    currentCount += increment;
-                    if (currentCount >= countTo) {
-                        target.innerText = countTo.toLocaleString(); // Add commas
-                        clearInterval(timer);
-                    } else {
-                        target.innerText = Math.floor(currentCount).toLocaleString();
-                    }
-                }, stepTime);
+                  const timer = setInterval(() => {
+                      currentCount += increment;
+                      if (currentCount >= countTo) {
+                          target.innerText = countTo.toLocaleString(); // Add commas
+                          clearInterval(timer);
+                      } else {
+                          target.innerText = Math.floor(currentCount).toLocaleString();
+                      }
+                  }, stepTime);
 
-                // Stop observing once animation starts (if you only want it to run once)
-                observer.unobserve(target);
-            }
-        });
-    }, {
-        threshold: 0.5
-    }); // Triggers when 50% of the element is visible
+                  // Stop observing once animation starts (if you only want it to run once)
+                  observer.unobserve(target);
+              }
+          });
+      }, {
+          threshold: 0.5
+      }); // Triggers when 50% of the element is visible
 
-    // Initialize on all counter elements
-    document.querySelectorAll('.counter').forEach(el => observer.observe(el));
-</script>
+      // Initialize on all counter elements
+      document.querySelectorAll('.counter').forEach(el => observer.observe(el));
+  </script>
 </html>

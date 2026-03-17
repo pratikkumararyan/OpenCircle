@@ -10,3 +10,4 @@ env/
 
 # VS Code junk
 .vscode/
+.djlintrc
