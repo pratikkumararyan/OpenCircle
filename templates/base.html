@@ -384,15 +384,9 @@
         <div class="card bg-neutral rounded-box grid h-full max-h-[750px] max-w-[750px] grow place-items-center">
           <h2 class="font-mono py-4 text-4xl text-bold">FRONTEND</h2>
           <div class="grid grid-cols-3 grid-rows-3 aspect-square w-full px-12 gap-x-4 max-w-[700px] max-h-[700px]">
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
-              <svg viewBox="0 0 128 128">
-                <path fill="#3465a4" d="m42.922 104.996 28.89-82.437a.334.334 0 0 1 .32-.215h12.411a.329.329 0 0 1 .309.445l-28.75 82.434a.33.33 0 0 1-.309.218H43.23a.322.322 0 0 1-.27-.144.318.318 0 0 1-.038-.3Zm0 0">
-                </path>
-                <path fill="#333" d="m87.195 53.445 3.188-9.777a.348.348 0 0 1 .18-.2.316.316 0 0 1 .265-.003l36.75 15.36c.121.05.203.167.207.296l-.012 10.242a.328.328 0 0 1-.207.297l-36.75 15.352a.316.316 0 0 1-.265-.004.325.325 0 0 1-.176-.203l-3.18-9.774a.333.333 0 0 1 .196-.414l26.148-10.074a.338.338 0 0 0 .215-.313.333.333 0 0 0-.215-.308L87.391 53.859a.333.333 0 0 1-.196-.414ZM14.172 64.52l26.2 10.109a.31.31 0 0 1 .187.379l-3.211 9.808a.312.312 0 0 1-.168.184.3.3 0 0 1-.246 0L.188 69.66A.302.302 0 0 1 0 69.371v-10.27a.302.302 0 0 1 .188-.288l36.757-15.348a.3.3 0 0 1 .246 0 .324.324 0 0 1 .168.183l3.207 9.817a.309.309 0 0 1-.183.383L14.172 63.94a.308.308 0 0 0 0 .578Zm0 0">
-                </path>
-              </svg>
-            </div>
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
+            <div class="card bg-base-100/30 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="fade-down-right"
+                 data-tip="HTML">
               <svg viewBox="0 0 128 128">
                 <path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"></path>
                 <path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"></path>
@@ -402,7 +396,9 @@
                 </path>
               </svg>
             </div>
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
+            <div class="card bg-base-100/30 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="fade-down"
+                 data-tip="CSS">
               <svg viewBox="0 0 128 128">
                 <path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"></path>
                 <path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354h-45.16v106.49z"></path>
@@ -416,43 +412,60 @@
                 </path>
               </svg>
             </div>
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
+            <div class="card bg-base-100/30 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="fade-down-left"
+                 data-tip="JavaScript">
               <svg viewBox="0 0 128 128">
                 <path fill="#F0DB4F" d="M1.408 1.408h125.184v125.185H1.408z"></path>
                 <path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.38-8.581zM69.462 58.943H57.753l-.048 30.272c0 6.438.333 12.34-.714 14.149-1.713 3.558-6.152 3.117-8.175 2.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901 4.462 2.678 10.459 3.499 16.731 2.059 4.082-1.189 7.604-3.652 9.448-7.401 2.666-4.915 2.094-10.864 2.07-17.444.06-10.735.001-21.468.001-32.237z">
                 </path>
               </svg>
             </div>
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
-              <svg role="img"
-                   viewBox="0 0 24 24"
-                   xmlns="http://www.w3.org/2000/svg"
-                   fill="currentColor">
-                <title>Simple Icons</title>
-                <path d="M12 0C8.688 0 6 2.688 6 6s2.688 6 6 6c4.64-.001 7.526 5.039 5.176 9.04h1.68A7.507 7.507 0 0 0 12 10.5 4.502 4.502 0 0 1 7.5 6c0-2.484 2.016-4.5 4.5-4.5s4.5 2.016 4.5 4.5H18c0-3.312-2.688-6-6-6Zm0 3a3 3 0 0 0 0 6c4 0 4-6 0-6Zm0 1.5A1.5 1.5 0 0 1 13.5 6v.002c-.002 1.336-1.617 2.003-2.561 1.058C9.995 6.115 10.664 4.5 12 4.5ZM7.5 15v1.5H9v6H4.5V24h15v-1.5H15v-6h1.5V15Zm3 1.5h3v6h-3zm-6 1.47c0 1.09.216 2.109.644 3.069h1.684A5.957 5.957 0 0 1 6 17.97Z" />
+            <div class="card bg-base-100/30 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="fade-right"
+                 data-tip="HTMX">
+              <svg viewBox="0 0 128 128">
+                <path fill="#3465a4" d="m42.922 104.996 28.89-82.437a.334.334 0 0 1 .32-.215h12.411a.329.329 0 0 1 .309.445l-28.75 82.434a.33.33 0 0 1-.309.218H43.23a.322.322 0 0 1-.27-.144.318.318 0 0 1-.038-.3Zm0 0">
+                </path>
+                <path fill="#333" d="m87.195 53.445 3.188-9.777a.348.348 0 0 1 .18-.2.316.316 0 0 1 .265-.003l36.75 15.36c.121.05.203.167.207.296l-.012 10.242a.328.328 0 0 1-.207.297l-36.75 15.352a.316.316 0 0 1-.265-.004.325.325 0 0 1-.176-.203l-3.18-9.774a.333.333 0 0 1 .196-.414l26.148-10.074a.338.338 0 0 0 .215-.313.333.333 0 0 0-.215-.308L87.391 53.859a.333.333 0 0 1-.196-.414ZM14.172 64.52l26.2 10.109a.31.31 0 0 1 .187.379l-3.211 9.808a.312.312 0 0 1-.168.184.3.3 0 0 1-.246 0L.188 69.66A.302.302 0 0 1 0 69.371v-10.27a.302.302 0 0 1 .188-.288l36.757-15.348a.3.3 0 0 1 .246 0 .324.324 0 0 1 .168.183l3.207 9.817a.309.309 0 0 1-.183.383L14.172 63.94a.308.308 0 0 0 0 .578Zm0 0">
+                </path>
               </svg>
             </div>
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
-              <svg role="img"
-                   viewBox="0 0 24 24"
-                   xmlns="http://www.w3.org/2000/svg"
-                   fill="#f0e806">
-                <title>daisyUI</title>
-                <path d="M12 0c-1.56 0-3.137.721-4.095 2.122a5 5 0 0 0-.857-.081c-1.353-.006-2.62.565-3.53 1.476C2.415 4.62 1.81 6.241 2.121 7.905.722 8.863 0 10.44 0 12s.721 3.137 2.122 4.095c-.31 1.664.294 3.286 1.395 4.388 1.102 1.101 2.724 1.706 4.388 1.395C8.863 23.278 10.44 24 12 24s3.137-.721 4.095-2.122c1.664.31 3.286-.294 4.388-1.395 1.101-1.102 1.706-2.724 1.395-4.388C23.278 15.137 24 13.56 24 12s-.721-3.137-2.122-4.095c.31-1.664-.294-3.286-1.395-4.388-1.102-1.101-2.724-1.706-4.388-1.395C15.137.722 13.56 0 12 0m0 .962c1.18 0 2.345.471 3.123 1.447a5 5 0 0 0-.64.315 4.97 4.97 0 0 1-4.965 0 5 5 0 0 0-.64-.315C9.654 1.433 10.82.962 12 .962M7.026 2.99q.196 0 .397.023a5 5 0 0 0-.229.67 4.97 4.97 0 0 1-3.511 3.511 5 5 0 0 0-.67.229c-.138-1.238.352-2.393 1.185-3.225.743-.743 1.742-1.214 2.828-1.208m10.011 0c1.062.013 2.037.479 2.765 1.208.833.832 1.323 1.987 1.185 3.225a5 5 0 0 0-.67-.229 4.97 4.97 0 0 1-3.511-3.511 5 5 0 0 0-.229-.67 4 4 0 0 1 .46-.023m-8.667.252q.333.124.668.315a5.94 5.94 0 0 0 5.924 0q.335-.191.668-.315a4.5 4.5 0 0 1 .247.69 5.94 5.94 0 0 0 4.19 4.191q.37.101.691.247a4.5 4.5 0 0 1-.315.668 5.94 5.94 0 0 0 0 5.924q.191.335.315.668a4.5 4.5 0 0 1-.69.247 5.94 5.94 0 0 0-4.191 4.19q-.101.37-.247.691a4.5 4.5 0 0 1-.668-.315 5.94 5.94 0 0 0-5.924 0 4.5 4.5 0 0 1-.668.315 4.5 4.5 0 0 1-.247-.69 5.94 5.94 0 0 0-4.19-4.191 4.5 4.5 0 0 1-.691-.247q.124-.333.315-.668a5.94 5.94 0 0 0 0-5.924 4.5 4.5 0 0 1-.315-.668q.322-.146.69-.247a5.94 5.94 0 0 0 4.191-4.19q.101-.37.247-.691M2.41 8.877q.13.323.314.64a4.97 4.97 0 0 1 0 4.965 5 5 0 0 0-.315.64C1.433 14.346.962 13.18.962 12s.471-2.345 1.447-3.123m19.18 0c.977.778 1.448 1.943 1.448 3.123s-.471 2.345-1.447 3.123a5 5 0 0 0-.315-.64 4.97 4.97 0 0 1 0-4.965q.183-.319.315-.64m-14.907 1.57a.417.417 0 0 0-.296.714l.117.117c-.13.228-.203.492-.203.774 0 .87.7 1.569 1.569 1.569s1.568-.7 1.568-1.569-.7-1.568-1.568-1.568c-.282 0-.546.073-.775.203l-.116-.117a.42.42 0 0 0-.296-.123m10.748 0a.42.42 0 0 0-.295.123l-.12.12a1.57 1.57 0 0 0-.781-.206c-.869 0-1.569.7-1.569 1.568 0 .87.7 1.569 1.569 1.569s1.569-.7 1.569-1.569c0-.279-.073-.54-.2-.767l.123-.123a.417.417 0 0 0-.296-.715m-9.904.237a.627.627 0 0 1 .627.627.627.627 0 0 1-.627.627.627.627 0 0 1-.628-.627.627.627 0 0 1 .628-.627m8.365 0a.627.627 0 0 1 .628.627.627.627 0 0 1-.628.627.627.627 0 0 1-.627-.627.627.627 0 0 1 .627-.627m-7.187 1.17a.314.314 0 0 1 .313.314.314.314 0 0 1-.313.314.314.314 0 0 1-.314-.314.314.314 0 0 1 .314-.314m8.365 0a.314.314 0 0 1 .314.314.314.314 0 0 1-.314.314.314.314 0 0 1-.314-.314.314.314 0 0 1 .314-.314m-8.757.758a.21.21 0 0 1 .21.209.21.21 0 0 1-.21.209.21.21 0 0 1-.21-.21.21.21 0 0 1 .21-.208m8.366 0a.21.21 0 0 1 .209.209.21.21 0 0 1-.21.209.21.21 0 0 1-.209-.21.21.21 0 0 1 .21-.208m-5.551.48a.32.32 0 0 0-.232.082.32.32 0 0 0-.023.453c.296.328.737.524 1.18.524.441 0 .882-.196 1.178-.524a.32.32 0 0 0-.023-.453.32.32 0 0 0-.453.023c-.145.16-.486.312-.703.312s-.558-.152-.703-.312a.32.32 0 0 0-.221-.106m-8.115 3.485q.319.134.67.229a4.97 4.97 0 0 1 3.511 3.511q.095.351.229.67c-1.238.138-2.393-.352-3.225-1.185-.833-.832-1.323-1.987-1.185-3.225m17.974 0c.138 1.238-.352 2.393-1.185 3.225-.832.833-1.987 1.323-3.225 1.185a5 5 0 0 0 .229-.67 4.97 4.97 0 0 1 3.511-3.511 5 5 0 0 0 .67-.229M12 20.612c.857 0 1.714.222 2.482.664q.318.183.64.315c-.777.976-1.942 1.447-3.122 1.447s-2.345-.471-3.123-1.447q.323-.132.64-.315A5 5 0 0 1 12 20.612" />
-              </svg>
-            </div>
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
+            <div class="card bg-base-100/30 hover:-translate-y-2 tooltip transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="zoom-out"
+                 data-aos-delay="100"
+                 data-tip="Tailwind">
               <svg role="img"
                    viewBox="0 0 24 24"
                    xmlns="http://www.w3.org/2000/svg"
                    fill="#38bdf8">
-                <title>Tailwind CSS</title>
                 <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
               </svg>
             </div>
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
+            <div class="card bg-base-100/30 hover:-translate-y-2 transition-all duration-1000 tooltip border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="fade-left"
+                 data-tip="DaisyUI">
+              <svg role="img"
+                   viewBox="0 0 24 24"
+                   xmlns="http://www.w3.org/2000/svg"
+                   fill="#f0e806">
+                <path d="M12 0c-1.56 0-3.137.721-4.095 2.122a5 5 0 0 0-.857-.081c-1.353-.006-2.62.565-3.53 1.476C2.415 4.62 1.81 6.241 2.121 7.905.722 8.863 0 10.44 0 12s.721 3.137 2.122 4.095c-.31 1.664.294 3.286 1.395 4.388 1.102 1.101 2.724 1.706 4.388 1.395C8.863 23.278 10.44 24 12 24s3.137-.721 4.095-2.122c1.664.31 3.286-.294 4.388-1.395 1.101-1.102 1.706-2.724 1.395-4.388C23.278 15.137 24 13.56 24 12s-.721-3.137-2.122-4.095c.31-1.664-.294-3.286-1.395-4.388-1.102-1.101-2.724-1.706-4.388-1.395C15.137.722 13.56 0 12 0m0 .962c1.18 0 2.345.471 3.123 1.447a5 5 0 0 0-.64.315 4.97 4.97 0 0 1-4.965 0 5 5 0 0 0-.64-.315C9.654 1.433 10.82.962 12 .962M7.026 2.99q.196 0 .397.023a5 5 0 0 0-.229.67 4.97 4.97 0 0 1-3.511 3.511 5 5 0 0 0-.67.229c-.138-1.238.352-2.393 1.185-3.225.743-.743 1.742-1.214 2.828-1.208m10.011 0c1.062.013 2.037.479 2.765 1.208.833.832 1.323 1.987 1.185 3.225a5 5 0 0 0-.67-.229 4.97 4.97 0 0 1-3.511-3.511 5 5 0 0 0-.229-.67 4 4 0 0 1 .46-.023m-8.667.252q.333.124.668.315a5.94 5.94 0 0 0 5.924 0q.335-.191.668-.315a4.5 4.5 0 0 1 .247.69 5.94 5.94 0 0 0 4.19 4.191q.37.101.691.247a4.5 4.5 0 0 1-.315.668 5.94 5.94 0 0 0 0 5.924q.191.335.315.668a4.5 4.5 0 0 1-.69.247 5.94 5.94 0 0 0-4.191 4.19q-.101.37-.247.691a4.5 4.5 0 0 1-.668-.315 5.94 5.94 0 0 0-5.924 0 4.5 4.5 0 0 1-.668.315 4.5 4.5 0 0 1-.247-.69 5.94 5.94 0 0 0-4.19-4.191 4.5 4.5 0 0 1-.691-.247q.124-.333.315-.668a5.94 5.94 0 0 0 0-5.924 4.5 4.5 0 0 1-.315-.668q.322-.146.69-.247a5.94 5.94 0 0 0 4.191-4.19q.101-.37.247-.691M2.41 8.877q.13.323.314.64a4.97 4.97 0 0 1 0 4.965 5 5 0 0 0-.315.64C1.433 14.346.962 13.18.962 12s.471-2.345 1.447-3.123m19.18 0c.977.778 1.448 1.943 1.448 3.123s-.471 2.345-1.447 3.123a5 5 0 0 0-.315-.64 4.97 4.97 0 0 1 0-4.965q.183-.319.315-.64m-14.907 1.57a.417.417 0 0 0-.296.714l.117.117c-.13.228-.203.492-.203.774 0 .87.7 1.569 1.569 1.569s1.568-.7 1.568-1.569-.7-1.568-1.568-1.568c-.282 0-.546.073-.775.203l-.116-.117a.42.42 0 0 0-.296-.123m10.748 0a.42.42 0 0 0-.295.123l-.12.12a1.57 1.57 0 0 0-.781-.206c-.869 0-1.569.7-1.569 1.568 0 .87.7 1.569 1.569 1.569s1.569-.7 1.569-1.569c0-.279-.073-.54-.2-.767l.123-.123a.417.417 0 0 0-.296-.715m-9.904.237a.627.627 0 0 1 .627.627.627.627 0 0 1-.627.627.627.627 0 0 1-.628-.627.627.627 0 0 1 .628-.627m8.365 0a.627.627 0 0 1 .628.627.627.627 0 0 1-.628.627.627.627 0 0 1-.627-.627.627.627 0 0 1 .627-.627m-7.187 1.17a.314.314 0 0 1 .313.314.314.314 0 0 1-.313.314.314.314 0 0 1-.314-.314.314.314 0 0 1 .314-.314m8.365 0a.314.314 0 0 1 .314.314.314.314 0 0 1-.314.314.314.314 0 0 1-.314-.314.314.314 0 0 1 .314-.314m-8.757.758a.21.21 0 0 1 .21.209.21.21 0 0 1-.21.209.21.21 0 0 1-.21-.21.21.21 0 0 1 .21-.208m8.366 0a.21.21 0 0 1 .209.209.21.21 0 0 1-.21.209.21.21 0 0 1-.209-.21.21.21 0 0 1 .21-.208m-5.551.48a.32.32 0 0 0-.232.082.32.32 0 0 0-.023.453c.296.328.737.524 1.18.524.441 0 .882-.196 1.178-.524a.32.32 0 0 0-.023-.453.32.32 0 0 0-.453.023c-.145.16-.486.312-.703.312s-.558-.152-.703-.312a.32.32 0 0 0-.221-.106m-8.115 3.485q.319.134.67.229a4.97 4.97 0 0 1 3.511 3.511q.095.351.229.67c-1.238.138-2.393-.352-3.225-1.185-.833-.832-1.323-1.987-1.185-3.225m17.974 0c.138 1.238-.352 2.393-1.185 3.225-.832.833-1.987 1.323-3.225 1.185a5 5 0 0 0 .229-.67 4.97 4.97 0 0 1 3.511-3.511 5 5 0 0 0 .67-.229M12 20.612c.857 0 1.714.222 2.482.664q.318.183.64.315c-.777.976-1.942 1.447-3.122 1.447s-2.345-.471-3.123-1.447q.323-.132.64-.315A5 5 0 0 1 12 20.612" />
+              </svg>
+            </div>
+            <div class="card bg-base-100/30 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="fade-up-right"
+                 data-tip="Simple Icons">
+              <svg role="img"
+                   viewBox="0 0 24 24"
+                   xmlns="http://www.w3.org/2000/svg"
+                   fill="currentColor">
+                <path d="M12 0C8.688 0 6 2.688 6 6s2.688 6 6 6c4.64-.001 7.526 5.039 5.176 9.04h1.68A7.507 7.507 0 0 0 12 10.5 4.502 4.502 0 0 1 7.5 6c0-2.484 2.016-4.5 4.5-4.5s4.5 2.016 4.5 4.5H18c0-3.312-2.688-6-6-6Zm0 3a3 3 0 0 0 0 6c4 0 4-6 0-6Zm0 1.5A1.5 1.5 0 0 1 13.5 6v.002c-.002 1.336-1.617 2.003-2.561 1.058C9.995 6.115 10.664 4.5 12 4.5ZM7.5 15v1.5H9v6H4.5V24h15v-1.5H15v-6h1.5V15Zm3 1.5h3v6h-3zm-6 1.47c0 1.09.216 2.109.644 3.069h1.684A5.957 5.957 0 0 1 6 17.97Z" />
+              </svg>
+            </div>
+            <div class="card bg-base-100/30 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="fade-up"
+                 data-tip="Google Fonts">
               <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <title>Google Fonts</title>
                 <defs>
                 <linearGradient id="googleFontsColors" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#EA4335" />   <stop offset="33%" stop-color="#FBBC04" />  <stop offset="66%" stop-color="#34A853" />  <stop offset="100%" stop-color="#4285F4" /> </linearGradient>
@@ -460,7 +473,9 @@
                 <path fill="url(#googleFontsColors)" d="M4 2.8A3.6 3.6 0 1 0 4 10a3.6 3.6 0 0 0 0-7.2zm7.6 0v18.4h7.2a5.2 5.2 0 1 1 0-10.4 4 4 0 1 1 0-8zm7.2 0v8a4 4 0 1 0 0-8zm0 8v10.4A5.2 5.2 0 0 0 24 16a5.2 5.2 0 0 0-5.2-5.2zm-7.7-7.206L0 21.199h8.8l2.3-3.64Z" />
               </svg>
             </div>
-            <div class="card bg-base-100/30  border-5 border-neutral-content aspect-square rounded-lg max-h-[200px] max-w-[200px]">
+            <div class="card bg-base-100/30 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-h-[200px] max-w-[200px]"
+                 data-aos="fade-up-left"
+                 data-tip="Devicons">
               <svg viewBox="0 0 128 128">
                 <path d="M12.118 26.77l9.01 77.084 43.328 22.049V26.77z" fill="#558d6c"></path>
                 <path d="M64.456 26.77v99.133l.044.044 43.346-22.058 8.947-77.119z" fill="#5aa579"></path>
@@ -477,92 +492,68 @@
           </div>
         </div>
         <div class="divider lg:divider-horizontal text-primary px-6">AND</div>
-        <div class="card bg-base-300 rounded-box grid h-32 grow place-items-center">
-          <p class="text-4xl font-mono">BACKEND</p>
+        <div class="card bg-base-300 rounded-box h-full grow place-items-center">
+          <p class="text-4xl font-mono"></p>
+          <ul class="list bg-base-300 rounded-box shadow-md h-full w-full">
+            <li class="pt-4 pb-2 tracking-wide my-2 text-4xl text-center font-mono">BACKEND</li>
+            <li class="list-row">
+              <div>
+                <img class="size-25 rounded-box"
+                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
+              </div>
+              <div>
+                <div>Dio Lupa</div>
+                <div class="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+              </div>
+            </li>
+            <li class="list-row">
+              <div>
+                <img class="size-25 rounded-box"
+                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" />
+              </div>
+              <div>
+                <div>Ellie Beilish</div>
+                <div class="text-xs uppercase font-semibold opacity-60">Bears of a fever</div>
+              </div>
+            </li>
+            <li class="list-row">
+              <div>
+                <img class="size-25 rounded-box"
+                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
+              </div>
+              <div>
+                <div>Sabrino Gardener</div>
+                <div class="text-xs uppercase font-semibold opacity-60">Cappuccino</div>
+              </div>
+            </li>
+            <li class="list-row">
+              <div>
+                <img class="size-25 rounded-box"
+                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pypi/pypi-original.svg" />
+              </div>
+              <div>
+                <div>Sabrino Gardener</div>
+                <div class="text-xs uppercase font-semibold opacity-60">Cappuccino</div>
+              </div>
+            </li>
+            <li class="list-row">
+              <div>
+                <svg role="img"
+                     viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg"
+                     class="size-25"
+                     fill="#FFD21E">
+                  <path d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243 1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624" />
+                </svg>
+              </div>
+              <div>
+                <div>Sabrino Gardener</div>
+                <div class="text-xs uppercase font-semibold opacity-60">Cappuccino</div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <!---
-      <div class="flex flex-col lg:flex-row w-full max-w-7xl mx-auto px-6 gap-8 items-center lg:items-stretch">
-        <div class="w-full lg:w-1/2 flex flex-col items-center">
-          <div class="text-center mb-8">
-            <h3 class="text-4xl font-bold text-primary tracking-wide mb-2">Frontend</h3>
-          </div>
-          <div class="grid grid-cols-3 gap-3 sm:gap-4 place-items-center w-full max-w-md">
-            <div class="card bg-neutral text-neutral-content aspect-square w-full flex flex-col items-center justify-center p-2 shadow-lg hover:-translate-y-1 hover:shadow-primary/30 transition-all duration-300">
-              <span class="text-2xl font-black text-primary">&lt;/&gt;</span>
-              <span class="text-xs sm:text-sm font-bold mt-2">HTMX</span>
-            </div>
-            <div class="card bg-neutral text-neutral-content aspect-square w-full flex flex-col items-center justify-center p-2 shadow-lg hover:-translate-y-1 hover:shadow-primary/30 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
-              </svg>
-              <span class="text-xs sm:text-sm font-bold mt-2 text-center">Tailwind</span>
-            </div>
-            <div class="card bg-neutral text-neutral-content aspect-square w-full flex flex-col items-center justify-center p-2 shadow-lg hover:-translate-y-1 hover:shadow-primary/30 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-              <span class="text-xs sm:text-sm font-bold mt-2">DaisyUI</span>
-            </div>
-            <div class="card bg-neutral aspect-square w-full"></div>
-            <div class="card bg-neutral aspect-square w-full"></div>
-            <div class="card bg-neutral aspect-square w-full"></div>
-            <div class="card bg-neutral aspect-square w-full"></div>
-            <div class="card bg-neutral aspect-square w-full"></div>
-            <div class="card bg-neutral aspect-square w-full"></div>
-          </div>
-        </div>
-        <div class="divider lg:divider-horizontal text-base-content/50 font-bold tracking-widest lg:flex">AND</div>
-        <div class="w-full lg:w-1/2 flex flex-col justify-start px-4 mt-8 lg:mt-0">
-          <div class="text-center mb-8">
-            <h3 class="text-4xl font-bold text-success tracking-wide mb-2">Backend</h3>
-          </div>
-          <div class="flex flex-col gap-6 w-full max-w-md mx-auto lg:mx-0">
-            <div class="w-full">
-              <div class="flex justify-between mb-2">
-                <span class="text-lg font-semibold text-base-content">Django</span>
-                <span class="text-sm font-bold text-success">90%</span>
-              </div>
-              <progress class="progress progress-success w-full h-4 bg-neutral" value="90" max="100"></progress>
-            </div>
-            <div class="w-full">
-              <div class="flex justify-between mb-2">
-                <span class="text-lg font-semibold text-base-content">SqLite3</span>
-                <span class="text-sm font-bold text-success">85%</span>
-              </div>
-              <progress class="progress progress-success w-full h-4 bg-neutral" value="85" max="100"></progress>
-            </div>
-            <div class="w-full">
-              <div class="flex justify-between mb-2">
-                <span class="text-lg font-semibold text-base-content">Python</span>
-                <span class="text-sm font-bold text-success">95%</span>
-              </div>
-              <progress class="progress progress-success w-full h-4 bg-neutral" value="95" max="100"></progress>
-            </div>
-            <div class="w-full">
-              <div class="flex justify-between mb-2">
-                <span class="text-lg font-semibold text-base-content">Scikit-learn</span>
-                <span class="text-sm font-bold text-success">95%</span>
-              </div>
-              <progress class="progress progress-success w-full h-4 bg-neutral" value="95" max="100"></progress>
-            </div>
-            <div class="w-full">
-              <div class="flex justify-between mb-2">
-                <span class="text-lg font-semibold text-base-content">EasyOCR</span>
-                <span class="text-sm font-bold text-success">95%</span>
-              </div>
-              <progress class="progress progress-success w-full h-4 bg-neutral" value="95" max="100"></progress>
-            </div>
-            <div class="w-full">
-              <div class="flex justify-between mb-2">
-                <span class="text-lg font-semibold text-base-content">HTMX</span>
-                <span class="text-sm font-bold text-success">95%</span>
-              </div>
-              <progress class="progress progress-success w-full h-4 bg-neutral" value="95" max="100"></progress>
-            </div>
-          </div>
-        </div>
-      </div>-->
     </div>
   </body>
   <script>
