@@ -552,7 +552,7 @@
                   SQLite3
                 </div>
                 <div class="grid grid-cols-[auto_1fr] grid-rows-1 items-center">
-                  <progress class="progress w-56 h-3" value="0" max="100"></progress>
+                  <progress class="progress w-56 h-3 counter" value="0" max="100"></progress>
                   <span class="px-2">
                     <span data-target="10" class="counter">0</span>
                     %
@@ -571,7 +571,7 @@
                   Scikit-learn
                 </div>
                 <div class="grid grid-cols-[auto_1fr] grid-rows-1 items-center">
-                  <progress class="progress w-56 h-3" value="0" max="100"></progress>
+                  <progress class="progress w-56 h-3 counter" value="0" max="100"></progress>
                   <span class="px-2">
                     <span data-target="10" class="counter">0</span>
                     %
@@ -594,7 +594,7 @@
                   Hugging Face
                 </div>
                 <div class="grid grid-cols-[auto_1fr] grid-rows-1 items-center">
-                  <progress class="progress w-56 h-3" value="0" max="100"></progress>
+                  <progress class="progress w-56 h-3 counter" value="0" max="100"></progress>
                   <span class="px-2">
                     <span data-target="10" class="counter">0</span>
                     %
@@ -618,20 +618,38 @@
           entries.forEach((entry) => {
               if (entry.isIntersecting) {
                   const target = entry.target;
-                  const countTo = parseInt(target.getAttribute('data-target'));
+                  const isProgress = target.tagName.toLowerCase() === 'progress';
+
+                  // For progress bars, get data-target from the sibling span's inner counter span
+                  const countTo = isProgress ?
+                      parseInt(target.closest('div').querySelector('[data-target]').getAttribute('data-target')) :
+                      parseInt(target.getAttribute('data-target'));
+
+                  if (isNaN(countTo)) {
+                      observer.unobserve(target);
+                      return;
+                  } // safety guard
+
                   const duration = 2000; // Animation time in milliseconds
                   const stepTime = 20; // Update frequency
                   const increment = countTo / (duration / stepTime);
-
                   let currentCount = 0;
 
                   const timer = setInterval(() => {
                       currentCount += increment;
                       if (currentCount >= countTo) {
-                          target.innerText = countTo.toLocaleString(); // Add commas
+                          if (isProgress) {
+                              target.value = countTo;
+                          } else {
+                              target.innerText = countTo.toLocaleString(); // Add commas
+                          }
                           clearInterval(timer);
                       } else {
-                          target.innerText = Math.floor(currentCount).toLocaleString();
+                          if (isProgress) {
+                              target.value = Math.floor(currentCount);
+                          } else {
+                              target.innerText = Math.floor(currentCount).toLocaleString();
+                          }
                       }
                   }, stepTime);
 
