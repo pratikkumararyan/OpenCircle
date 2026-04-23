@@ -689,14 +689,14 @@
                    placeholder="Suggestion/Complaint...." />
             <p class="label">Your message will be stored anonymously.</p>
           </fieldset>
-          <div class="btn btn-neutral-content rounded-full w-3/4 tracking-widest text-secondary text-bold font-heading border-xl mb-4 animate-pulse"
+          <div class="btn btn-neutral-content uppercase rounded-full w-3/4 text-lg tracking-widest text-secondary text-extrabold font-heading border-xl mb-4 animate-pulse"
                type="submit"
                data-aos="slide-right">Submit</div>
         </div>
         <div class="divider lg:divider-horizontal">OR</div>
-        <div class="card bg-base-300 rounded-box grid h-32 grow place-items-center">
-          <div class="grid grid-cols-3 grid-rows-1">
-            <div class="card bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl h-full max-w-[200px] hover:border-primary"
+        <div class="card bg-base-300 rounded-box grid h-full grow place-items-center">
+          <div class="grid grid-cols-1 grid-rows-3 sm:grid-cols-3 sm:grid-rows-1">
+            <div class="card bg-gradient-to-br grid-item mx-12 my-6 from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl h-full px-6 hover:border-primary"
                  data-aos="zoom-out"
                  data-aos-delay="100"
                  data-tip="Styling the site using pre-made classes">
@@ -711,7 +711,7 @@
                 Tailwind CSS
               </p>
             </div>
-            <div class="card bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-w-[200px] hover:border-primary"
+            <div class="card grid-item bg-gradient-to-br mx-12 my-6 from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl px-6 h-full hover:border-primary"
                  data-aos="zoom-out"
                  data-aos-delay="100"
                  data-tip="Styling the site using pre-made classes">
@@ -726,7 +726,7 @@
                 Tailwind CSS
               </p>
             </div>
-            <div class="card bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-w-[200px] hover:border-primary"
+            <div class="card grid-item bg-gradient-to-br mx-12 my-6 from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl px-6 h-full hover:border-primary"
                  data-aos="zoom-out"
                  data-aos-delay="100"
                  data-tip="Styling the site using pre-made classes">
@@ -745,6 +745,12 @@
         </div>
       </div>
     </div>
+    <footer class="footer footer-horizontal bg-neutral text-neutral-content items-center p-4 mt-36 sm:mt-0">
+      <aside class="grid-flow-col items-center">
+        <img src="{% static "logo.png" %}" class="h-18 brightness-120" />
+        <p>Copyright © 2026 - No rights reserved</p>
+      </aside>
+    </footer>
   </body>
   <script>
       //Message from Developer : This code snippet has been copy-pasted from the AOS official documentation
