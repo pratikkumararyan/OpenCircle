@@ -28,7 +28,10 @@
             --font-serif: "Playfair Display", serif;
         }
 
-        html {
+
+
+        html,
+        body {
             scroll-behavior: smooth;
             overflow-x: hidden;
 
@@ -63,11 +66,16 @@
         #scrollBtn:hover {
             background-color: #14d95c;
         }
+
+        .aos-overflow-fix {
+            overflow-x: clip;
+            /* 'clip' instead of 'hidden' — doesn't break positioning! */
+        }
     </style>
   </head>
   <button id="scrollBtn" class="animate-bounce">↓</button>
   <body>
-    <div class="navbar bg-base-100/80 text-xl sticky top-0 z-50 backdrop-blur-md">
+    <div class="navbar bg-base-100/80 text-xl fixed top-0 z-50 backdrop-blur-md">
       <div class="navbar-start gap-4">
         <div class="dropdown">
           <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -397,7 +405,7 @@
     </div>
     <div class="w-full h-auto min-h-screen bg-base-100 pb-12" id="techstack">
       <p class="text-7xl text-center py-20 px-6 tracking-widest italic font-serif font-extralight text-transparent bg-clip-text text-white"
-         data-aos="slide-left">
+         data-aos="fade-left">
         TECH
         <span class="text-primary font-extrabold">STACK</span>
       </p>
@@ -647,7 +655,8 @@
       <div class="flex w-full flex-col lg:flex-row text-center">
         <div class="card bg-base-300 rounded-box grid h-full grow place-items-center">
           <div class="card-title">
-            <p class="text-2xl tracking-widest font-mono">Suggestions? Complaints? Lmk!</p>
+            <p class="text-2xl mt-4 tracking-widest font-mono"
+               data-aos="slide-right">Suggestions? Complaints? Lmk!</p>
           </div>
           <div class="w-full lg:max-w-xl px-4" data-aos= "slide-right">
             <p class="text-xl tracking-wide font-serif my-12">On a scale of 1-5, how satisfied are you with us?*</p>
@@ -674,18 +683,66 @@
           </div>
           <fieldset class="fieldset border-base-300 rounded-box w-full border p-4"
                     data-aos="slide-right">
-            <legend class="fieldset-legend font-serif text-xl">Suggestion*</legend>
+            <legend class="fieldset-legend font-serif text-xl">Message*</legend>
             <input type="text"
                    class="input w-full px-4"
                    placeholder="Suggestion/Complaint...." />
             <p class="label">Your message will be stored anonymously.</p>
           </fieldset>
-          <div class="btn btn-neutral-content rounded-full w-3/4 tracking-widest text-bold font-heading border-xl mb-4 animate-pulse"
+          <div class="btn btn-neutral-content rounded-full w-3/4 tracking-widest text-secondary text-bold font-heading border-xl mb-4 animate-pulse"
                type="submit"
                data-aos="slide-right">Submit</div>
         </div>
         <div class="divider lg:divider-horizontal">OR</div>
-        <div class="card bg-base-300 rounded-box grid h-32 grow place-items-center"></div>
+        <div class="card bg-base-300 rounded-box grid h-32 grow place-items-center">
+          <div class="grid grid-cols-3 grid-rows-1">
+            <div class="card bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl h-full max-w-[200px] hover:border-primary"
+                 data-aos="zoom-out"
+                 data-aos-delay="100"
+                 data-tip="Styling the site using pre-made classes">
+              <svg role="img"
+                   viewBox="0 0 24 24"
+                   class="p-10 pt-4  hover:scale-125 transition-all duration-400"
+                   xmlns="http://www.w3.org/2000/svg"
+                   fill="#38bdf8">
+                <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+              </svg>
+              <p class="text-center text-2xl text-heading text-capitalise mb-12 font-extralight text-neutral-content">
+                Tailwind CSS
+              </p>
+            </div>
+            <div class="card bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-w-[200px] hover:border-primary"
+                 data-aos="zoom-out"
+                 data-aos-delay="100"
+                 data-tip="Styling the site using pre-made classes">
+              <svg role="img"
+                   viewBox="0 0 24 24"
+                   class="p-10 pt-4  hover:scale-125 transition-all duration-400"
+                   xmlns="http://www.w3.org/2000/svg"
+                   fill="#38bdf8">
+                <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+              </svg>
+              <p class="text-center text-2xl text-heading text-capitalise mb-12 font-extralight text-neutral-content">
+                Tailwind CSS
+              </p>
+            </div>
+            <div class="card bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-2 transition-all duration-1000 border-5 border-neutral-content aspect-square rounded-3xl max-w-[200px] hover:border-primary"
+                 data-aos="zoom-out"
+                 data-aos-delay="100"
+                 data-tip="Styling the site using pre-made classes">
+              <svg role="img"
+                   viewBox="0 0 24 24"
+                   class="p-10 pt-4  hover:scale-125 transition-all duration-400"
+                   xmlns="http://www.w3.org/2000/svg"
+                   fill="#38bdf8">
+                <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+              </svg>
+              <p class="text-center text-2xl text-heading text-capitalise mb-12 font-extralight text-neutral-content">
+                Tailwind CSS
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
@@ -694,6 +751,7 @@
       AOS.init({
           duration: 1200,
           once: false,
+          disable: 'tablet'
       });
       // Message from Developer -> These short code snippets have been AI-generated via Google AI due to my underproficiency in the language :p
       const observer = new IntersectionObserver((entries) => {
