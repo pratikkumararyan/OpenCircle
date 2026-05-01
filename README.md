@@ -19,15 +19,15 @@
 ## Tech Stack
 
 ### **Frontend**
-*   **HTML5 / CSS3:** 
-*   **Tailwind CSS & DaisyUI:** 
-*   **JavaScript & HTMX:** 
-*   **AOS (Animate On Scroll):** 
+*   **HTML5 / CSS3** 
+*   **Tailwind CSS & DaisyUI** 
+*   **JavaScript & HTMX** 
+*   **AOS (Animate On Scroll)** 
 
 ### **Backend & Data**
-*   **Django:** 
-*   **SQLite3:** 
-*   **Scikit-learn:** 
+*   **Django** 
+*   **SQLite3** 
+*   **Scikit-learn** 
 
 
 
