@@ -176,9 +176,21 @@
           <p class="mb-5 text-6xl font-bold text-base-content tracking-widest">OpenCircle</p>
           <p class="text-3xl text-base-content/70 leading-10 tracking-wide drop-shadow-lg prose"
              data-aos="zoom-in">An open-source Django social media platform built for specially-abled people.</p>
-          <button class="btn btn-success text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 animate-bounce tracking-widest">
-            Get Started
-          </button>
+          <button class="btn btn-success text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 animate-bounce tracking-widest"
+                  onclick="my_modal_1.showModal()">Get Started</button>
+          <dialog id="my_modal_1" class="modal">
+            <div class="modal-box">
+              <h3 class="text-lg font-bold">Really Gang?</h3>
+              <p class="py-4">
+                As mentioned earlier this is only a WIP and MVP release for the landing page frontend of the site don't expect this button to do much lol
+              </p>
+              <div class="modal-action">
+                <form method="dialog">
+                  <button class="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
       </div>
     </div>
@@ -712,9 +724,12 @@
                    placeholder="Suggestion/Complaint...." />
             <p class="label">Your message will be stored anonymously.</p>
           </fieldset>
-          <div class="btn btn-neutral-content uppercase rounded-full w-3/4 text-lg tracking-widest text-secondary text-extrabold font-heading border-xl mb-4 animate-pulse"
+          <div class="btn btn-neutral-content tooltip uppercase rounded-full w-3/4 text-lg tracking-widest text-secondary text-extrabold font-heading border-xl mb-4 animate-pulse"
                type="submit"
-               data-aos="slide-right">Submit</div>
+               data-aos="slide-right"
+               data-tip="This button isn't supposed to work this is only the landing page lol what did u expect">
+            Submit
+          </div>
         </div>
         <div class="divider lg:divider-horizontal">OR</div>
         <div class="card bg-base-300 rounded-box grow place-items-center self-stretch min-h-[400px] lg:min-h-0">
