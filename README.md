@@ -7,7 +7,7 @@
 
 ---
 
-## ✨ Key Features [To be added!]
+##  Key Features [To be added!]
 
 *   **Medical Verification:** We use AI/ML to authenticate our opencirclers!
 *   **AI Hate Speech Filtering:** We also use realtime AI/ML models to filter hate speech!
@@ -16,7 +16,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### **Frontend**
 *   **HTML5 / CSS3:** Core structure and advanced styling.
@@ -29,17 +29,6 @@
 *   **SQLite3:** Efficient and reliable database management.
 *   **Scikit-learn:** Powering the AI-based hate speech detection and filtering system.
 
----
-
-## 📊 Comparison: OpenCircle vs. Others
-
-| Aspect | OpenCircle | Others |
-| :--- | :---: | :---: |
-| **Medical Verification** | ✅ | ❌ |
-| **AI Hate Speech Filtering** | ✅ | ❌ |
-| **Disability-First Community** | ✅ | ❌ |
-| **Zero Judgement Safe Space** | ✅ | ❌ |
-| **Django-Secure Privacy** | ✅ | ❌ |
 
 
 
