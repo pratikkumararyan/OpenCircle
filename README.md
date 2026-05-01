@@ -19,15 +19,15 @@
 ## Tech Stack
 
 ### **Frontend**
-*   **HTML5 / CSS3:** Core structure and advanced styling.
-*   **Tailwind CSS & DaisyUI:** For a modern, responsive, and highly customizable UI.
-*   **JavaScript & HTMX:** Enabling high-performance, asynchronous updates without full page reloads.
-*   **AOS (Animate On Scroll):** For smooth visual transitions and engagement.
+*   **HTML5 / CSS3:** 
+*   **Tailwind CSS & DaisyUI:** 
+*   **JavaScript & HTMX:** 
+*   **AOS (Animate On Scroll):** 
 
 ### **Backend & Data**
-*   **Django:** The high-level Python web framework for rapid development and clean design.
-*   **SQLite3:** Efficient and reliable database management.
-*   **Scikit-learn:** Powering the AI-based hate speech detection and filtering system.
+*   **Django:** 
+*   **SQLite3:** 
+*   **Scikit-learn:** 
 
 
 
