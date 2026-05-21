@@ -176,21 +176,9 @@
           <p class="mb-5 text-6xl font-bold text-base-content tracking-widest">OpenCircle</p>
           <p class="text-3xl text-base-content/70 leading-10 tracking-wide drop-shadow-lg prose"
              data-aos="zoom-in">An open-source Django social media platform built for specially-abled people.</p>
-          <button class="btn btn-success text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 animate-bounce tracking-widest"
-                  onclick="my_modal_1.showModal()">Get Started</button>
-          <dialog id="my_modal_1" class="modal">
-            <div class="modal-box">
-              <h3 class="text-lg font-bold">Really Gang?</h3>
-              <p class="py-4">
-                As mentioned earlier this is only a WIP and MVP release for the landing page frontend of the site don't expect this button to do much lol
-              </p>
-              <div class="modal-action">
-                <form method="dialog">
-                  <button class="btn">Close</button>
-                </form>
-              </div>
-            </div>
-          </dialog>
+          <button class="btn btn-success text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 animate-bounce tracking-widest">
+            Get Started
+          </button>
         </div>
       </div>
     </div>
@@ -695,41 +683,45 @@
           </div>
           <div class="w-full lg:max-w-xl px-4" data-aos= "slide-right">
             <p class="text-xl tracking-wide font-serif my-12">On a scale of 1-5, how satisfied are you with us?*</p>
-            <input type="range"
-                   min="0"
-                   max="100"
-                   value="100"
-                   class="range w-full"
-                   step="0.1" />
-            <div class="flex justify-between px-2.5 mt-2 text-xs">
-              <span>|</span>
-              <span>|</span>
-              <span>|</span>
-              <span>|</span>
-              <span>|</span>
+            <form method="POST" action='/'>
+              <input type="range"
+                     min="0"
+                     max="100"
+                     value="100"
+                     class="range w-full"
+                     id="rating"
+                     name="rating"
+                     step="0.1" />
+              <div class="flex justify-between px-2.5 mt-2 text-xs">
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="flex justify-between px-2.5 mt-2 mb-4 text-2xl">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+              </div>
             </div>
-            <div class="flex justify-between px-2.5 mt-2 mb-4 text-2xl">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-            </div>
-          </div>
-          <fieldset class="fieldset border-base-300 rounded-box w-full border p-4"
-                    data-aos="slide-right">
-            <legend class="fieldset-legend font-serif text-xl">Message*</legend>
-            <input type="text"
-                   class="input w-full px-4"
-                   placeholder="Suggestion/Complaint...." />
-            <p class="label">Your message will be stored anonymously.</p>
-          </fieldset>
-          <div class="btn btn-neutral-content tooltip uppercase rounded-full w-3/4 text-lg tracking-widest text-secondary text-extrabold font-heading border-xl mb-4 animate-pulse"
-               type="submit"
-               data-aos="slide-right"
-               data-tip="This button isn't supposed to work this is only the landing page lol what did u expect">
-            Submit
-          </div>
+            <fieldset class="fieldset border-base-300 rounded-box w-full border p-4"
+                      data-aos="slide-right">
+              <legend class="fieldset-legend font-serif text-xl">Message*</legend>
+              <input type="text"
+                     class="input w-full px-4"
+                     id="message"
+                     name="message"
+                     placeholder="Suggestion/Complaint...." />
+              <p class="label">Your message will be stored anonymously.</p>
+            </fieldset>
+            <div class="btn btn-neutral-content tooltip uppercase rounded-full w-3/4 text-lg tracking-widest text-secondary text-extrabold font-heading border-xl mb-4 animate-pulse"
+                 type="submit"
+                 id="submit"
+                 data-aos="slide-right">Submit</div>
+          </form>
         </div>
         <div class="divider lg:divider-horizontal">OR</div>
         <div class="card bg-base-300 rounded-box grow place-items-center self-stretch min-h-[400px] lg:min-h-0">
@@ -783,10 +775,12 @@
                    fill="#FF0000">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
-              <div class="flex flex-col items-start">
+              <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"
+                 target="_blank"
+                 class="flex flex-col items-start">
                 <p class="text-2xl sm:text-3xl font-semibold text-neutral-content tracking-wide">YouTube</p>
                 <p class="text-sm sm:text-base text-neutral-content/60 mt-1">Click me!</p>
-              </div>
+              </a>
             </div>
           </div>
         </div>
