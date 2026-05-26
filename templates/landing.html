@@ -12,6 +12,10 @@
           rel="stylesheet"
           type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
+            integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
+            c
+            rossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
           rel="stylesheet"
           type="text/css" />
@@ -85,7 +89,7 @@
     </style>
   </head>
   <button id="scrollBtn" class="animate-bounce">↓</button>
-  <body>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div class="navbar bg-base-100/80 text-xl fixed top-0 z-50 backdrop-blur-md">
       <div class="navbar-start gap-4">
         <div class="dropdown">
@@ -684,7 +688,7 @@
           <div class="w-full lg:max-w-xl px-4" data-aos= "slide-right">
             <p class="text-xl tracking-wide font-serif my-12">On a scale of 1-5, how satisfied are you with us?*</p>
             <form method="post" action='/'>
-              {% csrf_token %}
+              {% comment %} {% csrf_token %} {% endcomment %}
               <input type="range"
                      min="0"
                      max="100"
@@ -718,8 +722,11 @@
                      placeholder="Suggestion/Complaint...." />
               <p class="label">Your message will be stored anonymously.</p>
             </fieldset>
-            <button class="btn w-3/4 rounded-full text-xl tracking-widest text-secondary font-bold font-heading border-xl mb-4" type="submit">
-              Submit
+            <button class="btn w-3/4 rounded-full text-xl tracking-widest text-secondary font-bold font-heading border-xl mb-4"
+                    type="submit"
+                    hx-get="/"
+                    >
+                    Submit
             </button>
           </form>
         </div>
