@@ -10,14 +10,14 @@ def index(request):
         return HttpResponse('<input type="checkbox" id="my_modal_7" class="modal-toggle" />')
         #HttpResponse(round((float(request.POST['rating'])/25)+1, 1))
     
-    return render(request, 'landing.html')
+    return render(request, 'landingPage/landing.html')
 
 def submitForm(request):
     if request.htmx and request.POST:
         print("it works!")
-        return render(request, 'landing.html#thanks')
+        return render(request, "landingPage/partial.html")
         
-    print("whaaa")
+    return redirect('/')
 
 def account(request):
     return HttpResponse('This is the account creation page')
