@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import redirect
 import django_htmx
 
 def index(request):
@@ -10,6 +11,13 @@ def index(request):
         #HttpResponse(round((float(request.POST['rating'])/25)+1, 1))
     
     return render(request, 'landing.html')
+
+def submitForm(request):
+    if request.htmx and request.POST:
+        print("it works!")
+        return render(request, 'landing.html#thanks')
+        
+    print("whaaa")
 
 def account(request):
     return HttpResponse('This is the account creation page')
