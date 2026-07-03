@@ -1,10 +1,13 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Suggestions
 
 def index(request):
     if request.htmx and request.POST:
-        print(request.POST)
-        #HttpResponse(round((float(request.POST['rating'])/25)+1, 1))
+        message = request.POST.get('message')
+        rating = int(round((float(request.POST.get('rating'))/25)+1, 1))
+        print(message, rating)
+        
         return render(request, "landingPage/partial.html")
     
     return render(request, 'landingPage/landing.html')
