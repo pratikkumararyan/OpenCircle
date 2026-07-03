@@ -6,8 +6,8 @@ def index(request):
     if request.htmx and request.POST:
         message = request.POST.get('message')
         rating = int(round((float(request.POST.get('rating'))/25)+1, 1))
-        print(message, rating)
-        
+        entry = Suggestions.objects.create(rating=rating, message=message)
+        print(Suggestions.objects.values_list("message", flat=True))
         return render(request, "landingPage/partial.html")
     
     return render(request, 'landingPage/landing.html')

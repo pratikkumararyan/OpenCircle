@@ -8,6 +8,7 @@ __pycache__/
 venv/
 env/
 instructions.txt
+SUPERUSER.txt
 
 # VS Code junk
 .vscode/
