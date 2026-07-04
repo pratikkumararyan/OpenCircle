@@ -87,8 +87,7 @@
     </style>
   </head>
   <button id="scrollBtn" class="animate-bounce">↓</button>
-  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-  
+  <body>
     <div class="navbar bg-base-100/80 text-xl fixed top-0 z-50 backdrop-blur-md">
       <div class="navbar-start gap-4">
         <div class="dropdown">
@@ -684,17 +683,13 @@
             <p class="text-2xl mt-4 tracking-widest font-mono"
                data-aos="slide-right">Suggestions? Complaints? Lmk!</p>
           </div>
-          
-            
           <div class="w-full lg:max-w-xl px-4" data-aos="slide-right" id="formDiv">
-            
             <p class="text-xl tracking-wide font-serif my-12">On a scale of 1-5, how satisfied are you with us?*</p>
-            {% partialdef thanks inline %}
-              <div id="formDiv">
-                <p class="4xl">ty for filling up the form!</p>
-              </div>
-{% endpartialdef %}
-            <form id="messageForm" type="form" hx-post="/" hx-target="#formDiv" hx-swap="outerHTML">
+            <form id="messageForm"
+                  type="form"
+                  hx-post="/"
+                  hx-target="#formDiv"
+                  hx-swap="outerHTML">
               {% csrf_token %}
               <input type="range"
                      min="0"
@@ -733,13 +728,8 @@
                       type="submit"
                       id="submit"
                       name="submit"
-                      onclick="innerHTML='Please wait...'"
-                      >
-                      Submit 
-              </button> 
-
+                      onclick="innerHTML='Please wait...'">Submit</button>
             </form>
-            
           </div>
           <div class="divider lg:divider-horizontal">OR</div>
           <div class="card bg-base-300 rounded-box grow place-items-center self-stretch min-h-[400px] lg:min-h-0">
