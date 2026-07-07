@@ -88,7 +88,7 @@
     </style>
   </head>
   <button id="scrollBtn" class="animate-bounce">↓</button>
-  <body>
+  <body hx-boost="true">
     <div class="navbar bg-base-100/80 text-xl fixed top-0 z-50 backdrop-blur-md">
       <div class="navbar-start gap-4">
         <div class="dropdown">
@@ -179,9 +179,9 @@
           <p class="mb-5 text-6xl font-bold text-base-content tracking-widest">OpenCircle</p>
           <p class="text-3xl text-base-content/70 leading-10 tracking-wide drop-shadow-lg prose"
              data-aos="zoom-in">An open-source Django social media platform built for specially-abled people.</p>
-          <button class="btn btn-success text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 animate-bounce tracking-widest">
+          <a href="{% url 'account' %}" class="btn btn-success text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 animate-bounce tracking-widest">
             Get Started
-          </button>
+          </a>
         </div>
       </div>
     </div>
