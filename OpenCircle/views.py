@@ -4,7 +4,6 @@ from ui.models import Suggestions
 
 def index(request):
     if request.htmx and request.POST:
-        print("htmx+POST request received")
         message = request.POST.get('message')
         rating = int(round((float(request.POST.get('rating'))/25)+1, 1))
         Suggestions.objects.create(rating=rating, message=message)

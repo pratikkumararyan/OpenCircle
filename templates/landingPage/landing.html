@@ -720,9 +720,11 @@
                 <legend class="fieldset-legend font-serif text-xl">Message*</legend>
                 <input type="text"
                        class="input w-full px-4"
+                       required
                        id="message"
                        name="message"
                        maxlength="100"
+                       required
                        placeholder="Suggestion/Complaint...." />
                 <p class="label">Your message will be stored anonymously.</p>
               </fieldset>
@@ -730,7 +732,13 @@
                       type="submit"
                       id="submit"
                       name="submit"
-                      onclick="innerHTML='Please wait...'">Submit</button>
+                      onclick="
+                      if (document.getElementById('message').value != '')
+                      {
+                        innerHTML = 'Please wait...'
+                      }
+                      "
+                      >Submit</button>
             </form>
           </div>
         </div>
