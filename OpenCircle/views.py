@@ -12,4 +12,4 @@ def index(request):
     return render(request, 'landingPage/landing.html')
 
 def account(request):
-    return HttpResponse('This is the account creation page')
+    return render(request, 'account/account.html')
