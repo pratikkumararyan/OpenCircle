@@ -1,1 +1,54 @@
 {% load static %}
+<html lang="en">
+    <head>
+        <title>OpenCircle | Onboarding</title>
+    <meta charset="UTF-8" />
+    <meta name="description"
+          content="OpenCircle | An open-source Django social media platform for the specially abled." />
+    <meta name="keywords"
+          content="Open-source, Django, social media, Specially abled" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5"
+          rel="stylesheet"
+          type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.14/dist/dotlottie-wc.js" type="module"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+          rel="stylesheet"
+          type="text/css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url({% static "loginBg.png" %});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-height: 100vh;
+            
+        }
+    </style>
+    </head>
+    <body>
+       <div class="hero bg-base-300">
+        
+       </div>
+    </body>
+
+    <script>
+        //Message from Developer : This code snippet has been copy-pasted from the AOS official documentation
+        AOS.init({
+            duration: 1200,
+            once: false,
+            disable: false,
+            startEvent: 'DOMContentLoaded',
+            offset: 50, 
+        });
+    </script>
+</html>
