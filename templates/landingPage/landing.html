@@ -34,12 +34,16 @@
             --font-sans: InterVariable, sans-serif;
             --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
         }
-        
+
         html,
         body {
             scroll-behavior: smooth;
             overflow-x: hidden;
 
+        }
+
+        :root {
+            scrollbar-gutter: stable;
         }
 
         #hero,
@@ -182,34 +186,40 @@
           <p class="text-3xl text-base-content/70 leading-10 tracking-wide drop-shadow-lg prose"
              data-aos="zoom-in">An open-source Django social media platform built for specially-abled people.</p>
           <button onclick="onboarding.showModal()"
-             class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest">
+                  class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest">
             Get Started
           </button>
-          
           <dialog id="onboarding" class="modal">
-            <div class="aura">
             <div class="modal-box">
               <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
               </form>
               <div class="grid grid-cols-1 md:grid-cols-2 flex">
                 <div>
-                  <img src="{% static "loginBg.png" %}">
+                  <img src="{% static "loginBg.png" %}" />
                 </div>
                 <div>
                   <form>
-                    <p class="text-3xl">aik</p>
+                    <div class="tabs tabs-box">
+                      <input type="radio" name="my_tabs_6" class="tab" aria-label="Tab 1" />
+                      <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 1</div>
+                      <input type="radio"
+                             name="my_tabs_6"
+                             class="tab"
+                             aria-label="Tab 2"
+                             checked="checked" />
+                      <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 2</div>
+                      <input type="radio" name="my_tabs_6" class="tab" aria-label="Tab 3" />
+                      <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 3</div>
+                    </div>
                   </form>
                 </div>
               </div>
             </div>
-            </div>
             <form method="dialog" class="modal-backdrop">
-              <button></button>
+              <button>Close</button>
             </form>
-
           </dialog>
-
         </div>
       </div>
     </div>
@@ -756,14 +766,13 @@
                          placeholder="Suggestion/Complaint...." />
                   <p class="label">Your message will be stored anonymously.</p>
                 </fieldset>
-                
-                  <button class="btn w-3/4 rounded-full text-xl  tracking-widest text-secondary font-bold font-heading border-xl mb-4"
-                          type="submit"
-                          id="submit"
-                          name="submit"
-                          onclick=" if (document.getElementById('message').value != '') { innerHTML = 'Please wait...' } ">
-                    Submit
-                  </button>
+                <button class="btn w-3/4 rounded-full text-xl  tracking-widest text-secondary font-bold font-heading border-xl mb-4"
+                        type="submit"
+                        id="submit"
+                        name="submit"
+                        onclick=" if (document.getElementById('message').value != '') { innerHTML = 'Please wait...' } ">
+                  Submit
+                </button>
               </form>
             </div>
           </div>
