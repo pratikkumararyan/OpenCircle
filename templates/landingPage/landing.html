@@ -190,29 +190,26 @@
             Get Started
           </button>
           <dialog id="onboarding" class="modal">
-            <div class="modal-box">
+            <div class="modal-box bg-[#191923] w-auto">
               <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
               </form>
-              <div class="grid grid-cols-1 md:grid-cols-2 flex">
+              <div class="grid grid-cols-2 flex gap-4">
                 <div>
-                  <img src="{% static "loginBg.png" %}" />
+                  <img src="" alt="img"/>
                 </div>
-                <div>
-                  <form>
-                    <div class="tabs tabs-box">
-                      <input type="radio" name="my_tabs_6" class="tab" aria-label="Tab 1" />
-                      <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 1</div>
-                      <input type="radio"
-                             name="my_tabs_6"
-                             class="tab"
-                             aria-label="Tab 2"
-                             checked="checked" />
-                      <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 2</div>
-                      <input type="radio" name="my_tabs_6" class="tab" aria-label="Tab 3" />
-                      <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 3</div>
-                    </div>
-                  </form>
+                <div class="grid grids-cols-1">
+                  <div class="form pr-4">
+                    <p class="font-mono pl-8 text-4xl text-[#B8DBD9]  rotate-5 tracking-wide">Login</p>
+                    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                      
+                      <label class="label">Email</label>
+                      <input type="email" class="input" placeholder="Email" />
+                      <label class="label">Password</label>
+                      <input type="password" class="input" placeholder="Password" />
+                      <button class="btn btn-neutral mt-4">Login</button>
+                    </fieldset>
+                  </div>
                 </div>
               </div>
             </div>
