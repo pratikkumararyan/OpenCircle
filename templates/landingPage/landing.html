@@ -4,9 +4,9 @@
     <title>OpenCircle | Landing Page</title>
     <meta charset="UTF-8" />
     <meta name="description"
-          content="OpenCircle | An open-source Django social media platform for the specially abled." />
+          content="OpenCircle | An open-source Django social media platform for the specially abled. Made with lub by some random sigma from India" />
     <meta name="keywords"
-          content="Open-source, Django, social media, Specially abled" />
+          content="Open-source, Django, social media, Specially abled, Modern UI" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5"
           rel="stylesheet"
@@ -195,19 +195,28 @@
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
               </form>
               <div class="grid grid-cols-2 flex gap-4">
-                <div>
-                  <img src="" alt="img"/>
-                </div>
+                <div class="bg-red">{% comment %}Image here{% endcomment %}</div>
                 <div class="grid grids-cols-1">
                   <div class="form pr-4">
-                    <p class="font-mono pl-8 text-4xl text-[#B8DBD9]  rotate-5 tracking-wide">Login</p>
-                    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-                      
-                      <label class="label">Email</label>
-                      <input type="email" class="input" placeholder="Email" />
-                      <label class="label">Password</label>
-                      <input type="password" class="input" placeholder="Password" />
-                      <button class="btn btn-neutral mt-4">Login</button>
+                    <p class="font-mono pl-8 text-4xl text-[#F4F4F9] tracking-wide">Login</p>
+                    <fieldset class="fieldset bg-[#747C92] border-base-300 rounded-box w-xs border p-4">
+                      <label class="input">
+                        
+                        <svg class="h-[1em] opacity-50"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24">
+                          <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+                          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                          </g>
+                        </svg>
+                        <input type="email" class="input required" placeholder="john@doe" required />
+                      </label>
+                      <label class="label tracking-xl text-[#F4F4F9]">Password</label>
+                      <input type="password"
+                             class="input required required-password"
+                             placeholder="1234" />
+                      <button class="btn border-[#EF7B45] my-4 hover:bg-[#EF7B45] active:scale-90 transition-all">Login</button>
                     </fieldset>
                   </div>
                 </div>
@@ -215,6 +224,7 @@
             </div>
             <form method="dialog" class="modal-backdrop">
               <button>Close</button>
+              {% comment %}idk why i gotta write 'Close' on the line above but daisyUI docs tell me to do so thus here we are :p{% endcomment %}
             </form>
           </dialog>
         </div>
