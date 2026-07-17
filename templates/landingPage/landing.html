@@ -189,37 +189,36 @@
                   class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest">
             Get Started
           </button>
-          <dialog id="onboarding" class="modal">
-            <div class="modal-box bg-[#191923] w-auto">
+          <dialog id="onboarding w-screen" class="modal">
+            <div class="modal-box bg-[#191923] w-screen m-4 grow">
               <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
               </form>
-              <div class="grid grid-cols-2 flex gap-4">
-                <div class="bg-red">{% comment %}Image here{% endcomment %}</div>
-                <div class="grid grids-cols-1">
-                  <div class="form pr-4">
-                    <p class="font-mono pl-8 text-4xl text-[#F4F4F9] tracking-wide">Login</p>
-                    <fieldset class="fieldset bg-[#747C92] border-base-300 rounded-box w-xs border p-4">
-                      <label class="input">
-                        
-                        <svg class="h-[1em] opacity-50"
-                             xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24">
-                          <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
-                          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                          <circle cx="12" cy="7" r="4"></circle>
-                          </g>
-                        </svg>
-                        <input type="email" class="input required" placeholder="john@doe" required />
-                      </label>
-                      <label class="label tracking-xl text-[#F4F4F9]">Password</label>
-                      <input type="password"
-                             class="input required required-password"
-                             placeholder="1234" />
-                      <button class="btn border-[#EF7B45] my-4 hover:bg-[#EF7B45] active:scale-90 transition-all">Login</button>
-                    </fieldset>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="mockup-phone">
+                  <div class="mockup-phone-camera"></div>
+                  <div class="mockup-phone-display">
+                    <img alt="wallpaper"
+                         src="https://img.daisyui.com/images/stock/453966.webp" />
                   </div>
                 </div>
+                <ul class="form pr-4">
+                  <p class="font-mono py-2 text-4xl text-[#F4F4F9] tracking-wide">Login</p>
+                  <form class="fieldset bg-[#747C92] border-base-300 rounded-box w-xs border p-4">
+                    <li>
+                      <label class="label tracking-xl text-[#F4F4F9]">Email / Username</label>
+                    </li>
+                    <input class="input" placeholder="john@doe" required />
+                    <li>
+                      <label class="label tracking-xl text-[#F4F4F9]">Password</label>
+                      <input type="checkbox" />
+                    </li>
+                    <input type="password" class="input" placeholder="1234" required />
+                    <input type="checkbox" id="toggle" onclick="" />
+                    <button class="btn border-[#EF7B45] my-4 hover:bg-[#EF7B45] active:scale-90 transition-all"
+                            type="submit">Login</button>
+                  </form>
+                </ul>
               </div>
             </div>
             <form method="dialog" class="modal-backdrop">
@@ -762,7 +761,7 @@
                 </div>
                 <fieldset class="fieldset border-base-300 rounded-box w-full border p-4"
                           data-aos="slide-right">
-                  <legend class="fieldset-legend font-serif text-xl">Message*</legend>
+                  <p class="text-center font-serif text-xl">Message*</p>
                   <input type="text"
                          class="input w-full px-4"
                          required
