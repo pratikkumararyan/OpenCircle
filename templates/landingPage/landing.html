@@ -188,30 +188,36 @@
           <button class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest"
                   popovertarget="onboarding">Get Started</button>
           <div id="onboarding" class="modal" popover>
-            <div class="modal-box overflow-x-hidden bg-[#191923]">
-              <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" popovertarget="onboarding" popovertargetaction="hide">✕</button>
-              
-              <div class="grid grid-cols-2 gap-4">
-                <div class="mockup-phone w-full">
+            
+            <div class="modal-box max-w-4xl w-11/12 overflow-x-hidden bg-[#191923]">
+              <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                      popovertarget="onboarding"
+                      popovertargetaction="hide">✕</button>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-4">
+                
+                <div class="mockup-phone w-full max-w-xs mx-auto h-1/2">
                   <div class="mockup-phone-camera"></div>
                   <div class="mockup-phone-display">
                     <img alt="wallpaper"
                          src="https://img.daisyui.com/images/stock/453966.webp" />
                   </div>
                 </div>
-                <div class="grid grids-cols-1 w-full box-border">
-                  <div class="form">
+                <div class="grid grid-cols-1 w-full box-border">
+                  
                     <p class="font-mono py-2 text-4xl text-[#F4F4F9] tracking-wide">Login</p>
-                    <form class="fieldset flex-1 border-base-300 rounded-box w-xs border">
+                    <form class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
                       <label class="label tracking-xl text-[#F4F4F9]">Email / Username</label>
-                      <input class="input" placeholder="john@doe" required />
+                      <input class="input w-full" placeholder="john@doe" required />
                       <label class="label tracking-xl text-[#F4F4F9]">Password</label>
-                      <div class="join">
-                        <input type="password" class="input join-item" placeholder="1234" required />
-                        <div class="join-item btn btn-primary">
+                      <div class="join w-full flex">
+                        <input type="password"
+                               class="input join-item w-full"
+                               placeholder="1234"
+                               required />
+                        <div class="join-item btn btn-primary flex items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg"
                                fill="currentColor"
-                               class="bi bi-eye-slash px-4"
+                               class="bi bi-eye-slash w-5 h-5"
                                viewBox="0 0 16 16">
                             <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
                             <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
@@ -219,12 +225,13 @@
                           </svg>
                         </div>
                       </div>
-                      <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] active:scale-90 transition-all"
-                              type="submit">Login</button>
+                      <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] active:scale-90 transition-all w-full mt-4"
+                              type="submit"
+                              >Login</button>
                     </form>
-                  </div>
-                  <div class="divider divider-accent pr-4">OR</div>
-                  <div class="btn btn-accent mr-4">Login with Google</div>
+                  
+                  <div class="divider divider-accent">OR</div>
+                  <div class="btn btn-accent w-full">Login with Google</div>
                 </div>
               </div>
             </div>
