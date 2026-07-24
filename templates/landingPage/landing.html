@@ -188,27 +188,23 @@
           <button class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest"
                   popovertarget="onboarding">Get Started</button>
           <div id="onboarding" class="modal" popover>
-            
-            <div class="modal-box max-w-4xl w-11/12 overflow-x-hidden bg-[#191923]">
+            <div class="modal-box modal-bottom max-w-4xl w-11/12 overflow-x-hidden bg-[#191923]">
               <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                       popovertarget="onboarding"
                       popovertargetaction="hide">✕</button>
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-4">
-                
-                <div class="mockup-phone w-full max-w-xs mx-auto h-1/2">
-                  <div class="mockup-phone-camera"></div>
-                  <div class="mockup-phone-display">
-                    <img alt="wallpaper"
-                         src="https://img.daisyui.com/images/stock/453966.webp" />
-                  </div>
-                </div>
-                <div class="grid grid-cols-1 w-full box-border">
-                  
-                    <p class="font-mono py-2 text-4xl text-[#F4F4F9] tracking-wide">Login</p>
-                    <form class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
-                      <label class="label tracking-xl text-[#F4F4F9]">Email / Username</label>
+                <img alt="wallpaper" src="{% static "loginModalPic.png" %}" />
+                <div class="grid grid-cols-1 w-full">
+                  <p class="font-mono py-2 text-4xl text-[#F4F4F9] tracking-wide">Login</p>
+                  <div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
+                    <form>
+                      <div class="w-full text-left py-2">
+                        <label class="label tracking-xl text-[#F4F4F9]">Email / Username</label>
+                      </div>
                       <input class="input w-full" placeholder="john@doe" required />
-                      <label class="label tracking-xl text-[#F4F4F9]">Password</label>
+                      <div class="w-full text-left py-2">
+                        <label class="label tracking-xl text-[#F4F4F9] mr-2">Password</label>
+                      </div>
                       <div class="join w-full flex">
                         <input type="password"
                                class="input join-item w-full"
@@ -226,12 +222,11 @@
                         </div>
                       </div>
                       <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] active:scale-90 transition-all w-full mt-4"
-                              type="submit"
-                              >Login</button>
+                              type="submit">Login</button>
                     </form>
-                  
-                  <div class="divider divider-accent">OR</div>
-                  <div class="btn btn-accent w-full">Login with Google</div>
+                    <div class="divider divider-accent">OR</div>
+                    <div class="btn btn-accent w-full">Login with Google</div>
+                  </div>
                 </div>
               </div>
             </div>
