@@ -188,13 +188,13 @@
           <button class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest"
                   popovertarget="onboarding">Get Started</button>
           <div id="onboarding" class="modal" popover>
-            <div class="modal-box modal-bottom sm:modal-middle max-w-4xl w-11/12 overflow-x-hidden bg-[#191923]">
+            <div class="modal-box modal-bottom sm:modal-middle max-w-4xl w-11/12 p-0 m-2 overflow-x-hidden bg-[#191923]">
               <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                       popovertarget="onboarding"
                       popovertargetaction="hide">✕</button>
-              <div class="grid grid cols-1 md:grid-cols-2 gap-8 items-center">
+              <div class="grid grid cols-1 md:grid-cols-2 gap-x-8 items-center">
                 <div class="hero-image">
-                <img alt="wallpaper" src="{% static "loginModalPic.png" %}"/>
+                  <img alt="wallpaper" src="{% static "loginModalPic.png" %}" />
                 </div>
                 <div class="grid grid-cols-1 w-full">
                   <p class="font-mono py-2 text-6xl text-[#F4F4F9] tracking-wide">Login</p>
@@ -223,14 +223,34 @@
                           </svg>
                         </div>
                       </div>
-                      <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] active:scale-90 transition-all w-full mt-4"
-                              type="submit">Login</button>
+                      <div class="w-full">
+                        <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] active:scale-90 transition-all w-full mt-4"
+                                type="submit">Login</button>
+                      </div>
                     </form>
                     <div class="divider divider-accent">OR</div>
-                    <p class="text-xl text-base-content/70 leading-10 tracking-wide drop-shadow-lg prose">Login with</p>
-                    <div class="grid grid-cols-2 gap-2">
-                      <div class="bg-gray">hi</div>
-                      <div class="bg-purple">yo</div>
+                    <p class="text-md text-base-content/70 leading-10 tracking-widest p-0 -my-2 drop-shadow-lg prose">LOGIN WITH</p>
+                    <div class="card bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip hover:-translate-y-1 transition-all duration-300 border-5 border-neutral-content rounded-3xl flex flex-row items-center justify-start gap-6 px-8 py-6 w-full hover:border-primary cursor-pointer"
+                         data-aos="zoom-out"
+                         data-aos-delay="200"
+                         data-tip="@That Guy">
+                      <svg role="img"
+                           viewBox="0 0 24 24"
+                           class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 hover:scale-120 transition-all duration-400"
+                           xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z" fill="#E01E5A" />
+                        <path d="M6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z" fill="#E01E5A" />
+                        <path d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834z" fill="#36C5F0" />
+                        <path d="M8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z" fill="#36C5F0" />
+                        <path d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834z" fill="#2EB67D" />
+                        <path d="M17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z" fill="#2EB67D" />
+                        <path d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52z" fill="#ECB22E" />
+                        <path d="M15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#ECB22E" />
+                      </svg>
+                      <div class="flex flex-col items-start">
+                        <p class="text-2xl sm:text-3xl font-semibold text-neutral-content tracking-wide">Slack</p>
+                        <p class="text-sm sm:text-base text-neutral-content/60 mt-1">@That Guy</p>
+                      </div>
                     </div>
                   </div>
                 </div>
