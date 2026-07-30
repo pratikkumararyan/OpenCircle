@@ -23,7 +23,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link href="https://fonts.googleapis.com" rel="stylesheet" />
     <style type="text/css">
@@ -189,7 +188,7 @@
           <button class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest"
                   popovertarget="onboarding">Get Started</button>
           <div id="onboarding" class="modal" popover>
-            <div class="modal-box modal-bottom sm:modal-middle max-w-4xl w-11/12 overflow-x-hidden bg-[#191923] md:overflow-y-clip">
+            <div class="modal-box modal-middle max-w-4xl w-11/12 overflow-x-hidden bg-[#191923] md:overflow-y-clip">
               <div class="-my-8 -ml-6">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                         popovertarget="onboarding"
@@ -215,17 +214,11 @@
                                  placeholder="1234"
                                  id="passInput"
                                  required />
-                          <div class="join-item btn btn-accent flex items-center justify-center tooltip tooltip-bottom"
+                          <div class="join-item btn btn-accent flex items-center justify-center tooltip tooltip-top md:tooltip-bottom"
                                id="passToggle"
                                onclick="passwordToggle()"
                                data-tip="Toggle password">
-                            
-                            <img src="{% static "eye-slash.svg" %}" id="passwordEmoji" class="h-6">
-                               {% comment %} <label class="swap">
-                            <input type="checkbox" class="invisible" />
-                            <div class="w-5 h-5 swap-off">🙈</div>
-                            <div class="w-5 h-5 swap-on">👁️</div>
-                            </label> {% endcomment %}
+                            <img src="{% static "eye-slash.svg" %}" id="passwordEmoji" class="h-6" />
                           </div>
                         </div>
                         <div class="w-full">
@@ -234,23 +227,26 @@
                         </div>
                       </form>
                       <div class="divider divider-accent">OR</div>
-                      {% comment %} <p class="text-md text-base-content/70 leading-10 tracking-widest p-0 -mt-6 drop-shadow-lg">LOGIN WITH</p> {% endcomment %}
-                      <div class="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip tooltip-bottom hover:-translate-y-1 transition-all duration-300 border-5 border-neutral-content rounded-3xl flex flex-row items-center justify-start gap-6 py-2 w-full hover:border-primary cursor-pointer"
-                           data-aos="zoom-out"
-                           data-aos-delay="200"
-                           data-tip="NOTE: This is only for testing purposes and not meant for actual production use.">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             class="w-10 h-10 ml-2 p-1"
-                             fill="currentColor"
-                             class="bi bi-person"
-                             viewBox="0 0 16 16">
-                          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                        </svg>
-                        <p class="text-xl text-neutral-content tracking-widest font-body items-center place-items-center">Login as Guest</p>
-                      </div>
+                      <form>
+                        <input type="email" class="hidden" value="guest@guest.com" />
+                        <input type="password" class="hidden" value="abcd" />
+                        {% comment %} <p class="text-md text-base-content/70 leading-10 tracking-widest p-0 -mt-6 drop-shadow-lg">LOGIN WITH</p> {% endcomment %}
+                        <button class="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip tooltip-top md:tooltip-bottom hover:-translate-y-1 transition-all duration-300 border-5 border-neutral-content rounded-3xl flex flex-row items-center justify-start gap-6 py-2 w-full hover:border-primary cursor-pointer"
+                                type="submit"
+                                data-tip="NOTE: This is only for testing purposes and not meant for actual production use.">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                               class="w-10 h-10 ml-2 p-1"
+                               fill="currentColor"
+                               class="bi bi-person"
+                               viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                          </svg>
+                          <p class="text-xl text-neutral-content tracking-widest font-body items-center place-items-center">Login as Guest</p>
+                        </button>
+                      </form>
                     </div>
                     <div class="flex flex-row w-full">
-                      <p class="link link-hover ml-auto text-lg text-primary-content/70 leading-10">New? Signup instead!</p>
+                      <p class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">New? Signup instead!</p>
                     </div>
                   </div>
                 </div>
