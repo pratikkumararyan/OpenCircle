@@ -218,7 +218,7 @@
                                id="passToggle"
                                onclick="passwordToggle()"
                                data-tip="Toggle password">
-                            <img src="{% static "eye-slash.svg" %}" id="passwordEmoji" class="h-6" />
+                            <img src="{% static "eye-slash.svg" %}" id="passwordEmoji" class="h-6" alt="passwordToggle"/>
                           </div>
                         </div>
                         <div class="w-full">
@@ -246,7 +246,7 @@
                       </form>
                     </div>
                     <div class="flex flex-row w-full">
-                      <p href="{% url "account" %}" class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">New? Signup instead!</p>
+                      <a hx-boost="true" href="{% url "account" %}" class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">New? Signup instead!</a>
                     </div>
                   </div>
                 </div>
