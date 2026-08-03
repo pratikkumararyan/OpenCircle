@@ -185,8 +185,8 @@
           <p class="mb-5 text-6xl font-bold text-base-content tracking-widest">OpenCircle</p>
           <p class="text-3xl text-base-content/70 leading-10 tracking-wide drop-shadow-lg prose"
              data-aos="zoom-in">An open-source Django social media platform built for specially-abled people.</p>
-          <button class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest"
-                  popovertarget="onboarding">Get Started</button>
+          <a class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest"
+                    hx-boost="true" href="{% url "account" %}">Get Started</a>
           <div id="onboarding" class="modal" popover>
             <div class="modal-box modal-middle max-w-4xl w-11/12 overflow-x-hidden bg-[#191923] md:overflow-y-clip">
               <div class="-my-8 -ml-6">
