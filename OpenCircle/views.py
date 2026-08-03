@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from ui.models import Suggestions
 
 def index(request):
@@ -13,3 +13,15 @@ def index(request):
 
 def account(request):
     return render(request, 'account/account.html')
+
+def login(request):
+    return redirect("/")
+
+def signup(request):
+    return redirect("/")
+
+def forgot(request):
+    return redirect("/")
+
+def otp(request):
+    return redirect("/")
