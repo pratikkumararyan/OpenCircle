@@ -15,7 +15,10 @@ def account(request):
     return render(request, 'account/account.html')
 
 def login(request):
-    return redirect("/")
+    if request.htmx:
+        return render(request, "account/login.html")
+    else:    
+        return redirect("/")
 
 def signup(request):
     return redirect("/")
