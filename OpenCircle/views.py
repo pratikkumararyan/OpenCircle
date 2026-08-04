@@ -14,8 +14,14 @@ def index(request):
 
 def login(request):
     if request.htmx:
-        print("htmx received")
         return render(request, "account/login.html")
+
+def authenticate(request):
+    if request.htmx and request.POST:
+        user = request.POST.get('username')
+        password = request.POST.get('passInput')
+        return HttpResponse(user+" "+password)
+    return redirect("/")
 
 def signup(request):
     if request.htmx:

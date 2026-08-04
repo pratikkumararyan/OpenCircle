@@ -1,11 +1,12 @@
 {% load static %}
 <p class="font-mono py-2 text-6xl text-[#F4F4F9] tracking-wide">Login</p>
 <div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
-  <form>
+  <form hx-post="{% url "authenticate" %}" >
+    {% csrf_token %}
     <div class="w-full text-left pb-2">
       <label class="label tracking-xl text-[#F4F4F9]">Email / Username</label>
     </div>
-    <input class="input w-full" placeholder="john@doe" required />
+    <input class="input w-full" placeholder="john@doe" required id="username"/>
     <div class="w-full text-left py-2">
       <label class="label tracking-xl text-[#F4F4F9] mr-2">Password</label>
     </div>
@@ -31,9 +32,9 @@
     </div>
   </form>
   <div class="divider divider-accent">OR</div>
-  <form>
-    <input type="email" class="hidden" value="guest@guest.com" />
-    <input type="password" class="hidden" value="abcd" />
+  <form hx-post="{% url "authenticate" %}" >
+    <input type="email" class="hidden" value="guest@guest.com" id="username"/>
+    <input type="password" class="hidden" value="abcd" id="passInput"/>
     
     <button class="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip tooltip-top md:tooltip-bottom hover:-translate-y-1 transition-all duration-300 border-5 border-neutral-content rounded-3xl flex flex-row items-center justify-start gap-6 py-2 w-full hover:border-primary cursor-pointer"
             type="submit"
@@ -50,6 +51,6 @@
   </form>
 </div>
 <div class="flex flex-row w-full">
-  <a
-     class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">New? Signup instead!</a>
+  <button hx-get="{% url "signup" %}" hx-target="#authentication"
+     class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">New? Signup instead!</button>
 </div>
