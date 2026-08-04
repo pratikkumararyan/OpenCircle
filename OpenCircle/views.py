@@ -8,7 +8,7 @@ def index(request):
         rating = int(round((float(request.POST.get('rating'))/25)+1, 1))
         Suggestions.objects.create(rating=rating, message=message)
         return render(request, "landingPage/partial.html")
-    
+
     return render(request, 'landingPage/landing.html')
 
 
@@ -16,7 +16,6 @@ def login(request):
     if request.htmx:
         print("htmx received")
         return render(request, "account/login.html")
-    return redirect("/")
 
 def signup(request):
     if request.htmx:
