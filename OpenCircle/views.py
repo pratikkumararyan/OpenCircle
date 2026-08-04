@@ -11,16 +11,16 @@ def index(request):
     
     return render(request, 'landingPage/landing.html')
 
-def account(request):
-    return render(request, 'account/account.html')
 
 def login(request):
     if request.htmx:
+        print("htmx received")
         return render(request, "account/login.html")
-    else:    
-        return redirect("/")
+    return redirect("/")
 
 def signup(request):
+    if request.htmx:
+        print("bruh ts aint workin T T")
     return redirect("/")
 
 def forgot(request):
