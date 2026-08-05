@@ -20,12 +20,14 @@ def authenticate(request):
     if request.htmx and request.POST:
         user = request.POST.get('username')
         password = request.POST.get('passInput')
-        return HttpResponse(user+" "+password)
+        print(str(password))
+        return render(request, "<p>wait will ts work</p>")
+
     return redirect("/")
 
 def signup(request):
     if request.htmx:
-        print("bruh ts aint workin T T")
+        return render(request, "account/signup.html")
     return redirect("/")
 
 def forgot(request):
