@@ -15,6 +15,7 @@ def index(request):
 def login(request):
     if request.htmx:
         return render(request, "account/login.html")
+    return redirect("/")
 
 def authenticate(request):
     if request.htmx and request.POST:

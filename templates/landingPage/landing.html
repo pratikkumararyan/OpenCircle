@@ -197,10 +197,11 @@
                   <div class="hero-image">
                     <img alt="wallpaper" src="{% static "loginModalPic.png" %}" />
                   </div>
+                  
                   <div class="grid grid-cols-1 w-full" id="authentication">
-                    <div hx-get="{% url "login" %}" hx-target="#authentication" hx-trigger="load" hx-swap="innerHTML"></div>
+                    
                   </div>
-                  <div class="text-error" id="errors"></div>
+                  <div hx-get="{% url "login" %}" hx-target="#authentication" hx-trigger="load" hx-swap="innerHTML"></div>
                   
                 </div>
               </div>
