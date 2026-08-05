@@ -27,7 +27,11 @@
              alt="passwordToggle" />
       </div>
     </div>
-    <p class="text-error text-md" id="issues"></p>
+    <ul class="list" id="issues">
+      {% for issue in issues %}
+        <li class="text-error text-lg">{% issue %}</li>
+      {% endfor %}
+    </ul>
     <div class="w-full">
       <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] hover:text-[#000000] active:scale-90 transition-all w-full mt-4"
               type="submit">Login</button>

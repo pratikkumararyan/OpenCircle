@@ -14,7 +14,7 @@ def index(request):
 
 def login(request):
     if request.htmx:
-        return render(request, "account/login.html")
+        return render(request, "account/login.html", {'issues': []})
     return redirect("/")
 
 def authenticate(request):
@@ -22,7 +22,8 @@ def authenticate(request):
         user = request.POST.get('username')
         password = request.POST.get('passInput')
         print(str(password))
-        return render(request, "<p>wait will ts work</p>")
+        errors = ["hmm heres a test error 1", "another error 2", "holy moly error 3 asw"]
+        return render(request, "account/login.html", {'issues': errors})
 
     return redirect("/")
 
