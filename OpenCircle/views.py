@@ -14,16 +14,15 @@ def index(request):
 
 def login(request):
     if request.htmx:
-        return render(request, "account/login.html", {'issues': []})
+        return render(request, "account/login.html", {"issues": []})
     return redirect("/")
 
 def authenticate(request):
     if request.htmx and request.POST:
         user = request.POST.get('username')
         password = request.POST.get('passInput')
-        print(str(password))
         errors = ["hmm heres a test error 1", "another error 2", "holy moly error 3 asw"]
-        return render(request, "account/login.html", {'issues': errors})
+        return render(request, "account/login.html", {"issues": errors})
 
     return redirect("/")
 
