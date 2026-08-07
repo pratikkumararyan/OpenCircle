@@ -4,6 +4,7 @@
 <div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
   <form hx-post="{% url "authenticate" %}" hx-target="#authentication">
     {% csrf_token %}
+    <label class="hidden" value="login" name="nature"></label>
     <div class="w-full text-left pb-2">
       <label class="label tracking-xl text-[#F4F4F9]">Email / Username</label>
     </div>
@@ -28,6 +29,9 @@
              alt="passwordToggle" />
       </div>
     </div>
+    <div class="w-full text-right">
+      <button class="link link-hover text-accent hover:text-neutral-content mt-2" hx-get="{% url "forgot" %}" hx-target="#authenticate">Forgot password?</button>
+    </div>
     
     <ul class="list text-left" id="issues">
       {% for issue in issues %}
@@ -42,8 +46,8 @@
   </form>
   <div class="divider divider-accent">OR</div>
   <form hx-post="{% url "authenticate" %}" >
-    <input type="email" class="hidden" value="guest@guest.com"/>
-    <input type="password" class="hidden" value="abcd"/>
+    <input type="email" class="hidden" name="username" value="guest@guest.com"/>
+    <input type="password" class="hidden" name="passInput" value="abcd"/>
     
     <button class="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip tooltip-top md:tooltip-bottom hover:-translate-y-1 transition-all duration-300 border-5 border-neutral-content rounded-3xl flex flex-row items-center justify-start gap-6 py-2 w-full hover:border-primary cursor-pointer"
             type="submit"

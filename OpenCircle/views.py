@@ -19,10 +19,16 @@ def login(request):
 
 def authenticate(request):
     if request.htmx and request.POST:
-        user = request.POST.get('username')
-        password = request.POST.get('passInput')
-        errors = ["hmm heres a test error 1", "another error 2", "holy moly error 3 asw"]
-        return render(request, "account/login.html", {"issues": errors})
+        nature = request.POST.get('nature')
+        if nature == "login":
+            user = request.POST.get('username')
+            password = request.POST.get('passInput')
+
+            errors = ["hmm heres a test error 1", "another error 2", "holy moly error 3 asw"]
+            return render(request, "account/login.html", {"issues": errors})
+        elif nature == "signup":
+            return render(request, "account/signup.html", {"issues": errors})
+        
 
     return redirect("/")
 
@@ -32,7 +38,11 @@ def signup(request):
     return redirect("/")
 
 def forgot(request):
+    if request.htmx:
+        return render(request, "account/forgot.html")
     return redirect("/")
 
 def otp(request):
+    if request.htmx:
+        return render(request, "account/otp.html")
     return redirect("/")

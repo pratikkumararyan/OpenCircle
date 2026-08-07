@@ -1,6 +1,53 @@
-<form>
-    <input type="email"  value="guest@guest.com" />
-    <input type="password" value="abcd" />
-    <p class="text-2xl">hi this is signup speaking</p>
+{% load static %}
+<!DOCTYPE html>
+<p class="font-mono py-2 text-6xl text-[#F4F4F9] tracking-wide">Signup</p>
+<div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
+  <form hx-post="{% url "authenticate" %}" hx-target="#authentication">
+    {% csrf_token %}
+    <label class="hidden" value="signup" name="nature"></label>
+    <div class="w-full text-left pb-2">
+      <label class="label tracking-xl text-[#F4F4F9]">Email</label>
+    </div>
+    <input class="input w-full" placeholder="john@doe" required id="email" name="email"/>
+    <div class="w-full text-left pb-2">
+      <label class="label tracking-xl text-[#F4F4F9]">Username</label>
+    </div>
+    <input class="input w-full" placeholder="John Doe" required id="username" name="username"/>
+    <div class="w-full text-left py-2">
+      <label class="label tracking-xl text-[#F4F4F9] mr-2">Password</label>
+    </div>
+    <div class="join w-full flex">
+      <input type="password"
+             class="input join-item w-full"
+             placeholder="1234"
+             id="passInput"
+             name="passInput"
+             required />
+      <div class="join-item btn btn-accent flex items-center justify-center tooltip tooltip-top md:tooltip-bottom"
+           id="passToggle"
+           onclick="passwordToggle()"
+           data-tip="Toggle password">
+        <img src="{% static "eye-slash.svg" %}"
+             id="passwordEmoji"
+             class="h-6"
+             alt="passwordToggle" />
+      </div>
+    </div>
     
+    <ul class="list text-left" id="issues">
+      {% for issue in issues %}
+        <li class="text-error text-sm my-1 list-item">{{ forloop.counter }}. {{ issue }}</li>
+      {% endfor %}
+    </ul>
+    
+    <div class="w-full">
+      <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] hover:text-[#000000] active:scale-90 transition-all w-full mt-4"
+              type="submit">Create Account</button>
+    </div>
   </form>
+  
+</div>
+<div class="flex flex-row w-full">
+  <button hx-get="{% url "login" %}" hx-target="#authentication"
+     class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">Have an account? Login!</button>
+</div>
