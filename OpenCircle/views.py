@@ -44,7 +44,10 @@ def forgot(request):
 
 def otp(request):
     if request.htmx:
-        return render(request, "account/otp.html")
+        if request.GET:
+            return render(request, "account/otp.html")
+        elif request.POST:
+            return render(request, "account/otp.html", {"incorrect": True})
     return redirect("/")
 
 def reset(request):
