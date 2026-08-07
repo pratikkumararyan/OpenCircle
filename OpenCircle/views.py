@@ -46,3 +46,8 @@ def otp(request):
     if request.htmx:
         return render(request, "account/otp.html")
     return redirect("/")
+
+def reset(request):
+    if request.htmx:
+        return render(request, "account/reset.html")
+    return redirect("/")

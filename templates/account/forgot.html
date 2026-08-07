@@ -1,6 +1,28 @@
-<form>
-    <input type="email"  />
+<!DOCTYPE html>
+<p class="font-mono py-2 text-6xl text-[#F4F4F9] tracking-wide">Reset pass</p>
+<div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
+  <form hx-post="{% url "otp" %}" hx-target="#authentication">
+    {% csrf_token %}
+    <label class="hidden" value="login" name="nature"></label>
+    <div class="w-full text-left pb-2">
+      <label class="label tracking-xl text-[#F4F4F9]">Email</label>
+    </div>
+    <input class="input w-full" placeholder="john@doe" required type="email" name="email"/>
     
-    <p class="text-2xl">imagine forgetting password</p>
+    <ul class="list text-left" id="issues">
+      {% for issue in issues %}
+        <li class="text-error text-sm my-1 list-item">{{ forloop.counter }}. {{ issue }}</li>
+      {% endfor %}
+    </ul>
     
-</form>
+    <div class="w-full">
+      <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] hover:text-[#000000] active:scale-90 transition-all w-full mt-4"
+              type="submit">Send OTP</button>
+    </div>
+  </form>
+  
+</div>
+<div class="flex flex-row w-full">
+  <button hx-get="{% url "login" %}" hx-target="#authentication"
+     class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">Remembered it?</button>
+</div>

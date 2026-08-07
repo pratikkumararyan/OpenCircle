@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="w-full text-right">
-      <button class="link link-hover text-accent hover:text-neutral-content mt-2" hx-get="{% url "forgot" %}" hx-target="#authenticate">Forgot password?</button>
+      <button class="link link-hover text-accent hover:text-neutral-content mt-2" hx-get="{% url "forgot" %}" hx-target="#authentication">Forgot password?</button>
     </div>
     
     <ul class="list text-left" id="issues">
@@ -64,6 +64,6 @@
   </form>
 </div>
 <div class="flex flex-row w-full">
-  <button hx-get="{% url "signup" %}" hx-target="#authentication" hx-trigger="click"
+  <button hx-get="{% url "signup" %}" hx-target="#authentication" hx-trigger="click" 
      class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">New? Signup instead!</button>
 </div>

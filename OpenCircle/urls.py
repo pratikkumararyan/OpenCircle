@@ -28,6 +28,7 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('forgot/', views.forgot, name='forgot'),
     path('otp/', views.otp, name='otp'),
+    path('reset/', views.reset, name='reset'),
 
     path('ui/', include('ui.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
