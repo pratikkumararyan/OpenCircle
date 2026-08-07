@@ -49,5 +49,14 @@ def otp(request):
 
 def reset(request):
     if request.htmx:
-        return render(request, "account/reset.html")
+        if request.GET:
+            return render(request, "account/reset.html")
+        elif request.POST:
+            print("resettin' the password")
     return redirect("/")
+
+# FLOW FOR THE ACCOUNT PROCEDURE:
+# 1. main landing page -> Get started
+# 2. Modal opens-> If signup, then goes to /signup/ and then to /otp/ for the email otp
+# 3. if login chosen, either normal simple login, OR:
+#     forgot password -> forgot.html takes email -> otp.html takes OTP ->  correct otp -> reset.html takes new password -> auto-login + password reset
