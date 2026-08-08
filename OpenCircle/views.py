@@ -14,7 +14,6 @@ def index(request):
 
 def login(request):
     if request.htmx:
-        
         issues = []
         if str(request.method) == "GET":
             issues = []
@@ -40,10 +39,12 @@ def authenticate(request):
 
 def signup(request):
     if request.htmx:
-        if request.GET:
-            return render(request, "account/signup.html")
-        elif request.POST:
-            return render(request, "account/signup.html", {"issues": ["why using post"]})
+        issues = []
+        if request.method == "GET":
+            pass
+        elif request.method == "POST":
+            issues.append("bro imagine using post")
+        return render(request, "account/signup.html", {"issues": issues})
     return redirect("/")
 
 def forgot(request):
@@ -53,6 +54,8 @@ def forgot(request):
 
 def otp(request):
     if request.htmx and request.POST:
+        otp = request.POST.get('otp')
+        print(otp)
         return render(request, "account/otp.html", {"incorrect": True})
     return redirect("/")
 
