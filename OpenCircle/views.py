@@ -14,13 +14,13 @@ def index(request):
 
 def login(request):
     if request.htmx:
-        print(request)
+        
         issues = []
-        if request.GET:
+        if str(request.method) == "GET":
             issues = []
-        elif request.POST:
-            issues[0] = "why using post"
-        return render(request, "account/login.html", {"issues": ["why usin post"]})
+        else:
+            issues.append("why using post")
+        return render(request, "account/login.html", {"issues": issues})
     return redirect("/")
 
 def authenticate(request):
