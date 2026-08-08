@@ -14,48 +14,51 @@ def index(request):
 
 def login(request):
     if request.htmx:
-        return render(request, "account/login.html", {"issues": []})
+        print(request)
+        issues = []
+        if request.GET:
+            issues = []
+        elif request.POST:
+            issues[0] = "why using post"
+        return render(request, "account/login.html", {"issues": ["why usin post"]})
     return redirect("/")
 
 def authenticate(request):
-    if request.htmx and request.POST:
-        nature = request.POST.get('nature')
-        if nature == "login":
-            user = request.POST.get('username')
-            password = request.POST.get('passInput')
+    # if request.htmx and request.POST:
+    #     nature = request.POST.get('nature')
+    #     if nature == "login":
+    #         user = request.POST.get('username')
+    #         password = request.POST.get('passInput')
 
-            errors = ["hmm heres a test error 1", "another error 2", "holy moly error 3 asw"]
-            return render(request, "account/login.html", {"issues": errors})
-        elif nature == "signup":
-            return render(request, "account/signup.html", {"issues": errors})
+    #         errors = ["hmm heres a test error 1", "another error 2", "holy moly error 3 asw"]
+    #         return render(request, "account/login.html", {"issues": errors})
+    #     elif nature == "signup":
+    #         return render(request, "account/signup.html", {"issues": errors})
         
 
     return redirect("/")
 
 def signup(request):
     if request.htmx:
-        return render(request, "account/signup.html")
+        if request.GET:
+            return render(request, "account/signup.html")
+        elif request.POST:
+            return render(request, "account/signup.html", {"issues": ["why using post"]})
     return redirect("/")
 
 def forgot(request):
-    if request.htmx:
+    if request.htmx and request.POST:
         return render(request, "account/forgot.html")
     return redirect("/")
 
 def otp(request):
-    if request.htmx:
-        if request.GET:
-            return render(request, "account/otp.html")
-        elif request.POST:
-            return render(request, "account/otp.html", {"incorrect": True})
+    if request.htmx and request.POST:
+        return render(request, "account/otp.html", {"incorrect": True})
     return redirect("/")
 
 def reset(request):
-    if request.htmx:
-        if request.GET:
-            return render(request, "account/reset.html")
-        elif request.POST:
-            print("resettin' the password")
+    if request.htmx and request.POST:
+        print("resettin' the password")
     return redirect("/")
 
 # FLOW FOR THE ACCOUNT PROCEDURE:
