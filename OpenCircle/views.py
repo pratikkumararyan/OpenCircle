@@ -57,12 +57,17 @@ def forgot(request):
         issues = []
         if request.method == "POST":
             email = request.POST.get('email')
-            try:
-                email_object = validate_email(email)
-                return render(request, "account/otp.html")
-            except EmailNotValidError as e:
-                print(list(e))
-                return render(request, "account/forgot.html", {"issues": issues})
+            while True:
+                try:
+                    validate_email(email)
+                    return render(request, "account/otp.html")
+                except EmailNotValidError as e:
+                    error = str(e)
+                    if error in issues:
+                        break
+                    else:
+                        issues.append(error)
+            return render(request, "account/forgot.html", {"issues": issues})
 
         elif request.method == "GET":
             return render(request, "account/forgot.html")
