@@ -7,11 +7,11 @@
     <div class="w-full text-left pb-2">
       <label class="label tracking-xl text-[#F4F4F9]">Email</label>
     </div>
-    <input class="input w-full" placeholder="john@doe" required name="email"/>
+    <input class="input w-full" placeholder="john@doe" required type="email" name="email" value="{{ email }}"/>
     
     <ul class="list text-left" id="issues">
       {% for issue in issues %}
-        <li class="text-error text-sm my-1 list-item">{{ forloop.counter }}. {{ issue }}</li>
+        <li class="text-error text-sm my-1 list-item">{{ issue }}</li>
       {% endfor %}
     </ul>
     

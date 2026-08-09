@@ -57,17 +57,12 @@ def forgot(request):
         issues = []
         if request.method == "POST":
             email = request.POST.get('email')
-            while True:
-                try:
-                    validate_email(email)
-                    return render(request, "account/otp.html")
-                except EmailNotValidError as e:
-                    error = str(e)
-                    if error in issues:
-                        break
-                    else:
-                        issues.append(error)
-            return render(request, "account/forgot.html", {"issues": issues})
+            try:
+                validate_email(email)
+                return render(request, "account/otp.html")
+            except EmailNotValidError as e:
+                issues.append(e)
+                return render(request, "account/forgot.html", {"issues": issues, "email": email})
 
         elif request.method == "GET":
             return render(request, "account/forgot.html")
@@ -75,10 +70,14 @@ def forgot(request):
     return redirect("/")
 
 def otp(request):
-    if request.htmx and request.POST:
-        otp = request.POST.get('otp')
-        print(otp)
-        return render(request, "account/otp.html", {"incorrect": True})
+    if request.htmx:
+        if request.method == "POST":
+            otp = request.POST.get('otp')
+            correctOtp = 1111
+            if otp == correctOtp:
+                return render(request, "account/reset.html")
+            else:
+                return render(request, "account/otp.html", {"incorrect": True})
     return redirect("/")
 
 def reset(request):
