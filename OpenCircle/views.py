@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from ui.models import Suggestions
+from email_validator import validate_email, EmailNotValidError
 
 def index(request):
     if request.htmx and request.POST:
@@ -43,13 +44,29 @@ def signup(request):
         if request.method == "GET":
             pass
         elif request.method == "POST":
+            username = request.POST.get('username')
+            email = request.POST.get('email')
+            password = request.POST.get('passInput')
             issues.append("bro imagine using post")
+            
         return render(request, "account/signup.html", {"issues": issues})
     return redirect("/")
 
 def forgot(request):
-    if request.htmx and request.POST:
-        return render(request, "account/forgot.html")
+    if request.htmx: 
+        issues = []
+        if request.method == "POST":
+            email = request.POST.get('email')
+            try:
+                email_object = validate_email(email)
+                return render(request, "account/otp.html")
+            except EmailNotValidError as e:
+                print(list(e))
+                return render(request, "account/forgot.html", {"issues": issues})
+
+        elif request.method == "GET":
+            return render(request, "account/forgot.html")
+        
     return redirect("/")
 
 def otp(request):

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <p class="font-mono py-2 text-6xl text-[#F4F4F9] tracking-wide">Reset pass</p>
 <div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
-  <form hx-post="{% url "otp" %}" hx-target="#authentication">
+  <form hx-post="{% url "forgot" %}" hx-target="#authentication">
     {% csrf_token %}
     <label class="hidden" value="login" name="nature"></label>
     <div class="w-full text-left pb-2">
