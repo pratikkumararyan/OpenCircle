@@ -4,6 +4,7 @@ from ui.models import Suggestions
 from email_validator import validate_email, EmailNotValidError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+import time
 
 def index(request):
     if request.htmx and request.POST:
@@ -23,17 +24,18 @@ def login(request):
         elif request.method == "POST":
             username = request.POST.get('username')
             password = request.POST.get('passInput')
-            try:
-                user = User.objects.get(username=username, password=password)
+            
+            user = authenticate(username=username, password=password)
+            if user is not None:
                 login(request, user)
                 return redirect("/ui/")
-            except User.DoesNotExist:
+            else:
                 issues.append("Invalid username or password.")
 
         return render(request, "account/login.html", {"issues": issues})
     return redirect("/")
 
-def authenticate(request):
+def change(request):
     # if request.htmx and request.POST:
     #     nature = request.POST.get('nature')
     #     if nature == "login":
@@ -70,8 +72,11 @@ def signup(request):
             if issues == []:
                 user = User.objects.create_user(username, email, password)
                 user.first_name = "unverified"
+                user.last_name = "1111"
                 user.save()
-                login(request, user)
+                time.sleep(1)
+                userAuth = authenticate(request, username=username, password=password)
+                login(request, userAuth)
                 return redirect("/ui/")
         return render(request, "account/signup.html", {"issues": issues})
     return redirect("/")
