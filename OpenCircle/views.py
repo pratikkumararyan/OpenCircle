@@ -4,9 +4,12 @@ from ui.models import Suggestions
 from email_validator import validate_email, EmailNotValidError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django_htmx.http import HttpResponseClientRedirect
 import time
 
 def index(request):
+    # if request.user.is_authenticated:
+    #     return redirect("/ui/")
     if request.htmx and request.POST:
         message = request.POST.get('message')
         rating = int(round((float(request.POST.get('rating'))/25)+1, 1))
@@ -77,7 +80,7 @@ def signup(request):
                 time.sleep(1)
                 userAuth = authenticate(request, username=username, password=password)
                 login(request, userAuth)
-                return redirect("/ui/")
+                return HttpResponseClientRedirect('/ui/')
         return render(request, "account/signup.html", {"issues": issues})
     return redirect("/")
 
@@ -116,6 +119,9 @@ def reset(request):
             print("resettin' the password")
     return redirect("/")
 
+def logout(request):
+    logout(request)
+    return redirect("/")
 # FLOW FOR THE ACCOUNT PROCEDURE:
 # 1. main landing page -> Get started
 # 2. Modal opens-> If signup, then goes to /signup/ and then to /otp/ for the email otp
