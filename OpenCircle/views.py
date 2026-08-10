@@ -16,7 +16,7 @@ def index(request):
     return render(request, 'landingPage/landing.html')
 
 
-def login(request):
+def Login(request):
     if request.htmx:
         issues = []
         if request.method == "GET":
