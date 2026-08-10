@@ -5,7 +5,6 @@
     <form hx-post="{% url "otp" %}" hx-target="#authentication">
         {% csrf_token %}
         <div class="w-full flex items-center justify-center">
-            
             <label class="otp otp-xl otp-warning {% if incorrect %}otp-error{% endif %}">
                 <span></span>
                 <span></span>
@@ -19,12 +18,15 @@
                        pattern="[0-9]{4}"
                        required />
             </label>
-            
         </div>
-        <ul class="list text-left" id="issues">
-            {% for issue in issues %}
-                <li class="text-error text-sm my-1 list-item">{{ forloop.counter }}. {{ issue }}</li>
-            {% endfor %}
+        <ul class="list flex justify-center place-items-center " id="issues">
+            
+                <li class="text-error text-sm my-1 list-item">
+                    {% if incorrect %}
+                    Incorrect OTP, kindly recheck and retry.
+                    {% endif %}
+                </li>
+            
         </ul>
         <div class="w-full">
             <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] hover:text-[#000000] active:scale-90 transition-all w-full mt-6"

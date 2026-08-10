@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from ui.models import Suggestions
 from email_validator import validate_email, EmailNotValidError
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 
 def index(request):
     if request.htmx and request.POST:
@@ -9,17 +11,25 @@ def index(request):
         rating = int(round((float(request.POST.get('rating'))/25)+1, 1))
         Suggestions.objects.create(rating=rating, message=message)
         return render(request, "landingPage/partial.html")
-
+    
     return render(request, 'landingPage/landing.html')
 
 
 def login(request):
     if request.htmx:
         issues = []
-        if str(request.method) == "GET":
+        if request.method == "GET":
             issues = []
-        else:
-            issues.append("why using post")
+        elif request.method == "POST":
+            username = request.POST.get('username')
+            password = request.POST.get('passInput')
+            try:
+                user = User.objects.get(username=username, password=password)
+                login(request, user)
+                return redirect("/ui/")
+            except User.DoesNotExist:
+                issues.append("Invalid username or password.")
+
         return render(request, "account/login.html", {"issues": issues})
     return redirect("/")
 
@@ -46,9 +56,23 @@ def signup(request):
         elif request.method == "POST":
             username = request.POST.get('username')
             email = request.POST.get('email')
+            try:
+                validate_email(email)
+            except EmailNotValidError as e:
+                issues.append(e)
             password = request.POST.get('passInput')
-            issues.append("bro imagine using post")
-            
+            try:
+                User.objects.get(username=username)
+                User.objects.get(email=email)
+                issues.append("Duplicate email/username detected.")
+            except User.DoesNotExist:
+                pass
+            if issues == []:
+                user = User.objects.create_user(username, email, password)
+                user.first_name = "unverified"
+                user.save()
+                login(request, user)
+                return redirect("/ui/")
         return render(request, "account/signup.html", {"issues": issues})
     return redirect("/")
 
@@ -59,7 +83,8 @@ def forgot(request):
             email = request.POST.get('email')
             try:
                 validate_email(email)
-                return render(request, "account/otp.html")
+                #send otp to e-mail here
+                return render(request, "account/otp.html", {"nature": "reset"})
             except EmailNotValidError as e:
                 issues.append(e)
                 return render(request, "account/forgot.html", {"issues": issues, "email": email})
@@ -71,18 +96,19 @@ def forgot(request):
 
 def otp(request):
     if request.htmx:
+        if request.POST:
+            print("wait this also works")
         if request.method == "POST":
             otp = request.POST.get('otp')
             correctOtp = 1111
-            if otp == correctOtp:
-                return render(request, "account/reset.html")
-            else:
-                return render(request, "account/otp.html", {"incorrect": True})
+
+            
     return redirect("/")
 
 def reset(request):
-    if request.htmx and request.POST:
-        print("resettin' the password")
+    if request.htmx: 
+        if request.method == "POST":
+            print("resettin' the password")
     return redirect("/")
 
 # FLOW FOR THE ACCOUNT PROCEDURE:
