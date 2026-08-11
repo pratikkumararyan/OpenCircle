@@ -5,7 +5,9 @@ from email_validator import validate_email, EmailNotValidError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django_htmx.http import HttpResponseClientRedirect
-import time
+from django.core.mail import send_mail
+from django.conf import settings
+import time, random
 
 def index(request):
     # if request.user.is_authenticated:
@@ -73,9 +75,15 @@ def signup(request):
             except User.DoesNotExist:
                 pass
             if issues == []:
+                otpNumber = str(random.randomint(1000, 9999))
+                try:
+                    send_mail("OpenCircle Signup OTP", "Your otp for Opencircle verification is " + otpNumber, settings.EMAIL_HOST_USER, [email])
+                except Exception as e:
+                    issues.append(e)
+            if issues == []:
                 user = User.objects.create_user(username, email, password)
                 user.first_name = "unverified"
-                user.last_name = "1111"
+                user.last_name = otpNumber
                 user.save()
                 time.sleep(1)
                 userAuth = authenticate(request, username=username, password=password)
