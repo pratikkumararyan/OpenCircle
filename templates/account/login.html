@@ -47,8 +47,8 @@
   </form>
   <div class="divider divider-accent">OR</div>
   <form hx-post="{% url "login" %}" >
-    <input type="email" class="hidden" name="username" value="guest@guest.com"/>
-    <input type="password" class="hidden" name="passInput" value="abcd"/>
+    <input type="text" class="hidden" name="username" value="Guest"/>
+    <input type="password" class="hidden" name="passInput" value="GuestPassword"/>
     
     <button class="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip tooltip-top md:tooltip-bottom hover:-translate-y-1 transition-all duration-300 border-5 border-neutral-content rounded-3xl flex flex-row items-center justify-start gap-6 py-2 w-full hover:border-primary cursor-pointer"
             type="submit"

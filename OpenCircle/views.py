@@ -8,6 +8,7 @@ from django_htmx.http import HttpResponseClientRedirect
 from django.core.mail import send_mail
 from django.conf import settings
 import time, random
+import threading
 
 def index(request):
     # if request.user.is_authenticated:
@@ -55,6 +56,9 @@ def change(request):
 
     return redirect("/")
 
+def signupEmail(otpInt, emailId):
+    send_mail("OpenCircle Signup OTP", "Your otp for Opencircle verification is " + otpInt, settings.EMAIL_HOST_USER, [emailId])
+
 def signup(request):
     if request.htmx:
         issues = []
@@ -70,24 +74,28 @@ def signup(request):
             password = request.POST.get('passInput')
             try:
                 User.objects.get(username=username)
-                User.objects.get(email=email)
-                issues.append("Duplicate email/username detected.")
+                issues.append("Username has already been taken.")
             except User.DoesNotExist:
                 pass
+            try:
+                User.objects.get(email=email)
+                issues.append("Duplicate e-mail detected.")
+            except User.DoesNotExist:
+                pass
+
             if issues == []:
-                otpNumber = str(random.randomint(1000, 9999))
-                try:
-                    send_mail("OpenCircle Signup OTP", "Your otp for Opencircle verification is " + otpNumber, settings.EMAIL_HOST_USER, [email])
-                except Exception as e:
-                    issues.append(e)
-            if issues == []:
+                otpNumber = str(random.randint(1000, 9999))
                 user = User.objects.create_user(username, email, password)
                 user.first_name = "unverified"
                 user.last_name = otpNumber
                 user.save()
-                time.sleep(1)
                 userAuth = authenticate(request, username=username, password=password)
                 login(request, userAuth)
+                email_thread = threading.Thread(
+                    target=signupEmail,
+                    args=(otpNumber, email)
+                )
+                email_thread.start()
                 return HttpResponseClientRedirect('/ui/')
         return render(request, "account/signup.html", {"issues": issues})
     return redirect("/")
@@ -100,7 +108,8 @@ def forgot(request):
             try:
                 validate_email(email)
                 #send otp to e-mail here
-                return render(request, "account/otp.html", {"nature": "reset"})
+                request.session['reset_otp'] = 1111
+                return render(request, "account/otp.html")
             except EmailNotValidError as e:
                 issues.append(e)
                 return render(request, "account/forgot.html", {"issues": issues, "email": email})
@@ -112,11 +121,11 @@ def forgot(request):
 
 def otp(request):
     if request.htmx:
-        if request.POST:
-            print("wait this also works")
         if request.method == "POST":
             otp = request.POST.get('otp')
-            correctOtp = 1111
+            correctOtp = request.session.get('reset_otp')
+            del request.session['reset_otp']
+            return redirect("login")
 
             
     return redirect("/")
@@ -127,7 +136,7 @@ def reset(request):
             print("resettin' the password")
     return redirect("/")
 
-def logout(request):
+def Logout(request):
     logout(request)
     return redirect("/")
 # FLOW FOR THE ACCOUNT PROCEDURE:
