@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <p class="font-mono py-2 text-6xl text-[#F4F4F9] tracking-wide">Login</p>
-<div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
+<div class="fieldset flex-1 border-base-300 rounded-box w-[75vw] md:w-full border p-4">
   <form hx-post="{% url "login" %}" hx-target="#authentication">
     {% csrf_token %}
     <label class="hidden" value="login" name="nature"></label>
@@ -36,7 +36,11 @@
     
     <ul class="list text-left" id="issues">
       {% for issue in issues %}
-        <li class="text-error text-sm my-1 list-item">{{ forloop.counter }}. {{ issue }}</li>
+        <li class="text-error text-sm my-1 list-item">
+          {% if issues|length != 1 %}
+          {{ forloop.counter }}. 
+          {% endif %}
+          {{ issue }}</li>
       {% endfor %}
     </ul>
     
@@ -46,9 +50,10 @@
     </div>
   </form>
   <div class="divider divider-accent">OR</div>
-  <form hx-post="{% url "login" %}" >
-    <input type="text" class="hidden" name="username" value="Guest"/>
-    <input type="password" class="hidden" name="passInput" value="GuestPassword"/>
+  <form hx-post="{% url "login" %}">
+    {% csrf_token %}
+    <input type="text" name="username" value="Guest" hidden/>
+    <input type="password" name="passInput" value="GuestAccount" hidden/>
     
     <button class="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-200 glass shadow-6xl border border-neutral-content/20 tooltip tooltip-top md:tooltip-bottom hover:-translate-y-1 transition-all duration-300 border-5 border-neutral-content rounded-3xl flex flex-row items-center justify-start gap-6 py-2 w-full hover:border-primary cursor-pointer"
             type="submit"

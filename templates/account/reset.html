@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <p class="font-mono py-2 text-6xl text-[#F4F4F9] tracking-wide">Reset pass</p>
-<div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
+<div class="fieldset flex-1 border-base-300 rounded-box w-[75vw] md:w-full border p-4">
   <form hx-post="{% url "reset" %}" hx-target="#authentication">
     {% csrf_token %}
     
@@ -29,7 +29,11 @@
     
     <ul class="list text-left" id="issues">
       {% for issue in issues %}
-        <li class="text-error text-sm my-1 list-item">{{ forloop.counter }}. {{ issue }}</li>
+        <li class="text-error text-sm my-1 list-item">
+          {% if issues|length != 1 %}
+          {{ forloop.counter }}. 
+          {% endif %}
+          {{ issue }}</li>
       {% endfor %}
     </ul>
     

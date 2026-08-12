@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <p class="font-mono py-2 text-6xl text-[#F4F4F9] tracking-wide">Signup</p>
-<div class="fieldset flex-1 border-base-300 rounded-box w-full border p-4">
+<div class="fieldset flex-1 border-base-300 rounded-box w-[75vw] md:w-full border p-4">
   <form hx-post="{% url "signup" %}" hx-target="#authentication">
     {% csrf_token %}
     <label class="hidden" value="signup" name="nature"></label>
@@ -37,7 +37,11 @@
     
     <ul class="list text-left" id="issues">
       {% for issue in issues %}
-        <li class="text-error text-sm my-1 list-item">{{ forloop.counter }}. {{ issue }}</li>
+        <li class="text-error text-sm my-1 list-item">
+          {% if issues|length != 1 %}
+          {{ forloop.counter }}. 
+          {% endif %}
+          {{ issue }}</li>
       {% endfor %}
     </ul>
     
@@ -48,7 +52,7 @@
   </form>
   
 </div>
-<div class="flex flex-row w-full">
+<div class="flex flex-row w-[75vw] md:w-full">
   <button hx-get="{% url "login" %}" hx-target="#authentication"
      class="link link-hover ml-auto text-lg text-neutral-content leading-10 hover:text-accent">Have an account? Login!</button>
 </div>

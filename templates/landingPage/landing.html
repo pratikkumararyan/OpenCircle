@@ -189,16 +189,16 @@
                   popovertarget="onboarding">Get Started</button>
           <div id="onboarding" class="modal" popover>
             <div class="modal-box modal-middle max-w-4xl w-11/12 overflow-x-hidden bg-[#191923] md:overflow-y-clip">
-              <div class="-my-8 -ml-6">
+              <div class="-my-8 m-0 md:-ml-6">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                         popovertarget="onboarding"
                         popovertargetaction="hide">✕</button>
-                <div class="grid grid cols-1 md:grid-cols-2 gap-x-4 items-center">
-                  <div class="hero-image">
+                <div class="grid grid cols-1 md:grid-cols-2 md:gap-x-4 items-center">
+                  <div class="hero-image w-0 h-0 md:w-auto md:h-auto">
                     <img alt="wallpaper" src="{% static "loginModalPic.png" %}" />
                   </div>
                   
-                  <div class="grid grid-cols-1 w-full" id="authentication">
+                  <div class="grid grid-cols-1 w-full my-4" id="authentication">
                     
                   </div>
                   <div hx-get="{% url "login" %}" hx-target="#authentication" hx-trigger="load" hx-swap="innerHTML"></div>

@@ -34,7 +34,7 @@ def Login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("/ui/")
+                return HttpResponseClientRedirect('/ui/')
             else:
                 issues.append("Invalid username or password.")
 
