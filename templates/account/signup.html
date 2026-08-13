@@ -47,7 +47,14 @@
     
     <div class="w-full">
       <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] hover:text-[#000000] active:scale-90 transition-all w-full mt-4"
-              type="submit">Create Account</button>
+              type="submit"
+              onclick=" 
+              if ((document.getElementById('email').value != '') && (document.getElementById('username').value != '') && (document.getElementById('passInput').value != ''))
+              { 
+              innerHTML = 'Verifying details...' 
+              } 
+              ">
+              Create Account</button>
     </div>
   </form>
   
