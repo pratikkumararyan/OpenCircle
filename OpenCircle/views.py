@@ -107,8 +107,17 @@ def forgot(request):
             email = request.POST.get('email')
             try:
                 validate_email(email)
-                #send otp to e-mail here
-                request.session['reset_otp'] = 1111
+                otpNumber = random.randint(1000, 9999)
+                request.session['reset_otp'] = otpNumber
+                request.session['reset_email'] = email
+
+                email_thread = threading.Thread(
+                                    target=signupEmail,
+                                    args=(otpNumber, email)
+                                )
+                email_thread.start()
+                
+                
                 return render(request, "account/otp.html")
             except EmailNotValidError as e:
                 issues.append(e)
@@ -119,11 +128,16 @@ def forgot(request):
         
     return redirect("/")
 
+def otpEmail(otpNumber, emailId):
+    send_mail("Password reset attempt OTP", "There was recently a password reset attempt at the OpenCircle account linked to " + emailId + ". If this was you, kindly proceed with the OTP number " + otpNumber + ". If this wasn't you can safely ignore this e-mail.", settings.EMAIL_HOST_USER, [emailId])
+
+
 def otp(request):
     if request.htmx:
         if request.method == "POST":
             otp = request.POST.get('otp')
             correctOtp = request.session.get('reset_otp')
+            email = request.session.get('reset_email')
             del request.session['reset_otp']
             return redirect("login")
 
