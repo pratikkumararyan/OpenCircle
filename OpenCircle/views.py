@@ -109,7 +109,7 @@ def forgot(request):
         if request.method == "POST":
             email = request.POST.get('email')
             try:
-                validate_email(email)
+                User.objects.get(email=email)
                 otpNumber = random.randint(1000, 9999)
                 request.session['reset_otp'] = otpNumber
                 request.session['reset_email'] = email
@@ -120,9 +120,8 @@ def forgot(request):
                                 )
                 email_thread.start()
                 
-                
                 return render(request, "account/otp.html")
-            except EmailNotValidError as e:
+            except User.DoesNotExist as e:
                 issues.append(e)
                 return render(request, "account/forgot.html", {"issues": issues, "email": email})
 
@@ -138,16 +137,23 @@ def otp(request):
             correctOtp = request.session.get('reset_otp')
             email = request.session.get('reset_email')
 
-            if int(correctOtp) == int(otp):
-                
-            del request.session['reset_otp']
-            return render(request, "account/reset.html")     
+            if int(correctOtp) != int(otp):
+                return render(request, "account/otp.html", {"incorrect": True})
+            else:
+                del request.session['reset_otp']
+                return render(request, "account/reset.html")     
     return redirect("/")
 
 def reset(request):
     if request.htmx: 
         if request.method == "POST":
-            print("resettin' the password")
+            password = request.POST.get('passInput')
+            email = request.session.get('reset_email')
+            userObj = User.objects.get(email=email)
+            userObj.set_password(password)
+            userObj.save()
+            return redirect("login")
+            
     return redirect("/")
 
 def Logout(request):

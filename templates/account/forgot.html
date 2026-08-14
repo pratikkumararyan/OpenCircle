@@ -17,7 +17,14 @@
     
     <div class="w-full">
       <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] hover:text-[#000000] active:scale-90 transition-all w-full mt-4"
-              type="submit">Send OTP</button>
+              type="submit"
+              onclick=" 
+              if (document.getElementById('email').value != '')
+              { 
+              innerHTML = 'Verifying details...' 
+              } 
+              ">
+              Send OTP</button>
     </div>
   </form>
   
