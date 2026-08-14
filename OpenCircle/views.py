@@ -100,6 +100,9 @@ def signup(request):
         return render(request, "account/signup.html", {"issues": issues})
     return redirect("/")
 
+def otpEmail(otpNumber, emailId):
+    send_mail(f"Open Circle password reset attempt at your account", f"Hi there, there was recently a password reset attempt at the OpenCircle account associated with this email-id [{emailId}]. The OTP for the reset is *{otpNumber}* if this was you, or you can safely ignore this mail if it wasn't.", settings.EMAIL_HOST_USER, [emailId])
+
 def forgot(request):
     if request.htmx: 
         issues = []
@@ -112,7 +115,7 @@ def forgot(request):
                 request.session['reset_email'] = email
 
                 email_thread = threading.Thread(
-                                    target=signupEmail,
+                                    target=otpEmail,
                                     args=(otpNumber, email)
                                 )
                 email_thread.start()
@@ -128,20 +131,17 @@ def forgot(request):
         
     return redirect("/")
 
-def otpEmail(otpNumber, emailId):
-    send_mail("Password reset attempt OTP", "There was recently a password reset attempt at the OpenCircle account linked to " + emailId + ". If this was you, kindly proceed with the OTP number " + otpNumber + ". If this wasn't you can safely ignore this e-mail.", settings.EMAIL_HOST_USER, [emailId])
-
-
 def otp(request):
     if request.htmx:
         if request.method == "POST":
             otp = request.POST.get('otp')
             correctOtp = request.session.get('reset_otp')
             email = request.session.get('reset_email')
-            del request.session['reset_otp']
-            return redirect("login")
 
-            
+            if int(correctOtp) == int(otp):
+                
+            del request.session['reset_otp']
+            return render(request, "account/reset.html")     
     return redirect("/")
 
 def reset(request):
