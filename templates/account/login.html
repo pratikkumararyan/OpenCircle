@@ -46,7 +46,15 @@
     
     <div class="w-full">
       <button class="btn border-[#EF7B45] hover:bg-[#EF7B45] hover:text-[#000000] active:scale-90 transition-all w-full mt-4"
-              type="submit">Login</button>
+              type="submit" 
+              onclick=" 
+              if ((document.getElementById('username').value != '') && (document.getElementById('passInput').value != ''))
+              { 
+              innerHTML = 'Verifying details...' 
+              } 
+              "
+              >
+              Login</button>
     </div>
   </form>
   <div class="divider divider-accent">OR</div>

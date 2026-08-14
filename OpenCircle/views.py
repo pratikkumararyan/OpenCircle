@@ -101,7 +101,7 @@ def signup(request):
     return redirect("/")
 
 def otpEmail(otpNumber, emailId):
-    send_mail(f"Open Circle password reset attempt at your account", f"Hi there, there was recently a password reset attempt at the OpenCircle account associated with this email-id [{emailId}]. The OTP for the reset is *{otpNumber}* if this was you, or you can safely ignore this mail if it wasn't.", settings.EMAIL_HOST_USER, [emailId])
+    send_mail(f"Open Circle password reset attempt at your account", f"Hi there, there was recently a password reset attempt at the OpenCircle account associated with this email-id <i>[{emailId}]</i>. The OTP for the reset is <b>{otpNumber}</b> if this was you, or you can safely ignore this mail if it wasn't.", settings.EMAIL_HOST_USER, [emailId])
 
 def forgot(request):
     if request.htmx: 
