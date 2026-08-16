@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def ui(request):
-    return HttpResponse('UI Site with recommendations etc.')
+    return render(request, "UI/dashboard.html")
 
 @login_required
 def post(request):
