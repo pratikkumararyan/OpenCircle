@@ -35,38 +35,35 @@
         <div class="flex place-items-center justify-center my-4">
             <p class="text-3xl tracking-wide">Welcome back!</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 place-items-center justify-center">
-            <div class="grid-item">
-                <div class="bg-base-300 w-auto h-auto">
-                    <div class="card">hi</div>
+        <div class="grid grid-cols-1 md:grid-cols-12 place-items-center justify-center">
+            <div class="grid-item col-span-1">
+                <div class="bg-base-300 w-full h-full">
+                    <div class="card">
+                        <p class="text-2xl">Trending people</p>
+                        <div class="grid-cols-{users} grid-rows-1 md:grid-rows-{users} md:grid-cols-1">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="grid-item">
-                <div class="bg-base-300 w-auto h-auto">
+            <div class="grid-item mt-5 md:mt-2 col-span-11">
+                <div class="bg-base-300 w-full h-full">
                     <div class="card">yo</div>
                 </div>
             </div>
         </div>
         <div class="fab fab-flower m-4">
             
-                <label tabindex="0" role="button" class="swap swap-rotate">
-                    <input type="checkbox" />
-                    
-                    <svg class="swap-off fill-current"
-                         xmlns="http://www.w3.org/2000/svg"
-                         width="32"
-                         height="32"
-                         viewBox="0 0 512 512">
-                        <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-                    </svg>
-                    <svg class="swap-on fill-current"
-                         xmlns="http://www.w3.org/2000/svg"
-                         width="32"
-                         height="32"
-                         viewBox="0 0 512 512">
-                        <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-                    </svg>
-                </label>
+            <div tabindex="0" role="button" class="btn btn-circle btn-xl">
+                <svg aria-label="New"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 16 16"
+                     fill="currentColor"
+                     class="size-6">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                </svg>
+            </div>
+            
             <button class="btn btn-circle btn-xl">
                 <svg aria-label="New camera photo"
                      xmlns="http://www.w3.org/2000/svg"
