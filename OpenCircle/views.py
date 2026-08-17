@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from ui.models import Suggestions
+from ui.models import Suggestions, Profile
 from email_validator import validate_email, EmailNotValidError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -89,6 +89,7 @@ def signup(request):
                 user.first_name = "unverified"
                 user.last_name = otpNumber
                 user.save()
+                Profile.objects.create()
                 userAuth = authenticate(request, username=username, password=password)
                 login(request, userAuth)
                 email_thread = threading.Thread(
