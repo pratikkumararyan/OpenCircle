@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def ui(request):
-    
-    nUsers = 5
-    return render(request, "UI/dashboard.html", {"users": nUsers})
+    user = request.user
+    name = user.username
+    return render(request, "UI/dashboard.html", {"Name": name})
 
 @login_required
 def post(request):
