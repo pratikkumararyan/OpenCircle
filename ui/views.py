@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 def ui(request):
     user = request.user
     name = user.username
+    
     return render(request, "UI/dashboard.html", {"Name": name})
 
 @login_required

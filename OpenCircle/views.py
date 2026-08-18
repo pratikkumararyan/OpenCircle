@@ -89,7 +89,7 @@ def signup(request):
                 user.first_name = "unverified"
                 user.last_name = otpNumber
                 user.save()
-                Profile.objects.create()
+                Profile.objects.create(user=user)
                 userAuth = authenticate(request, username=username, password=password)
                 login(request, userAuth)
                 email_thread = threading.Thread(
