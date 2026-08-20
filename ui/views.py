@@ -10,9 +10,10 @@ import os
 def ui(request):
     user = request.user
     name = user.username
-    print(name)
     profile = Profile.objects.get(user=user)
     img = profile.profile_picture
+    
+    print(img)
     return render(request, "UI/dashboard.html", {"username": name, "img": img})
 
 @login_required
