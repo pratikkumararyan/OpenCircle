@@ -20,5 +20,6 @@ class Profile(models.Model):
     profile_picture = models.ImageField(upload_to=UploadPfp, null=True, blank=True, default="profile_pics/default_user.png")
     strikes = models.IntegerField(default=0)
     followers = models.ManyToManyField(User, related_name="followers", blank=True)
+    
     def __str__(self):
         return self.user.username + "'s profile"

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Profile
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 
 @login_required
@@ -10,7 +11,8 @@ def ui(request):
     name = user.username
     profile = Profile.objects.get(user=user)
     img = profile.profile_picture.url
-    return render(request, "UI/dashboard.html", {"username": name, "img": img})
+    following = user.followers.all()
+    return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following})
 
 @login_required
 def post(request):
