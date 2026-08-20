@@ -19,6 +19,11 @@ def post(request):
     return HttpResponse('Post site here')
 
 @login_required
+def accountPage(request, UserId):
+    user = User.objects.get(pk=UserId)
+    return render(request, "UI/profile.html", {"user": user})
+
+@login_required
 def dm(request):
     return HttpResponse('DM site here')
 

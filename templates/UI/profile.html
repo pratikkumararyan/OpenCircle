@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        <title>OpenCircle | User Profile</title>
+        <meta charset="UTF-8" />
+        <meta name="description" content="OpenCircle | An open-source Django social media platform for the specially abled." />
+        <meta name="keywords" content="Open-source, Django, social media, Specially abled, Modern UI" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+        
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        
+        <style type="text/css">
+            @theme {
+                --font-heading: "Montserrat", sans-serif;
+                --font-body: "Inter", sans-serif;
+                --font-mono: "JetBrains Mono", monospace;
+                --font-sans: InterVariable, sans-serif;
+            }
+
+            body {
+                background-color: #36454F;
+                min-height: 100vh;
+                margin: 0;
+            }
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        </style>
+    </head>
+    {{ user }}
+
+
+</html>
