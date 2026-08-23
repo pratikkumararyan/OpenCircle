@@ -23,3 +23,9 @@ class Profile(models.Model):
     
     def __str__(self):
         return self.user.username + "'s profile"
+
+class Post(models.Model):
+    poster = models.OneToOneField(User, on_delete=models.CASCADE)
+    content = models.TextField(max_length=2500)
+    image = models.ImageField(upload_to="images", null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
