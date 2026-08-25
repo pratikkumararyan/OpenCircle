@@ -34,34 +34,44 @@
                 margin: 0;
             }
 
-            .no-scrollbar::-webkit-scrollbar {
-                display: none;
+            .ql-container.ql-snow {
+              height: 350px !important; 
+              border-bottom-left-radius: 4px;
+              border-bottom-right-radius: 4px;
             }
-
-            .no-scrollbar {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
+      
+            .ql-editor {
+                overflow-y: auto !important;  
+                overflow-x: hidden !important;    
+                word-break: break-word !important; 
+                white-space: pre-wrap !important;   
+                min-height: 100%;                  
             }
-
-            .editor-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #0f172a;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-radius: 4px;
+          
+            .ql-toolbar.ql-snow {
+                background: #1e293b;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                border-color: #334155;
             }
-            #editor-container {
-                height: 350px;
+          
+            .ql-editor::-webkit-scrollbar {
+                width: 8px;
             }
-            .actions-panel {
-                max-width: 800px;
-                margin: 20px auto;
-                text-align: right;
+            .ql-editor::-webkit-scrollbar-track {
+                background: #0f172a; 
+                border-bottom-right-radius: 4px;
+            }
+            .ql-editor::-webkit-scrollbar-thumb {
+                background: #334155; 
+                border-radius: 4px;
+            }
+            .ql-editor::-webkit-scrollbar-thumb:hover {
+                background: #475569; 
             }
             .ql-editor.ql-blank::before {
-                color: #94a3b8;
-                font-style: normal; 
-                opacity: 1; 
+                color: #94a3b8 !important;
+                font-style: normal !important;
             }
         </style>
     </head>
@@ -235,9 +245,9 @@
         <dialog id="Send" class="modal">
             <div class="modal-box bg-slate-800 text-slate-100 border border-slate-700 justify-center place-items-center">
                 <p class="text-2xl md:text-3xl font-bold tracking-wide mt-2 mb-4">Post a message</p>
-                <div class="editor-wrapper">
-                    <div id="editor-container">
-                        <p></p>
+                <div class="editor-wrapper w-full">
+                    <div id="editor-container" class="w-full">
+                    
                     </div>
                 </div>
             </div>
