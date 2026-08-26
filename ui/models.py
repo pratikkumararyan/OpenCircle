@@ -26,6 +26,6 @@ class Profile(models.Model):
 
 class Post(models.Model):
     poster = models.OneToOneField(User, on_delete=models.CASCADE)
-    content = models.TextField(max_length=2500)
+    content = models.TextField(max_length=5000)
     image = models.ImageField(upload_to="images", null=True)
     timestamp = models.DateTimeField(auto_now_add=True)

@@ -245,17 +245,23 @@
         <dialog id="Send" class="modal">
             <div class="modal-box bg-slate-800 text-slate-100 border border-slate-700 justify-center place-items-center">
                 <p class="text-2xl md:text-3xl font-bold tracking-wide mt-2 mb-4">Post a message</p>
-                <form id="messagePostForm" hx-get="{% url "postMessage" %}" hx-target="#issues">
+                <form id="messagePostForm" hx-encoding="multipart/form-data" hx-get="{% url "postMessage" %}" hx-target="#response">
                     <div class="editor-wrapper w-full">
-                        <div id="editor-container" class="w-full" oninput="updateHTML()">
+                        <div id="editor-container" class="w-full">
                         
                         </div>
                     </div>
                     <textarea id="htmlField" name="htmlField" class="hidden"></textarea>
+                    <fieldset class="fieldset">
+                        <label class="label my-1">Upload a picture (optional)</label>
+                        <input type="file" class="file-input" name="fileInput"/>
+                    </fieldset>
 
+                    <div class="w-full mt-2">
+                    <div class="btn btn-accent rounded-lg w-full" type="submit">Submit</div>
+                    </div>
                 </form>
-                <p class="text-warning text-sm"><div id="charCount"></div>/2500 characters</p>
-                <p id="issues" class="text-lg text-error"></p>
+                <div class="response"></div>
             </div>
             <form method="dialog" class="modal-backdrop">
                 <button>close</button>
@@ -320,11 +326,6 @@
             document.getElementById('htmlField').value = htmlContent;
         });
 
-        function updateHTML()
-        {
-            const counter = document.getElementById('charCount');
-            counter.value = quill.getSemanticHTML().length;
-        }
     </script>
     </body>
 </html>

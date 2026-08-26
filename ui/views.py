@@ -34,5 +34,11 @@ def friends(request):
 def postMessage(request):
     if request.htmx and request.POST:
         message = request.POST.get("htmlField")
-        Post.objects.create(request.user, message)
+        image = request.POST.get("fileInput")
+        if len(message) > 4500:
+            return HttpResponse('<p class="text-md text-error">Message too long! Please shorten it.</p>')
+        if image.split('.')[-1] != "png":
+            return HttpResponse('<p class="text-md text-error">Please upload a PNG image only..</p>')
+        Post.objects.create(poster=request.user, content=message, image=image)
+        return HttpResponse('<p class="text-md text-success">Message successfully posted!</p>')
     return redirect("/")
