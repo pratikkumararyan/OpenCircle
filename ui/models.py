@@ -29,3 +29,6 @@ class Post(models.Model):
     content = models.TextField(max_length=5000)
     image = models.ImageField(upload_to="images", null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content[:30] + "..."

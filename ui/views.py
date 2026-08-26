@@ -12,7 +12,8 @@ def ui(request):
     profile = Profile.objects.get(user=user)
     img = profile.profile_picture.url
     following = user.followers.all()
-    return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following})
+    posts = Post.objects.all()
+    return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following, "posts":posts})
 
 @login_required
 def post(request):
