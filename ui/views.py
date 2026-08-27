@@ -12,7 +12,7 @@ def ui(request):
     profile = Profile.objects.get(user=user)
     img = profile.profile_picture.url
     following = user.followers.all()
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by("-timestamp")
     return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following, "posts":posts})
 
 @login_required

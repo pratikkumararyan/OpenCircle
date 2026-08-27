@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from ui.models import Suggestions, Profile
 from email_validator import validate_email, EmailNotValidError
@@ -6,8 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django_htmx.http import HttpResponseClientRedirect
 from django.core.mail import send_mail
-from django.conf import settings
-import time, random
+import random
 import threading
 
 def index(request):
