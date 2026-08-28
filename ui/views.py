@@ -12,8 +12,8 @@ def ui(request):
     profile = Profile.objects.get(user=user)
     img = profile.profile_picture.url
     following = user.followers.all()
-    posts = Post.objects.all().order_by("-timestamp")
-    return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following, "posts":posts})
+    newest = Post.objects.all().order_by("-timestamp")[0].pk
+    return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following, "newest": newest})
 
 @login_required
 def post(request):
@@ -42,4 +42,11 @@ def postMessage(request):
             return HttpResponse('<p class="text-md text-error">Please upload a PNG image only..</p>')
         Post.objects.create(poster=request.user, content=message, image=image)
         return HttpResponse('<p class="text-md text-success">Message successfully posted!</p>')
+    return redirect("/")
+
+def feed(request, postId):
+    if request.htmx:
+        lastIndex = request.get("post")
+        postObj = Post.objects.get(pk=postId)
+        return render(request, "UI/postPartial.html", {"post": postObj, "Id": (lastIndex+1)})
     return redirect("/")

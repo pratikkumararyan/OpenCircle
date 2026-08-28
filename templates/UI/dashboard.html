@@ -18,7 +18,8 @@
               rel="stylesheet"
               type="text/css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+              rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <style type="text/css">
@@ -36,40 +37,44 @@
             }
 
             .ql-container.ql-snow {
-              height: 350px !important; 
-              border-bottom-left-radius: 4px;
-              border-bottom-right-radius: 4px;
+                height: 350px !important;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
             }
-      
+
             .ql-editor {
-                overflow-y: auto !important;  
-                overflow-x: hidden !important;    
-                word-break: break-word !important; 
-                white-space: pre-wrap !important;   
-                min-height: 100%;                  
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                word-break: break-word !important;
+                white-space: pre-wrap !important;
+                min-height: 100%;
             }
-          
+
             .ql-toolbar.ql-snow {
                 background: #1e293b;
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px;
                 border-color: #334155;
             }
-          
+
             .ql-editor::-webkit-scrollbar {
                 width: 8px;
             }
+
             .ql-editor::-webkit-scrollbar-track {
-                background: #0f172a; 
+                background: #0f172a;
                 border-bottom-right-radius: 4px;
             }
+
             .ql-editor::-webkit-scrollbar-thumb {
-                background: #334155; 
+                background: #334155;
                 border-radius: 4px;
             }
+
             .ql-editor::-webkit-scrollbar-thumb:hover {
-                background: #475569; 
+                background: #475569;
             }
+
             .ql-editor.ql-blank::before {
                 color: #94a3b8 !important;
                 font-style: normal !important;
@@ -118,46 +123,9 @@
             <main class="lg:col-span-9 xl:col-span-9 space-y-6 w-full">
                 <h2 class="text-xl md:text-2xl font-bold text-slate-200">Recent posts:</h2>
                 <div id="posts-feed" class="space-y-6 w-full">
-                    {% for post in posts %}
-                        <article class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4 md:p-6 shadow-xl space-y-4 w-full">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <div class="avatar">
-                                        <div class="w-10 h-10 rounded-full">
-                                            <img src="{{ post.poster.profile.profile_picture.url }}"
-                                                 alt="{{ post.user.username }}" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold text-sm md:text-base leading-none text-slate-100">{{ post.poster.username }}</h3>
-                                        <span class="text-xs text-slate-400">{{ post.timestamp|timesince }} ago</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-ghost btn-circle btn-sm text-amber-500 hover:text-error"
-                                        title="Report post">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         fill="none"
-                                         viewBox="0 0 24 24"
-                                         stroke-width="1.5"
-                                         stroke="currentColor"
-                                         class="size-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <p class="text-sm md:text-base text-slate-300 leading-relaxed">{{ post.content }}</p>
-                            {% if post.image %}
-                                <div class="w-full rounded-xl overflow-hidden bg-slate-900 border border-slate-700/30 flex items-center justify-center max-h-[550px]">
-                                    <img src="{{ post.image.url }}"
-                                         class="w-full h-full object-cover"
-                                         alt="Post media" />
-                                </div>
-                            {% endif %}
-                        </article>
-                    {% endfor %}
-                    <div hx-get="/feed/?page=2"
+                    <div hx-get="{% url "feed/{ newest }" %}"
                          hx-trigger="revealed"
-                         hx-swap="afterend"
+                         hx-swap="outerHTML"
                          class="text-center py-4">
                         <span class="loading loading-spinner loading-md text-indigo-400"></span>
                     </div>
@@ -168,7 +136,7 @@
             <div tabindex="0"
                  role="button"
                  class="btn btn-circle btn-xl btn-primary shadow-2xl">
-                <img src="{% static "hamburger.svg" %}"  class="size-6">
+                <img src="{% static "hamburger.svg" %}"  class="size-6" />
             </div>
             <button class="btn btn-circle btn-xl">
                 <svg aria-label="New camera photo"
@@ -187,7 +155,8 @@
                      fill="currentColor"
                      class="size-6">
                     <path d="M3 4.75a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6.25 3a.75.75 0 0 0 0 1.5h7a.75.75 0 0 0 0-1.5h-7ZM6.25 7.25a.75.75 0 0 0 0 1.5h7a.75.75 0 0 0 0-1.5h-7ZM6.25 11.5a.75.75 0 0 0 0 1.5h7a.75.75 0 0 0 0-1.5h-7ZM4 12.25a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM3 9a1 1 0 1 0 0-2 1 1 0 0 1 2 0Z" />
-                </svg>+
+                </svg>
+                +
             </button>
             <button class="btn btn-circle btn-xl" onclick="Docs.showModal()">
                 <svg aria-label="New gallery photo"
@@ -212,20 +181,19 @@
         <dialog id="Send" class="modal">
             <div class="modal-box bg-slate-800 text-slate-100 border border-slate-700 justify-center place-items-center">
                 <p class="text-2xl md:text-3xl font-bold tracking-wide mt-2 mb-4">Post a message</p>
-                <form id="messagePostForm" hx-get="{% url "postMessage" %}" hx-target="#response">
+                <form id="messagePostForm"
+                      hx-get="{% url "postMessage" %}"
+                      hx-target="#response">
                     <div class="editor-wrapper w-full">
-                        <div id="editor-container" class="w-full">
-                        
-                        </div>
+                        <div id="editor-container" class="w-full"></div>
                     </div>
                     <textarea id="htmlField" name="htmlField" class="hidden"></textarea>
                     <fieldset class="fieldset">
                         <label class="label my-1">Upload a picture (optional)</label>
-                        <input type="file" class="file-input" name="fileInput"/>
+                        <input type="file" class="file-input" name="fileInput" />
                     </fieldset>
-
                     <div class="w-full mt-2">
-                    <div class="btn btn-accent rounded-lg w-full" type="submit">Submit</div>
+                        <div class="btn btn-accent rounded-lg w-full" type="submit">Submit</div>
                     </div>
                 </form>
                 <div class="response"></div>
@@ -257,8 +225,8 @@
                         </label>
                         <h2 class="font-bold text-xl my-2">2. Proof of Disability</h2>
                         <fieldset class="fieldset">
-                          <input type="file" class="file-input file-input-secondary" />
-                          <label class="label ml-2">Choose a PNG image</label>
+                            <input type="file" class="file-input file-input-secondary" />
+                            <label class="label ml-2">Choose a PNG image</label>
                         </fieldset>
                     </form>
                 {% endif %}
@@ -267,32 +235,36 @@
                 <button>close</button>
             </form>
         </dialog>
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+        <script>
+            const toolbarOptions = [
+                [{
+                    'header': [1, 2, 3, false]
+                }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{
+                    'list': 'ordered'
+                }, {
+                    'list': 'bullet'
+                }],
+                ['link'],
+                ['clean']
+            ];
 
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-    <script>
-        const toolbarOptions = [
-            [{ 'header': [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike'],        
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],       
-            ['link'],
-            ['clean']                                         
-        ];
+            const quill = new Quill('#editor-container', {
+                modules: {
+                    toolbar: toolbarOptions
+                },
+                theme: 'snow',
+                placeholder: 'Start typing....'
+            });
 
-        const quill = new Quill('#editor-container', {
-            modules: {
-                toolbar: toolbarOptions
-            },
-            theme: 'snow',
-            placeholder: 'Start typing....'
-        });
+            const form = document.getElementById('messagePostForm');
+            form.addEventListener('htmx:configRequest', (event) => {
+                const htmlContent = quill.getSemanticHTML();
 
-        const form = document.getElementById('messagePostForm');
-        form.addEventListener('htmx:configRequest', (event) => {
-            const htmlContent = quill.getSemanticHTML(); 
-            
-            document.getElementById('htmlField').value = htmlContent;
-        });
-
-    </script>
+                document.getElementById('htmlField').value = htmlContent;
+            });
+        </script>
     </body>
 </html>

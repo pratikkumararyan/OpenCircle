@@ -25,9 +25,9 @@ class Profile(models.Model):
         return self.user.username + "'s profile"
 
 class Post(models.Model):
-    poster = models.OneToOneField(User, on_delete=models.CASCADE)
+    poster = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=5000)
-    image = models.ImageField(upload_to="images", null=True)
+    image = models.ImageField(upload_to="images", null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
