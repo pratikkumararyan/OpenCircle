@@ -12,7 +12,7 @@ def ui(request):
     profile = Profile.objects.get(user=user)
     img = profile.profile_picture.url
     following = user.followers.all()
-    newest = Post.objects.all().order_by("-timestamp")[0].pk
+    newest = Post.objects.all().order_by("-timestamp")[0].pk - 1
     return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following, "newest": newest})
 
 @login_required
@@ -45,8 +45,8 @@ def postMessage(request):
     return redirect("/")
 
 def feed(request, postId):
-    if request.htmx:
-        lastIndex = request.get("post")
+    
+        lastIndex = request.session.get("post")
         postObj = Post.objects.get(pk=postId)
         return render(request, "UI/postPartial.html", {"post": postObj, "Id": (lastIndex+1)})
-    return redirect("/")
+    

@@ -32,10 +32,10 @@
                  alt="Post media" />
         </div>
     {% endif %}
-    <input value="{{ Id }}" id="{{ Id }}" hidden name="post" />
+    <input value="{{ Id }}" id="field{{ Id }}" hidden name="post" />
 </article>
 <div hx-get="{% url "feed/{{ Id }}" %}"
-                         hx-include="#{{ Id }}"
+                         hx-include="#field{{ Id }}"
                          hx-trigger="revealed"
                          hx-swap="outerHTML"
                          class="text-center py-4">
