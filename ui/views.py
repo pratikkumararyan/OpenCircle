@@ -12,7 +12,7 @@ def ui(request):
     profile = Profile.objects.get(user=user)
     img = profile.profile_picture.url
     following = user.followers.all()
-    newest = Post.objects.all().order_by("-timestamp")[0].pk - 1
+    newest = Post.objects.all().order_by("-timestamp")[0].pk
     return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following, "newest": newest})
 
 @login_required
@@ -45,8 +45,11 @@ def postMessage(request):
     return redirect("/")
 
 def feed(request, postId):
-    
-        lastIndex = request.session.get("post")
+    lastIndex = str(int(request.GET.get(f"post{postId}")) - 1)
+    try:
         postObj = Post.objects.get(pk=postId)
-        return render(request, "UI/postPartial.html", {"post": postObj, "Id": (lastIndex+1)})
+        return render(request, "UI/postPartial.html", {"post": postObj, "Id": lastIndex})
+    except Post.DoesNotExist:
+        return HttpResponse("<p class='-m-2 text-error'><center>That's it for today!</center></p>")
+    
     

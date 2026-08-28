@@ -123,7 +123,7 @@
             <main class="lg:col-span-9 xl:col-span-9 space-y-6 w-full">
                 <h2 class="text-xl md:text-2xl font-bold text-slate-200">Recent posts:</h2>
                 <div id="posts-feed" class="space-y-6 w-full">
-                    <input value="{{ newest }}" id="field{{ newest }}" name="post" />
+                    <input value="{{ newest }}" id="field{{ newest }}" name="post{{ newest }}" hidden/>
                     <div hx-get="feed/{{ newest }}"
                          hx-trigger="revealed"
                          hx-include="#field{{ newest }}"

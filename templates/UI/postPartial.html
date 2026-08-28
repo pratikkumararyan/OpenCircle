@@ -3,12 +3,14 @@
         <div class="flex items-center gap-3">
             <div class="avatar">
                 <div class="w-10 h-10 rounded-full">
+                    <a href="profile/{{ post.poster.pk }}">
                     <img src="{{ post.poster.profile.profile_picture.url }}"
-                         alt="{{ post.user.username }}" />
+                         alt="{{ post.poster.username }}" />
+                    </a>
                 </div>
             </div>
             <div>
-                <h3 class="font-bold text-sm md:text-base leading-none text-slate-100">{{ post.poster.username }}</h3>
+                <h3 class="font-bold text-sm md:text-base leading-none text-slate-100"><a href="profile/{{ post.poster.pk }}">{{ post.poster.username }}</a></h3>
                 <span class="text-xs text-slate-400">{{ post.timestamp|timesince }} ago</span>
             </div>
         </div>
@@ -32,9 +34,9 @@
                  alt="Post media" />
         </div>
     {% endif %}
-    <input value="{{ Id }}" id="field{{ Id }}" hidden name="post" />
+    <input value="{{ Id }}" id="field{{ Id }}" hidden name="post{{ Id }}" />
 </article>
-<div hx-get="{% url "feed/{{ Id }}" %}"
+<div hx-get="feed/{{ Id }}"
                          hx-include="#field{{ Id }}"
                          hx-trigger="revealed"
                          hx-swap="outerHTML"
