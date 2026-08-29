@@ -9,18 +9,17 @@ from django.contrib.auth import logout
 @login_required
 def ui(request):
     user = request.user
-    name = user.username
     profile = Profile.objects.get(user=user)
     img = profile.profile_picture.url
     following = user.followers.all()
     newest = Post.objects.all().order_by("-timestamp")[0].pk
-    return render(request, "UI/dashboard.html", {"username": name, "img": img, "following": following, "newest": newest})
+    return render(request, "UI/dashboard.html", {"user": user, "following": following, "newest": newest})
 
 @login_required
 def post(request):
     return HttpResponse('Post site here')
 
-@login_required
+
 def accountPage(request, UserId):
     user = User.objects.get(pk=UserId)
     return render(request, "UI/profile.html", {"user": user})
