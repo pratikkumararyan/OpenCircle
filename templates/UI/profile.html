@@ -1,23 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
     <head>
-        <title>OpenCircle | User Profile</title>
+        <title>OpenCircle | {{ profile_user.username }}'s Profile</title>
         <meta charset="UTF-8" />
-        <meta name="description" content="OpenCircle | An open-source Django social media platform for the specially abled." />
-        <meta name="keywords" content="Open-source, Django, social media, Specially abled, Modern UI" />
+        <meta name="description" content="OpenCircle | User Profile" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5"
+              rel="stylesheet"
+              type="text/css" />
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-        
-        
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+              rel="stylesheet"
+              type="text/css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        
         <style type="text/css">
             @theme {
                 --font-heading: "Montserrat", sans-serif;
@@ -31,13 +30,69 @@
                 min-height: 100vh;
                 margin: 0;
             }
-            .no-scrollbar {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
         </style>
     </head>
-    {{ user }}
-
-
+    <body hx-boost="true" class="py-6 px-4 lg:px-12 text-slate-100 w-full">
+        <div class="mb-6">
+            <a href="javascript:history.back()"
+               class="inline-flex items-center gap-2 text-slate-300 hover:text-indigo-400 font-semibold transition group">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="size-6 group-hover:-translate-x-1 transition-transform"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor"
+                     stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>Back</span>
+            </a>
+        </div>
+        <header class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 md:p-8 shadow-xl mb-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
+                <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+                    <div class="avatar">
+                        <div class="w-24 md:w-28 rounded-full ring-4 ring-indigo-500/60 ring-offset-4 ring-offset-slate-800 shadow-lg">
+                            <img src="{{ user.profile.profile_picture.url }}"
+                                 style="object-fit:contain;"
+                                 alt="{{ user.username }}" />
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl md:text-3xl tracking-wide text-slate-100">{{ user.username }}</h1>
+                        <p class="text-lg text-accent ml-1">{{ user.profile.bio }}</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-around w-full md:w-auto gap-8 lg:gap-12 border-t md:border-t-0 border-slate-700/60 pt-4 md:pt-0">
+                    <div class="text-center">
+                        <span class="block text-xs md:text-sm font-bold uppercase tracking-wider text-slate-300">Posts</span>
+                        <span class="text-2xl md:text-3xl font-bold text-indigo-400 mt-1 block">{{ posts_count|default:0 }}</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-xs md:text-sm font-bold uppercase tracking-wider text-slate-300">Following</span>
+                        <span class="text-2xl md:text-3xl font-bold text-indigo-400 mt-1 block">{{ following_count|default:0 }}</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-xs md:text-sm font-bold uppercase tracking-wider text-slate-300">Followers</span>
+                        <span class="text-2xl md:text-3xl font-bold text-indigo-400 mt-1 block">{{ followers_count|default:0 }}</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="space-y-6 w-full">
+            <h2 class="text-xl md:text-2xl font-bold text-slate-200">Newest Posts</h2>
+            <div id="posts-feed" class="space-y-6 w-full">
+                <input value="{{ newest }}"
+                       id="field{{ newest }}"
+                       name="post{{ newest }}"
+                       hidden />
+                <div hx-get="feed/{{ newest }}"
+                     hx-trigger="revealed"
+                     hx-include="#field{{ newest }}"
+                     hx-swap="outerHTML"
+                     class="text-center py-4">
+                    <span class="loading loading-spinner loading-md text-indigo-400"></span>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
