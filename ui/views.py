@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Profile, Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 # Create your views here.
 
 @login_required
@@ -51,5 +52,9 @@ def feed(request, postId):
         return render(request, "UI/postPartial.html", {"post": postObj, "Id": lastIndex})
     except Post.DoesNotExist:
         return HttpResponse("<p class='-m-2 text-error'><center>That's it for today!</center></p>")
+
+def exit(request):
+    logout(request)
+    return redirect("/")
     
     

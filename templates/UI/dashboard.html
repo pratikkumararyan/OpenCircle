@@ -123,13 +123,15 @@
             <main class="lg:col-span-9 xl:col-span-9 space-y-6 w-full">
                 <h2 class="text-xl md:text-2xl font-bold text-slate-200">Recent posts:</h2>
                 <div id="posts-feed" class="space-y-6 w-full">
-                    <input value="{{ newest }}" id="field{{ newest }}" name="post{{ newest }}" hidden/>
+                    <input value="{{ newest }}"
+                           id="field{{ newest }}"
+                           name="post{{ newest }}"
+                           hidden />
                     <div hx-get="feed/{{ newest }}"
                          hx-trigger="revealed"
                          hx-include="#field{{ newest }}"
                          hx-swap="outerHTML"
                          class="text-center py-4">
-                         
                         <span class="loading loading-spinner loading-md text-indigo-400"></span>
                     </div>
                 </div>
@@ -139,17 +141,25 @@
             <div tabindex="0"
                  role="button"
                  class="btn btn-circle btn-xl btn-primary shadow-2xl">
-                <img src="{% static "hamburger.svg" %}"  class="size-6" />
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="size-8"
+                     fill="currentColor"
+                     class="bi bi-list"
+                     viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
             </div>
             <button class="btn btn-circle btn-xl">
-                <svg aria-label="New camera photo"
-                     xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 16 16"
+                <a href="{% url "exit" %}" hx-boost="false">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="size-6"
                      fill="currentColor"
-                     class="size-6">
-                    <path d="M9.5 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
-                    <path fill-rule="evenodd" d="M2.5 5A1.5 1.5 0 0 0 1 6.5v5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 13.5 5h-.879a1.5 1.5 0 0 1-1.06-.44l-1.122-1.12A1.5 1.5 0 0 0 9.38 3H6.62a1.5 1.5 0 0 0-1.06.44L4.439 4.56A1.5 1.5 0 0 1 3.38 5H2.5ZM11 8.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" clip-rule="evenodd" />
+                     class="bi bi-box-arrow-left"
+                     viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
                 </svg>
+                </a>
             </button>
             <button class="btn btn-circle btn-xl">
                 <svg aria-label="New poll"
@@ -159,7 +169,7 @@
                      class="size-6">
                     <path d="M3 4.75a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6.25 3a.75.75 0 0 0 0 1.5h7a.75.75 0 0 0 0-1.5h-7ZM6.25 7.25a.75.75 0 0 0 0 1.5h7a.75.75 0 0 0 0-1.5h-7ZM6.25 11.5a.75.75 0 0 0 0 1.5h7a.75.75 0 0 0 0-1.5h-7ZM4 12.25a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM3 9a1 1 0 1 0 0-2 1 1 0 0 1 2 0Z" />
                 </svg>
-                +
+                
             </button>
             <button class="btn btn-circle btn-xl" onclick="Docs.showModal()">
                 <svg aria-label="New gallery photo"
@@ -171,13 +181,12 @@
                 </svg>
             </button>
             <button class="btn btn-circle btn-xl" onclick="Send.showModal()">
-                <svg aria-label="Documents"
-                     xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 16 16"
+                <svg xmlns="http://www.w3.org/2000/svg"
                      fill="currentColor"
-                     class="size-6">
-                    <path d="M8 1a2 2 0 0 0-2 2v4a2 2 0 1 0 4 0V3a2 2 0 0 0-2-2Z" />
-                    <path d="M4.5 7A.75.75 0 0 0 3 7a5.001 5.001 0 0 0 4.25 4.944V13.5h-1.5a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5h-1.5v-1.556A5.001 5.001 0 0 0 13 7a.75.75 0 0 0-1.5 0 3.5 3.5 0 1 1-7 0Z" />
+                     class="size-10"
+                     class="bi bi-plus"
+                     viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                 </svg>
             </button>
         </div>
