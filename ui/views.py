@@ -51,6 +51,7 @@ def postMessage(request):
 
 def feed(request, postId):
     lastIndex = str(int(request.GET.get(f"post{postId}")) - 1)
+    print("me got ", lastIndex)
     try:
         postObj = Post.objects.get(pk=postId)
         return render(request, "UI/postPartial.html", {"post": postObj, "Id": lastIndex})
@@ -60,5 +61,3 @@ def feed(request, postId):
 def exit(request):
     logout(request)
     return redirect("/")
-    
-    
