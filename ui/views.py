@@ -22,7 +22,12 @@ def post(request):
 
 def accountPage(request, UserId):
     user = User.objects.get(pk=UserId)
-    return render(request, "UI/profile.html", {"user": user})
+    allPosts = Post.objects.filter(poster=user)
+    newest = allPosts.order_by("-timestamp")[0].pk
+    nPosts = allPosts.count
+    nFollowing = user.profile.followers.count
+    nFollowers = user.followers.count
+    return render(request, "UI/profile.html", {"user": user, "newest": newest, "nPosts": nPosts, "nFollowers": nFollowers, "nFollowing": nFollowing})
 
 @login_required
 def dm(request):
