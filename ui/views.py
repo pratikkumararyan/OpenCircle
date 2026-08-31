@@ -4,8 +4,6 @@ from .models import Profile, Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
-import pytesseract
-from PIL import Image
 from django_htmx.http import HttpResponseClientRedirect
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
