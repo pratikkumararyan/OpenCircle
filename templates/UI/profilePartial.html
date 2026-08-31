@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <p class="text-sm md:text-base text-slate-300 leading-relaxed">{{ post.content }}</p>
+    <div class="post-content text-sm md:text-base text-slate-300 leading-relaxed">{{ post.content|safe }}</div>
     {% if post.image %}
         <div class="w-full rounded-xl overflow-hidden bg-slate-900 border border-slate-700/30 flex items-center justify-center max-h-[550px]">
             <img src="{{ post.image.url }}"

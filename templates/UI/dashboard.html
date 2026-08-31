@@ -79,6 +79,50 @@
                 color: #94a3b8 !important;
                 font-style: normal !important;
             }
+
+            
+            .post-content h1 {
+                font-size: 1.875rem;
+                font-weight: 700;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                color: #f8fafc;
+            }
+
+            .post-content h2 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                color: #f8fafc;
+            }
+
+            .post-content h3 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                color: #f8fafc;
+            }
+
+            
+            .post-content ul {
+                list-style-type: disc;
+                padding-left: 1.25rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .post-content ol {
+                list-style-type: decimal;
+                padding-left: 1.25rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .post-content li {
+                margin-bottom: 0.25rem;
+            }
         </style>
     </head>
     <body hx-boost="true" class="py-6 px-4 lg:px-12 text-slate-100">
@@ -163,13 +207,13 @@
             </button>
             <button class="btn btn-circle btn-xl">
                 <a href="profile/{{ user.pk }}">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     fill="currentColor"
-                     class="bi bi-person-fill size-8"
-                     viewBox="0 0 16 16">
-                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                </svg>
-            </a>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="currentColor"
+                         class="bi bi-person-fill size-8"
+                         viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                    </svg>
+                </a>
             </button>
             <button class="btn btn-circle btn-xl" onclick="Docs.showModal()">
                 <svg aria-label="New gallery photo"
@@ -194,10 +238,10 @@
             <div class="modal-box bg-slate-800 text-slate-100 border border-slate-700 justify-center place-items-center">
                 <p class="text-2xl md:text-3xl font-bold tracking-wide mt-2 mb-4">Post a message</p>
                 <form id="messagePostForm"
-                      method="post"
-                      action="{% url "postMessage" %}"
-                      >
-                      {% csrf_token %}
+                      hx-post="{% url "postMessage" %}"
+                      hx-target="#response"
+                      hx-encoding="multipart/form-data">
+                    {% csrf_token %}
                     <div class="editor-wrapper w-full">
                         <div id="editor-container" class="w-full"></div>
                     </div>
@@ -206,11 +250,9 @@
                         <label class="label my-1">Upload a picture (optional)</label>
                         <input type="file" class="file-input" name="fileInput" />
                     </fieldset>
-                    <div class="w-full mt-2">
-                        <div class="btn btn-accent rounded-lg w-full" type="submit">Submit</div>
-                    </div>
+                    <button type="submit" class="btn btn-accent rounded-lg w-full my-2">Submit</button>
                 </form>
-                <div class="response"></div>
+                <div class="response" id="response"></div>
             </div>
             <form method="dialog" class="modal-backdrop">
                 <button>close</button>
@@ -273,11 +315,10 @@
                 placeholder: 'Start typing....'
             });
 
-            const form = document.getElementById('messagePostForm');
-            form.addEventListener('htmx:configRequest', (event) => {
-                const htmlContent = quill.getSemanticHTML();
+            const hiddenInput = document.getElementById('htmlField');
 
-                document.getElementById('htmlField').value = htmlContent;
+            quill.on('text-change', () => {
+                hiddenInput.value = quill.getSemanticHTML();
             });
         </script>
     </body>

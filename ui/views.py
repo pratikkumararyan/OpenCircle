@@ -4,8 +4,10 @@ from .models import Profile, Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
+from django_htmx.http import HttpResponseClientRedirect
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+MAX_IMAGE_SIZE = 500 * 1024 
 
 @login_required
 def ui(request):
@@ -56,16 +58,18 @@ def friends(request):
 def postMessage(request):
     if request.htmx and request.POST:
         message = request.POST.get("htmlField")
-        
+        print(message)
         if len(message) > 4500:
             return HttpResponse('<p class="text-md text-error">Message too long! Please shorten it.</p>')
         try:
-            image = request.POST.get("fileInput")
-            Post.objects.create(poster=request.user, content=message, image=image)
+            image = request.FILES.get("fileInput")
+            if image.size <= MAX_IMAGE_SIZE:
+                Post.objects.create(poster=request.user, content=message, image=image)
+            else:
+                return HttpResponse("File too big.")
         except:
             Post.objects.create(poster=request.user, content=message)
-        
-        return redirect("/ui/")
+        return HttpResponseClientRedirect('/ui/')
     return redirect("/")
 
 def feed(request, postId):
