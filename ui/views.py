@@ -23,7 +23,8 @@ def post(request):
 def accountPage(request, UserId):
     user = User.objects.get(pk=UserId)
     allPosts = Post.objects.filter(poster=user)
-    newest = allPosts.order_by("-timestamp")[0].pk
+    newest = allPosts.order_by("timestamp").count()
+    print(newest)
     nPosts = allPosts.count
     nFollowing = user.profile.followers.count
     nFollowers = user.followers.count
@@ -58,16 +59,15 @@ def feed(request, postId):
         return HttpResponse("<p class='-m-2 text-error'><center>That's it for today!</center></p>")
 
 def profileFeed(request, postId):
-    lastIndex = int(request.GET.get(f"post{postId}"))
+    lastIndex = postId
     userId = request.GET.get("userId")
     try:
         userObj = User.objects.get(pk=userId)
         allPosts = Post.objects.filter(poster=userObj)
-        print(allPosts)
-        postObj = allPosts[lastIndex-1]
-        return render(request, "UI/profilePartial.html", {"post": postObj, "Id": lastIndex})
-    except Exception as e:
-        return HttpResponse(e)
+        postObj = allPosts.order_by("timestamp")[lastIndex-1]
+        return render(request, "UI/profilePartial.html", {"post": postObj, "Id": lastIndex-1})
+    except:
+        return HttpResponse("")
 
 def exit(request):
     logout(request)

@@ -34,7 +34,7 @@
     </head>
     <body hx-boost="true" class="py-6 px-4 lg:px-12 text-slate-100 w-full">
         <div class="mb-6">
-            <a href="javascript:history.back()"
+            <a href="/ui/"
                class="inline-flex items-center gap-2 text-slate-300 hover:text-indigo-400 font-semibold transition group">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      class="size-6 group-hover:-translate-x-1 transition-transform"
@@ -84,11 +84,12 @@
                 <input value="{{ newest }}"
                        id="field{{ newest }}"
                        name="post{{ newest }}"
+                       hidden
                        />
                 <input value="{{ user.pk }}" name="userId" id="userId" hidden/>
                 <div hx-get="/ui/profileFeed/{{ newest }}"
                      hx-trigger="revealed"
-                     hx-include="#field{{ newest }}, #userId"
+                     hx-include="#userId"
                      hx-swap="outerHTML"
                      class="text-center py-4">
                     <span class="loading loading-spinner loading-md text-indigo-400"></span>
