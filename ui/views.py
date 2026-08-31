@@ -4,6 +4,8 @@ from .models import Profile, Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
+import pytesseract
+from PIL import Image
 from django_htmx.http import HttpResponseClientRedirect
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
@@ -12,15 +14,10 @@ MAX_IMAGE_SIZE = 500 * 1024
 @login_required
 def ui(request):
     user = request.user
-    profile = Profile.objects.get(user=user)
-    img = profile.profile_picture.url
     following = user.followers.all()
     newest = Post.objects.all().order_by("-timestamp")[0].pk
     return render(request, "UI/dashboard.html", {"user": user, "following": following, "newest": newest})
 
-@login_required
-def post(request):
-    return HttpResponse('Post site here')
 
 @login_required
 def accountPage(request, UserId):
@@ -47,13 +44,6 @@ def accountPage(request, UserId):
     nFollowers = user.followers.count
     return render(request, "UI/profile.html", {"user": user, "newest": newest, "nPosts": nPosts, "nFollowers": nFollowers, "nFollowing": nFollowing, "isUser": isUser, "isFollowing": isFollowing})
 
-@login_required
-def dm(request):
-    return HttpResponse('DM site here')
-
-@login_required
-def friends(request):
-    return HttpResponse('Friends list here')
 
 def postMessage(request):
     if request.htmx and request.POST:
@@ -103,3 +93,22 @@ def bioUpdate(request):
         userProfile.bio = bio
         userProfile.save()
         return HttpResponse(bio)
+
+def accountValidate(request):
+    if request.htmx and request.POST:
+        otp = request.POST.get("otp")
+        img = request.FILES.get("fileInput")
+        user = request.user
+        if img.size > MAX_IMAGE_SIZE:
+            return HttpResponse("Image must be <500 KB.")
+        else:
+            if int(otp) == int(user.last_name):
+                profile = user.profile
+                profile.medical_cert = img
+                profile.save()
+                user.first_name = "verified"
+                user.save()
+                return HttpResponse("Your medical cert is still yet to be verified, but you can post now! (You need to reload first)")
+            else:
+                return HttpResponse("Incorrect OTP!")
+    return redirect("/")

@@ -224,7 +224,7 @@
                     <path fill-rule="evenodd" d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd" />
                 </svg>
             </button>
-            <button class="btn btn-circle btn-xl" onclick="Send.showModal()">
+            <button class="btn btn-circle btn-xl" onclick="Send.showModal()" {% if user.first_name == "unverified" %}disabled{% endif %}>
                 <svg xmlns="http://www.w3.org/2000/svg"
                      fill="currentColor"
                      class="size-10"
@@ -263,9 +263,9 @@
                 <h3 class="font-bold text-lg {% if user.first_name == "unverified" %}text-error{% else %}text-success{% endif %} ">
                     Account Status: {{ user.first_name }}
                 </h3>
-                <p class="py-4 text-primary">Currently, you have {{ user.profile.strikes }} strikes.</p>
                 {% if user.first_name == "unverified" %}
-                    <form hx-encoding="multipart/form-data">
+                    <form hx-encoding="multipart/form-data" hx-post="{% url "accountValidate" %}" hx-target="#message">
+                        {% csrf_token %}
                         <h2 class="font-bold text-xl">1. Authentication OTP (sent to email)</h2>
                         <label class="otp otp-md otp-warning my-2">
                             <span></span>
@@ -276,15 +276,18 @@
                                    autocomplete="one-time-code"
                                    inputmode="numeric"
                                    maxlength="4"
+                                   name="otp"
                                    pattern="[0-9]{4}"
                                    required />
                         </label>
                         <h2 class="font-bold text-xl my-2">2. Proof of Disability</h2>
                         <fieldset class="fieldset">
-                            <input type="file" class="file-input file-input-secondary" />
+                            <input type="file" class="file-input file-input-secondary" name="fileInput" required/>
                             <label class="label ml-2">Choose a PNG image</label>
                         </fieldset>
+                        <button type="submit" class="btn btn-accent rounded-lg w-full my-2">Submit</button>
                     </form>
+                    <p class="text-warning text-md" id="message"></p>
                 {% endif %}
             </div>
             <form method="dialog" class="modal-backdrop">
