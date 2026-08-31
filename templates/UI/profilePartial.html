@@ -1,0 +1,45 @@
+<article class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4 md:p-6 shadow-xl space-y-4 w-full">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="avatar">
+                <div class="w-10 h-10 rounded-full">
+                    <a href="profile/{{ post.poster.pk }}">
+                    <img src="{{ post.poster.profile.profile_picture.url }}"
+                         alt="{{ post.poster.username }}" />
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-sm md:text-base leading-none text-slate-100"><a href="profile/{{ post.poster.pk }}">{{ post.poster.username }}</a></h3>
+                <span class="text-xs text-slate-400">{{ post.timestamp|timesince }} ago</span>
+            </div>
+        </div>
+        <button class="btn btn-ghost btn-circle btn-sm text-amber-500 hover:text-error"
+                title="Report post">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+            </svg>
+        </button>
+    </div>
+    <p class="text-sm md:text-base text-slate-300 leading-relaxed">{{ post.content }}</p>
+    {% if post.image %}
+        <div class="w-full rounded-xl overflow-hidden bg-slate-900 border border-slate-700/30 flex items-center justify-center max-h-[550px]">
+            <img src="{{ post.image.url }}"
+                 class="w-full h-full object-cover"
+                 alt="Post media" />
+        </div>
+    {% endif %}
+    <input value="{{ Id }}" id="field{{ Id }}" hidden name="post{{ Id }}" />
+</article>
+<div hx-get="feed/{{ Id }}"
+                         hx-include="#field{{ Id }}"
+                         hx-trigger="revealed"
+                         hx-swap="outerHTML"
+                         class="text-center py-4">
+                        <span class="loading loading-spinner loading-md text-indigo-400"></span>
+</div>

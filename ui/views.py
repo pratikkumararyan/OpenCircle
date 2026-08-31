@@ -51,12 +51,23 @@ def postMessage(request):
 
 def feed(request, postId):
     lastIndex = str(int(request.GET.get(f"post{postId}")) - 1)
-    print("me got ", lastIndex)
     try:
         postObj = Post.objects.get(pk=postId)
         return render(request, "UI/postPartial.html", {"post": postObj, "Id": lastIndex})
     except Post.DoesNotExist:
         return HttpResponse("<p class='-m-2 text-error'><center>That's it for today!</center></p>")
+
+def profileFeed(request, postId):
+    lastIndex = int(request.GET.get(f"post{postId}"))
+    userId = request.GET.get("userId")
+    try:
+        userObj = User.objects.get(pk=userId)
+        allPosts = Post.objects.filter(poster=userObj)
+        print(allPosts)
+        postObj = allPosts[lastIndex-1]
+        return render(request, "UI/profilePartial.html", {"post": postObj, "Id": lastIndex})
+    except Exception as e:
+        return HttpResponse(e)
 
 def exit(request):
     logout(request)

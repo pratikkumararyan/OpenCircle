@@ -85,9 +85,10 @@
                        id="field{{ newest }}"
                        name="post{{ newest }}"
                        />
-                <div hx-get="/ui/feed/{{ newest }}"
+                <input value="{{ user.pk }}" name="userId" id="userId" hidden/>
+                <div hx-get="/ui/profileFeed/{{ newest }}"
                      hx-trigger="revealed"
-                     hx-include="#field{{ newest }}"
+                     hx-include="#field{{ newest }}, #userId"
                      hx-swap="outerHTML"
                      class="text-center py-4">
                     <span class="loading loading-spinner loading-md text-indigo-400"></span>
