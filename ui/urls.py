@@ -9,6 +9,6 @@ urlpatterns = [
     path('profileFeed/<int:postId>', views.profileFeed, name='profileFeed'),
     path('postMessage/', views.postMessage, name='postMessage'),
     path('profile/<int:UserId>', views.accountPage, name='accountPage'),
-    path('dm/', views.dm, name='dm'),
+    path('bioUpdate/', views.bioUpdate, name='bioUpdate'),
     path('friends/', views.friends, name='friends'),
 ]

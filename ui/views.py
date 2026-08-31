@@ -4,6 +4,7 @@ from .models import Profile, Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 @login_required
@@ -19,16 +20,30 @@ def ui(request):
 def post(request):
     return HttpResponse('Post site here')
 
-
+@login_required
 def accountPage(request, UserId):
+    if request.POST:
+        isFollowing = request.POST.get("isFollowing")
+        targetId = request.POST.get("targetId")
+        targetUser = User.objects.get(pk=targetId)
+        targetProfile = targetUser.profile
+        if isFollowing == "True":
+            targetProfile.followers.remove(request.user)
+        else:
+            targetProfile.followers.add(request.user)
     user = User.objects.get(pk=UserId)
     allPosts = Post.objects.filter(poster=user)
     newest = allPosts.order_by("timestamp").count()
     print(newest)
     nPosts = allPosts.count
-    nFollowing = user.profile.followers.count
+    isUser = (user == request.user)
+    allFollowers = user.profile.followers
+    isFollowing = False
+    if not isUser:
+        isFollowing = allFollowers.contains(request.user)
+    nFollowing = allFollowers.count
     nFollowers = user.followers.count
-    return render(request, "UI/profile.html", {"user": user, "newest": newest, "nPosts": nPosts, "nFollowers": nFollowers, "nFollowing": nFollowing})
+    return render(request, "UI/profile.html", {"user": user, "newest": newest, "nPosts": nPosts, "nFollowers": nFollowers, "nFollowing": nFollowing, "isUser": isUser, "isFollowing": isFollowing})
 
 @login_required
 def dm(request):
@@ -72,3 +87,12 @@ def profileFeed(request, postId):
 def exit(request):
     logout(request)
     return redirect("/")
+
+@csrf_exempt
+def bioUpdate(request):
+    if request.htmx and request.POST:
+        bio = request.POST.get("content", '').strip()
+        userProfile = request.user.profile
+        userProfile.bio = bio
+        userProfile.save()
+        return HttpResponse(bio)
