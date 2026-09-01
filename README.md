@@ -1,18 +1,13 @@
-# OpenCircle: My first shipped Django project !!111!
-
 **OpenCircle** is an open-source social media platform built with Django, specifically designed to provide a safe, secure, and inclusive environment for **specially-abled individuals**.
-
-**Note: This is still a work in progress and this is only an MVP ship for the landing page's frontend design, i.e it doesn't have much of backend integrated into the site yet, so stay tuned**
 
 
 ---
 
 ##  Key Features [To be added!]
 
-*   **Medical Verification:** We use AI/ML to authenticate our opencirclers!
-*   **AI Hate Speech Filtering:** We also use realtime AI/ML models to filter hate speech!
+*   **Medical Verification:** We use medical documents to manually authenticate our opencirclers!
 *   **Disability-First Design:** UI/UX is designed specifically for our targeted audience!
-*   **Secure Privacy:** Built on the robust Django framework to ensure user data and privacy are always protected. (cuz imagine getting ur medical documents leaked lol)
+*   **Secure Privacy:** Built on the robust Django framework to ensure user data and privacy are always protected. (cuz imagine getting ur medical documents leaked XD)
 
 ---
 
@@ -27,7 +22,7 @@
 ### **Backend & Data**
 *   **Django** 
 *   **SQLite3** 
-*   **Scikit-learn** 
+*   **Python libraries (Threading, etc.)** 
 
 
 
@@ -37,8 +32,7 @@
 ##  Getting Started
 
 ### **Prerequisites (Can be installed via requirements.txt, read on for more :p)**
-*   Python 3.10 or higher
-*   Django ofc lol
+*   Python 3.10 or higher (3.14 recommended)
 
 ### **Installation**
 1.  **Clone the repository:**
@@ -50,15 +44,19 @@
     ```bash
     pip install -r requirements.txt
     ```
-3.  **Run migrations:**
+3.  **Install email_validator:**
+    ```bash
+    pip install email-validator
+    ```
+4.  **Run migrations:**
     ```bash
     python manage.py migrate
     ```
-4.  **Start the server:**
+5.  **Start the server:**
     ```bash
     python manage.py runserver
     ```
-5. **Enjoy!**
+6. **Enjoy!**
 
 ---
 
@@ -71,5 +69,3 @@ For any inquiries or feedback, feel free to reach out via the contact section on
 
 ---
 
-
-**THIS IS STILL A WORK IN PROGRESS!!**
