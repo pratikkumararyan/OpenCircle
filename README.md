@@ -5,8 +5,8 @@
 
 ##  Key Features
 
-*   **Medical Verification:** We use medical documents to manually authenticate our opencirclers!
-*   **Disability-First Design:** UI/UX is designed specifically for our targeted audience!
+*   **Medical Verification:** We use medical documents to manually authenticate our opencirclers.
+*   **Disability-First Design:** UI/UX is designed specifically for our targeted audience.
 *   **Secure:** Built on the robust Django framework to ensure user data and privacy are always protected. (cuz imagine getting ur medical documents leaked XD)
 
 ---
