@@ -80,7 +80,7 @@
                 font-style: normal !important;
             }
 
-            
+
             .post-content h1 {
                 font-size: 1.875rem;
                 font-weight: 700;
@@ -105,7 +105,7 @@
                 color: #f8fafc;
             }
 
-            
+
             .post-content ul {
                 list-style-type: disc;
                 padding-left: 1.25rem;
@@ -134,8 +134,7 @@
         <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <aside class="lg:col-span-3 xl:col-span-3 lg:sticky lg:top-6 bg-slate-800/80 border border-slate-700/60 p-4 md:p-5 rounded-2xl shadow-xl w-full">
                 <div class="flex items-center justify-between mb-3 md:mb-4">
-                    <h2 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-300">Trending People</h2>
-                    <span class="text-xs text-slate-400 font-mono hidden lg:inline">Active Now</span>
+                    <h2 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-300">People you follow</h2>
                 </div>
                 <div class="flex lg:flex-col overflow-x-auto lg:overflow-x-hidden lg:max-h-[calc(80vh-6rem)] lg:overflow-y-auto gap-3 no-scrollbar pb-2 lg:pb-0">
                     {% for instance in following %}
@@ -181,7 +180,7 @@
                 </div>
             </main>
         </div>
-        <div class="fab fab-flower fixed bottom-6 right-6 z-40">
+        <div class="fab fab-flower !fixed bottom-6 right-6 z-40">
             <div tabindex="0"
                  role="button"
                  class="btn btn-circle btn-xl btn-primary shadow-2xl">
@@ -245,7 +244,7 @@
                     <div class="editor-wrapper w-full">
                         <div id="editor-container" class="w-full"></div>
                     </div>
-                    <textarea id="htmlField" name="htmlField"></textarea>
+                    <textarea id="htmlField" name="htmlField" hidden></textarea>
                     <fieldset class="fieldset">
                         <label class="label my-1">Upload a picture (optional)</label>
                         <input type="file" class="file-input" name="fileInput" />
@@ -285,44 +284,58 @@
                             <input type="file" class="file-input file-input-secondary" name="fileInput" required/>
                             <label class="label ml-2">Choose a PNG image</label>
                         </fieldset>
-                        <button type="submit" class="btn btn-accent rounded-lg w-full my-2">Submit</button>
+                        <button type="submit" class="btn btn-accent rounded-lg w-full">Submit</button>
                     </form>
-                    <p class="text-warning text-md" id="message"></p>
+
+                {% else %}
+                    <form hx-encoding="multipart/form-data" hx-post="" hx-target="#message">
+                        {% csrf_token %}
+                        <h2 class="font-bold text-xl my-2">Upload your PFP!</h2>
+                        <fieldset class="fieldset my-2">
+                            <input type="file" class="file-input file-input-secondary" name="pfpInput" required/>
+                            <label class="label ml-2">Choose a PNG image</label>
+                        </fieldset>
+                        <button type="submit" class="btn btn-accent rounded-lg w-full">Submit</button>
+                    </form>
                 {% endif %}
+                <p class="text-warning text-md" id="message"></p>
             </div>
             <form method="dialog" class="modal-backdrop">
                 <button>close</button>
             </form>
         </dialog>
         <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-        <script>
-            const toolbarOptions = [
-                [{
-                    'header': [1, 2, 3, false]
-                }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{
-                    'list': 'ordered'
-                }, {
-                    'list': 'bullet'
-                }],
-                ['link'],
-                ['clean']
-            ];
+<script>
+  document.body.addEventListener('htmx:load', function () {
+    const container = document.getElementById('editor-container');
+    const hiddenInput = document.getElementById('htmlField');
 
-            const quill = new Quill('#editor-container', {
-                modules: {
-                    toolbar: toolbarOptions
-                },
-                theme: 'snow',
-                placeholder: 'Start typing....'
-            });
+    // Exit if the editor elements are not present on the current page
+    if (!container || !hiddenInput) return;
 
-            const hiddenInput = document.getElementById('htmlField');
+    // Prevent re-initializing Quill if it is already active
+    if (container.classList.contains('ql-container')) return;
 
-            quill.on('text-change', () => {
-                hiddenInput.value = quill.getSemanticHTML();
-            });
-        </script>
+    const toolbarOptions = [
+      [{ 'header': [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['link'],
+      ['clean']
+    ];
+
+    const quill = new Quill(container, {
+      modules: {
+        toolbar: toolbarOptions
+      },
+      theme: 'snow',
+      placeholder: 'Start typing....'
+    });
+
+    quill.on('text-change', () => {
+      hiddenInput.value = quill.getSemanticHTML();
+    });
+  });
+</script>
     </body>
 </html>

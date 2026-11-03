@@ -7,14 +7,25 @@ from django.contrib.auth import logout
 from django_htmx.http import HttpResponseClientRedirect
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
-MAX_IMAGE_SIZE = 500 * 1024 
+MAX_IMAGE_SIZE = 500 * 1024
 
 @login_required
 def ui(request):
-    user = request.user
-    following = user.followers.all()
-    newest = Post.objects.all().order_by("-timestamp")[0].pk
-    return render(request, "UI/dashboard.html", {"user": user, "following": following, "newest": newest})
+    if request.POST and request.htmx:
+        pfpImg = request.FILES.get("pfpInput")
+        if pfpImg.size > MAX_IMAGE_SIZE:
+            return HttpResponse("Image size must be less than 500 KB.")
+        elif not pfpImg.name.lower().endswith(".png"):
+            return HttpResponse("Only PNG files accepted.")
+        userObj = request.user.profile
+        userObj.profile_picture = pfpImg
+        userObj.save()
+        return HttpResponse("PFP updated!")
+    else:
+        user = request.user
+        following = user.followers.all()
+        newest = Post.objects.all().order_by("-timestamp")[0].pk
+        return render(request, "UI/dashboard.html", {"user": user, "following": following, "newest": newest})
 
 
 @login_required
@@ -52,7 +63,10 @@ def postMessage(request):
         try:
             image = request.FILES.get("fileInput")
             if image.size <= MAX_IMAGE_SIZE:
-                Post.objects.create(poster=request.user, content=message, image=image)
+                if image.name.lower().endswith(".png"):
+                    Post.objects.create(poster=request.user, content=message, image=image)
+                else:
+                    return HttpResponse("Only PNGs accepted.")
             else:
                 return HttpResponse("File too big.")
         except:
@@ -99,6 +113,8 @@ def accountValidate(request):
         user = request.user
         if img.size > MAX_IMAGE_SIZE:
             return HttpResponse("Image must be <500 KB.")
+        elif not img.name.lower().endswith(".png"):
+            return HttpResponse("Only PNG files accepted.")
         else:
             if int(otp) == int(user.last_name):
                 profile = user.profile

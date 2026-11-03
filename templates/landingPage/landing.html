@@ -185,8 +185,9 @@
           <p class="mb-5 text-6xl font-bold text-base-content tracking-widest">OpenCircle</p>
           <p class="text-3xl text-base-content/70 leading-10 tracking-wide drop-shadow-lg prose"
              data-aos="zoom-in">An open-source Django social media platform built for specially-abled people.</p>
+            {% if user.is_authenticated %}<a href="/ui">{% endif %}
           <button class="btn btn-success animate-bounce text-3xl py-10 px-16 mt-12 rounded-full hover:scale-105 hover:shadow-primary/50 active:scale-95 transition-all duration-300 tracking-widest"
-                  popovertarget="onboarding">Get Started</button>
+                  {% if not user.is_authenticated %}popovertarget="onboarding"{% endif %}>Get Started</button>{% if user.is_authenticated %}</a>{% endif %}
           <div id="onboarding" class="modal" popover>
             <div class="modal-box modal-middle max-w-4xl w-11/12 overflow-x-hidden bg-[#191923] md:overflow-y-clip">
               <div class="-my-8 m-0 md:-ml-6">
@@ -197,12 +198,12 @@
                   <div class="hero-image w-0 h-0 md:w-auto md:h-auto">
                     <img alt="wallpaper" src="{% static "loginModalPic.png" %}" />
                   </div>
-                  
+
                   <div class="grid grid-cols-1 w-full my-4" id="authentication">
-                    
+
                   </div>
                   <div hx-get="{% url "login" %}" hx-target="#authentication" hx-trigger="load" hx-swap="innerHTML"></div>
-                  
+
                 </div>
               </div>
             </div>
@@ -410,8 +411,8 @@
                   </svg>
                 </span>
               </div>
-              <div class="stat-value counter" data-target="100">0</div>
-              <div class="stat-desc text-lg">Total Site Views</div>
+              <div class="stat-value counter" data-target="{{ nSuggestions }}">0</div>
+              <div class="stat-desc text-lg">Total Suggestions</div>
             </div>
             <div class="stat place-items-center hover:translate-x-2 transition-all duration-300">
               <div class="stat-title">
@@ -423,7 +424,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <div class="stat-value text-error counter" data-target="500">0</div>
+              <div class="stat-value text-error counter" data-target="{{ nUsers }}">0</div>
               <div class="stat-desc text-error text-lg">Total Users</div>
             </div>
             <div class="stat place-items-center hover:translate-x-2 transition-all duration-300">
@@ -438,7 +439,7 @@
                   </svg>
                 </span>
               </div>
-              <div class="stat-value counter" data-target="1000">0</div>
+              <div class="stat-value counter" data-target="{{ nPosts }}">0</div>
               <div class="stat-desc text-lg">Total Posts</div>
             </div>
           </div>
@@ -624,7 +625,7 @@
                             value="0"
                             max="100"></progress>
                   <span class="shrink-0 text-sm">
-                    <span data-target="10" class="counter">0</span>%
+                    <span data-target="80" class="counter">0</span>%
                   </span>
                 </div>
               </div>
@@ -645,7 +646,7 @@
                             value="0"
                             max="100"></progress>
                   <span class="shrink-0 text-sm">
-                    <span data-target="10" class="counter">0</span>%
+                    <span data-target="18" class="counter">0</span>%
                   </span>
                 </div>
               </div>
@@ -666,7 +667,7 @@
                             value="0"
                             max="100"></progress>
                   <span class="shrink-0 text-sm">
-                    <span data-target="10" class="counter">0</span>%
+                    <span data-target="1" class="counter">0</span>%
                   </span>
                 </div>
               </div>
@@ -691,7 +692,7 @@
                             value="0"
                             max="100"></progress>
                   <span class="shrink-0 text-sm">
-                    <span data-target="10" class="counter">0</span>%
+                    <span data-target="1" class="counter">0</span>%
                   </span>
                 </div>
               </div>
@@ -763,7 +764,7 @@
                         onclick=" if (document.getElementById('message').value != '') { innerHTML = 'Please wait...' } ">
                   Submit
                 </button>
-                
+
               </form>
             </div>
           </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from ui.models import Suggestions, Profile
+from ui.models import Suggestions, Profile, Post
 from email_validator import validate_email, EmailNotValidError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -16,8 +16,11 @@ def index(request):
         rating = int(round((float(request.POST.get('rating'))/25)+1, 1))
         Suggestions.objects.create(rating=rating, message=message)
         return render(request, "landingPage/partial.html")
-    
-    return render(request, 'landingPage/landing.html')
+
+    nPosts = Post.objects.count()
+    nUsers = User.objects.count()
+    nSuggestions = Suggestions.objects.count()
+    return render(request, 'landingPage/landing.html', {"nPosts": nPosts, "nUsers": nUsers, "nSuggestions": nSuggestions})
 
 
 def Login(request):
@@ -28,7 +31,7 @@ def Login(request):
         elif request.method == "POST":
             username = request.POST.get('username')
             password = request.POST.get('passInput')
-            
+
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
@@ -50,12 +53,12 @@ def change(request):
     #         return render(request, "account/login.html", {"issues": errors})
     #     elif nature == "signup":
     #         return render(request, "account/signup.html", {"issues": errors})
-        
+
 
     return redirect("/")
 
 def signupEmail(otpInt, emailId):
-    send_mail("OpenCircle Signup OTP", "Your otp for Opencircle verification is " + otpInt, settings.EMAIL_HOST_USER, [emailId])
+    send_mail("OpenCircle Signup OTP", "Your otp for Opencircle verification is " + otpInt, None, [emailId])
 
 def signup(request):
     if request.htmx:
@@ -100,10 +103,11 @@ def signup(request):
     return redirect("/")
 
 def otpEmail(otpNumber, emailId):
-    send_mail(f"Open Circle password reset attempt at your account", f"Hi there, there was recently a password reset attempt at the OpenCircle account associated with this email-id <i>[{emailId}]</i>. The OTP for the reset is <b>{otpNumber}</b> if this was you, or you can safely ignore this mail if it wasn't.", settings.EMAIL_HOST_USER, [emailId])
+    str = f"Open Circle password reset attempt at your account", f"Hi there, there was recently a password reset attempt at the OpenCircle account associated with this email-id <i>[{emailId}]</i>. The OTP for the reset is <b>{otpNumber}</b> if this was you, or you can safely ignore this mail if it wasn't."
+    send_mail(str, None, [emailId], html_message=str)
 
 def forgot(request):
-    if request.htmx: 
+    if request.htmx:
         issues = []
         if request.method == "POST":
             email = request.POST.get('email')
@@ -118,7 +122,7 @@ def forgot(request):
                                     args=(otpNumber, email)
                                 )
                 email_thread.start()
-                
+
                 return render(request, "account/otp.html")
             except User.DoesNotExist as e:
                 issues.append(e)
@@ -126,7 +130,7 @@ def forgot(request):
 
         elif request.method == "GET":
             return render(request, "account/forgot.html")
-        
+
     return redirect("/")
 
 def otp(request):
@@ -140,11 +144,11 @@ def otp(request):
                 return render(request, "account/otp.html", {"incorrect": True})
             else:
                 del request.session['reset_otp']
-                return render(request, "account/reset.html")     
+                return render(request, "account/reset.html")
     return redirect("/")
 
 def reset(request):
-    if request.htmx: 
+    if request.htmx:
         if request.method == "POST":
             password = request.POST.get('passInput')
             email = request.session.get('reset_email')
@@ -152,7 +156,7 @@ def reset(request):
             userObj.set_password(password)
             userObj.save()
             return redirect("login")
-            
+
     return redirect("/")
 
 def Logout(request):
