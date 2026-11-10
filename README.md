@@ -37,8 +37,8 @@
 ### **Installation**
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/pratikkumararyan/opencircle.git](https://github.com/pratikkumararyan/opencircle.git)
-    cd opencircle
+    git clone https://github.com/pratikkumararyan/opencircle.git
+    cd OpenCircle
     ```
 2.  **Install dependencies:**
     ```bash
