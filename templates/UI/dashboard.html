@@ -306,14 +306,25 @@
         </dialog>
         <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script>
-  document.body.addEventListener('htmx:load', function () {
+    const synth = window.SpeechSynthesis;
+    document.body.addEventListener("click", (event) => {
+        const button = event.target.closest(".speakchild")
+        if (!button) return;
+
+        const label = button.querySelector("label");
+        const labelText = label? label.textContent.trim() : "Sorry, the feature seems to have failed. Please try again later.";
+        console.log("Clicked button:", button);
+        console.log("Child label value:", labelText)
+    })
+
+    // Quill Stuff :fear:
+    document.body.addEventListener('htmx:load', function () {
     const container = document.getElementById('editor-container');
     const hiddenInput = document.getElementById('htmlField');
 
-    // Exit if the editor elements are not present on the current page
+
     if (!container || !hiddenInput) return;
 
-    // Prevent re-initializing Quill if it is already active
     if (container.classList.contains('ql-container')) return;
 
     const toolbarOptions = [
