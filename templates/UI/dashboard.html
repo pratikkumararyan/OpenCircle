@@ -306,15 +306,15 @@
         </dialog>
         <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script>
-    const synth = window.SpeechSynthesis;
+    const synth = window.speechSynthesis;
     document.body.addEventListener("click", (event) => {
         const button = event.target.closest(".speakchild")
         if (!button) return;
 
         const label = button.querySelector("label");
         const labelText = label? label.textContent.trim() : "Sorry, the feature seems to have failed. Please try again later.";
-        console.log("Clicked button:", button);
-        console.log("Child label value:", labelText)
+        let utterance = new SpeechSynthesisUtterance(labelText);
+        synth.speak(utterance);
     })
 
     // Quill Stuff :fear:
