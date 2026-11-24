@@ -240,6 +240,7 @@
                       hx-post="{% url "postMessage" %}"
                       hx-target="#response"
                       hx-encoding="multipart/form-data">
+                      
                     {% csrf_token %}
                     <div class="editor-wrapper w-full">
                         <div id="editor-container" class="w-full"></div>
@@ -307,8 +308,12 @@
         <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script>
     const synth = window.speechSynthesis;
+    const recoginition = new SpeechRecoginition();
+    recoginition.lang = "en-US";
+    recoginition.interim = true;
+    
     document.body.addEventListener("click", (event) => {
-        const button = event.target.closest(".speakchild")
+        const button = event.target.closest(".speakchild");
         if (!button) return;
 
         const label = button.querySelector("label");
