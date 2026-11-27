@@ -242,9 +242,18 @@
                       hx-encoding="multipart/form-data">
                       
                     {% csrf_token %}
-                    <div class="editor-wrapper w-full">
+                    <div class="editor-wrapper relative w-full">
                         <div id="editor-container" class="w-full"></div>
+                        <button type="button" 
+                                id="micBtn" 
+                                title="Dictate message"
+                                class="btn btn-circle btn-sm bg-slate-700 hover:bg-slate-600 border-slate-600 text-slate-200 absolute bottom-3 right-3 z-10 shadow-md transition-all">
+                            <svg xmlns="http://w3.org" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
+                        </button>
                     </div>
+
                     <textarea id="htmlField" name="htmlField" hidden></textarea>
                     <fieldset class="fieldset">
                         <label class="label my-1">Upload a picture (optional)</label>
